@@ -1,6 +1,7 @@
-# <p align=center>"GpgTools"<br>Hardening of "Gpg4Win" for VS-NfD conformity</p>
+## <p align=center>"GpgTools"<br>Activate VS-NfD Configuration for "Gpg4Win"<br>(aka "GnuPG VS-Desktop®")</p>
 
 ##### <p align=right>By vitusb in 20211228</p>
+##### <p align=right>GnuPG VS-Desktop® ist eine eingetragene Marke der [g10 Code GmbH](https://g10code.com "g10 Code GmbH").<br>GnuPG VS-Desktop® is a registered trademark of [g10 Code GmbH](https://g10code.com "g10 Code GmbH").</p>
 
 ## <p id="German_Description">Deutsch / [English](#English_Description "English Description")</p>
 
