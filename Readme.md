@@ -60,8 +60,7 @@
 3. * GpgOL_Config_InlinePGP: "Inline PGP" aktivieren ...
 4. * GpgOL_Enabe_OLK2016_Resiliency: Outlook 2016 Resiliency aktivieren. ...
 5. * GpgOL_Set_OLK_LoadBehavior: Outlook 2016 "LoadBehavior" definieren.
-6. * Migrate_GnuPG_Keybase: Programm zur Prüfung und automatischen Migration einer alten GnuPG v1 Schlüssel-Datenbank starten.
-
+6. * [Migrate_GnuPG_Keybase](https://github.com/landsh-de/MigrateGnuPGKeybase "Migrate_GnuPG_Keybase"): Programm zur Prüfung und automatischen Migration einer alten GnuPG v1 Schlüssel-Datenbank starten. Für Details schauen Sie in das Projekt: [MigrateGnuPGKeybase](https://github.com/landsh-de/MigrateGnuPGKeybase "MigrateGnuPGKeybase")
 
 ### Installations-Optionen:
 
