@@ -19,6 +19,16 @@
 
 ### [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") muss VOR der Installation von "GpgTools" auf dem System installiert sein. Der Installer von "GpgTools" prüft VOR der Installation, ob die korrekte Version von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") bereits installiert ist.
 
+#### Arbeitsschritte:
+1. Laden Sie den Installer von "Gpg4Win" von der Seite des Herstellers herunter.
+2. - Aktuell wird der Installer in der Version [gpg4win-3.1.16.exe](https://files.gpg4win.org/gpg4win-3.1.16.exe "gpg4win-3.1.16.exe") unterstützt.
+2. - Laden Sie die SHA256 Prüfsumme [gpg4win-3.1.16.exe.sha256](https://files.gpg4win.org/gpg4win-3.1.16.exe.sha256 "gpg4win-3.1.16.exe.sha256") herunter und vergleichen Sie diese mit der Prüfsumme der Datei: [gpg4win-3.1.16.exe](https://files.gpg4win.org/gpg4win-3.1.16.exe "gpg4win-3.1.16.exe")
+4. Installieren Sie "[gpg4win-3.1.16.exe](https://files.gpg4win.org/gpg4win-3.1.16.exe "gpg4win-3.1.16.exe")" (Unattended Mode: ```start /wait "" "[ABSPATH]\gpg4win-3.1.16.exe" /S```)
+5. Installieren Sie "GpgTools" (Details: s.u.).
+6. Starten Sie den Computer neu.
+7. Nach dem Neustart werden bei der Anmeldung mehrere kleine Werkzeuge verborgen gestartet, die zur Vorkonfiguration im Nutzer-Kontext, sowie zur Schlüssel-Migration dienen (siehe auch unten: "Details der Installation"). Die Ausführung wird durch kleine Icons unten in der Symbol-Leiste angezeigt.
+8. Fertig !
+
 ### Hinweise und Anmerkungen zu der gegenwärtigen Implementierung der Gpg4Win-Suite und der mit dieser Nachinstallation ("GpgTools") durchgeführten Änderungen ...
 
 ### Installation:
@@ -63,31 +73,27 @@
 [Installer.exe] /LANG=German /TYPE=fullpol /SILENT /NORESTART
 [Installer.exe] /LANG=German /TYPE=fullpol /SILENT /NORESTART /LOG
 ```
+
 #### Installation kompakt inkl. Policy Einträge:
 
 ```
 [Installer.exe] /LANG=German /TYPE=compactpol /SILENT /NORESTART
 [Installer.exe] /LANG=German /TYPE=compactpol /SILENT /NORESTART /LOG
 ```
-#### Installation ohne Policy Einträge:
 
+#### Installation ohne Policy Einträge:
 ```
 [Installer.exe] /LANG=German /TYPE=full /SILENT /NORESTART
 [Installer.exe] /LANG=German /TYPE=full /SILENT /NORESTART /LOG
 ```
-#### Installation kompakt ohne Policy Einträge:
 
+#### Installation kompakt ohne Policy Einträge:
 ```
 [Installer.exe] /LANG=German /TYPE=compact /SILENT /NORESTART
 [Installer.exe] /LANG=German /TYPE=compact /SILENT /NORESTART /LOG
 ```
 
-<br>
-
----
-
 ## <p id="English_Description">English / [Deutsch](#German_Description "Deutsche Beschreibung")</p>
-
 
 ### “GpgTools” is an “add-on”, implemented as an installer-package, for establishing the "VS-NfD"-conformity (“de-vs” mode) for the open-source project [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
 
