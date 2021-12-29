@@ -2,6 +2,7 @@
 
 ##### <p align=right>By vitusb in 20211228</p>
 ##### <p align=right>GnuPG VS-Desktop® ist eine eingetragene Marke der [g10 Code GmbH](https://g10code.com "g10 Code GmbH").<br>GnuPG VS-Desktop® is a registered trademark of [g10 Code GmbH](https://g10code.com "g10 Code GmbH").</p>
+##### <p align=right>[Kritik an den Brainpool-Kurven des BSI](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Kritik an den Brainpool-Kurven des BSI")<br>[(Criticism of the BSI's Brainpool curves)](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Criticism of the BSI's Brainpool curves")</p>
 
 ## <p id="German_Description">Deutsch / [English](#English_Description "English Description")</p>
 
