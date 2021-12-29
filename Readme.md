@@ -20,7 +20,7 @@
 
 ### [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") muss VOR der Installation von "GpgTools" auf dem System installiert sein. Der Installer von "GpgTools" prüft VOR der Installation, ob die korrekte Version von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") bereits installiert ist.
 
-#### Arbeitsschritte:
+#### Arbeitsschritte für die Version 1.3.x.x (Gpg4Win 3.x.x):
 1. Laden Sie den Installer von "Gpg4Win" von der Seite des Herstellers herunter.
 2. - Aktuell wird der Installer in der Version [gpg4win-3.1.16.exe](https://files.gpg4win.org/gpg4win-3.1.16.exe "gpg4win-3.1.16.exe") unterstützt.
 2. - Laden Sie die SHA256 Prüfsumme [gpg4win-3.1.16.exe.sha256](https://files.gpg4win.org/gpg4win-3.1.16.exe.sha256 "gpg4win-3.1.16.exe.sha256") herunter und vergleichen Sie diese mit der Prüfsumme der Datei: [gpg4win-3.1.16.exe](https://files.gpg4win.org/gpg4win-3.1.16.exe "gpg4win-3.1.16.exe")
