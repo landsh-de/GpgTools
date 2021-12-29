@@ -26,7 +26,7 @@
 4. Installieren Sie "[gpg4win-3.1.16.exe](https://files.gpg4win.org/gpg4win-3.1.16.exe "gpg4win-3.1.16.exe")" (Unattended Mode: ```start /wait "" "[ABSPATH]\gpg4win-3.1.16.exe" /S```)
 5. Installieren Sie "GpgTools" (Details: s.u.).
 6. Starten Sie den Computer neu.
-7. Nach dem Neustart werden bei der Anmeldung mehrere kleine Werkzeuge verborgen gestartet, die zur Vorkonfiguration im Nutzer-Kontext, sowie zur Schlüssel-Migration dienen (siehe auch unten: "Details der Installation"). Die Ausführung wird durch kleine Icons unten in der Symbol-Leiste angezeigt.
+7. Nach dem Neustart werden bei der Anmeldung mehrere kleine Werkzeuge verborgen gestartet, die zur Vorkonfiguration im Nutzer-Kontext, sowie zur Schlüssel-Migration dienen (siehe auch unten: [Details der Installation](#Details_der_Installation "Details der Installation")). Die Ausführung wird durch kleine Icons unten in der Symbol-Leiste angezeigt.
 8. Fertig !
 
 ### Hinweise und Anmerkungen zu der gegenwärtigen Implementierung der Gpg4Win-Suite und der mit dieser Nachinstallation ("GpgTools") durchgeführten Änderungen ...
@@ -35,7 +35,7 @@
 
 > #### Diese Installation installiert eine globale zentrale gehärtete Konfiguration für [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop"), sowie Fehlerbehebungen in den Dialogen von "Pinentry" und den Übersetzungstabellen von GnuPG, GpgEX und GpgOL. Des Weiteren werden Werkzeuge installiert, die die Nutzer-Konfiguration im Nutzerkontext bei Anmeldung vordefinieren. Für gehärtete Windows-Umgebungen wird die Ausführungs-Policy für entsprechende Programme von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") in den lokalen Applocker-Richtlinien bei Installation automatisch umgesetzt.
 
-### Details der Installation:
+### <p id="Details_der_Installation">Details der Installation:</p>
 
 * INSTALLER: InnoSetup
 * Falls Unattended-Installation aktiviert, Deaktivierung aller interaktiven Dialog-Formen: Messageboxen, etc. ...
