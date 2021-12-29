@@ -1,0 +1,10 @@
+
+ Installation beendet !
+ 
+ Zum nochmaligen Lesen des Hinweis-Textes dieser Installation,
+ rufen Sie im Startmenü unter "GpgTools" den Punkt:
+ "Info Änderungshinweise" auf.
+ 
+ Viel Spass bei der Nutzung ...
+ 
+                                     --- Veit Berwig ---
