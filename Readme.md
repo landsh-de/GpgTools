@@ -102,9 +102,3 @@
 
 
 ### [`Gpg4Win`](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") `must be installed on the system BEFORE installing “GpgTools”. The “GpgTools” installer checks BEFORE the installation whether the correct version of` [`Gpg4Win`](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") `is already installed.`
-
----
-
----
-
-#################################################################################
