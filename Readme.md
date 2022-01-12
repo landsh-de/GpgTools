@@ -93,6 +93,11 @@
 [Installer.exe] /LANG=German /TYPE=compact /SILENT /NORESTART /LOG
 ```
 
+#### Aufgrund der relativ hohen Kosten einer Digitalen Code-Signatur, sind entsprechende Binaries (noch) nicht digital signiert; somit kann es vorkommen, dass die Ausführung dieser Dateien nach einem Download unter Windows vom System blockiert wird. Um unter Windows die Ausführung heruntergeladener, ausführbarer Dateien zu ermöglichen, muss der "Alternate Data-Stream" "Zone.Identifier" aus der Datei entfernt werden sonst wird die Ausführung dieser Datei gesperrt. Starten Sie hierzu eine Kommando-Shell (cmd.exe) und führen Sie hierzu folgendes Kommando über die Powershell aus:
+```
+powershell.exe -ep Bypass -noprofile -command "Remove-Item \"HERUNTERGELADENE_AUSFÜHRBARE_DATEI\" -Stream Zone.Identifier"
+```
+
 ## <p id="English_Description">English / [Deutsch](#German_Description "Deutsche Beschreibung")</p>
 
 ### “GpgTools” is an “add-on”, implemented as an installer-package, for establishing the "VS-NfD"-conformity (“de-vs” mode) for the open-source project [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
@@ -109,3 +114,11 @@
 
 
 ### [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") must be installed on the system BEFORE installing “GpgTools”. The “GpgTools” installer checks BEFORE the installation whether the correct version of [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") is already installed.
+
+... For installer commandline-options, see description in german above ...
+
+#### Due to the relatively high costs of a digital code signature, the corresponding binaries are not (yet) digitally signed; so it can happen that the execution of these files is blocked by the system after a download under Windows. In order to execute downloaded, non-signed executables under Windows, the "Alternate Data-Stream" "Zone.Identifier" must be removed from file, otherwise the execution will be blocked. Please invoke a commandline-shell (cmd.exe) and run the following command from a Powershell:
+```
+powershell.exe -ep Bypass -noprofile -command "Remove-Item \"DOWNLOADED_EXECUTABLE_FILE\" -Stream Zone.Identifier"
+```
+
