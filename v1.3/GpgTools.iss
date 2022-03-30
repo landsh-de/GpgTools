@@ -258,7 +258,7 @@
 ;
 ; 20220119
 ;
-; - StartCon updated in order to support writing into registry from
+; - "StartCon" updated in order to support writing into registry from
 ;   defined values of the ini-file and to support deletion of values.
 ;   StartCon also now loggs its actions into the app-eventlog.
 ;   "Gpg4WinPreConfig.exe" is introduced here and will use the
@@ -280,12 +280,42 @@
 ;
 ; - Update to version 1.3.5.0
 ;
+; 20220330
+;
+; - Update "StartCon" to version 1.0.0.28
+; - Update "MigrateGnuPGKeybase" to version 1.0.30.1
+; - Implemented unattended installation of sub-package:
+;   "gnupg-w32-update.exe" (renamed in order to disable
+;   version-dependencies in naming of exe-file).
+; - Added NSIS-Installer Package GnuPG 2.2.34.1236 (07.02.2022).
+;   Original name: "gnupg-w32-2.2.34_20220207.exe".
+;
+;   Because this InnoSetup-Installer is updating some files
+;   from the above GnuPG-Installer, the GnuPG-Installer must be
+;   installed in an early stage of installation.
+;   I coded this WITHOUT event-handling under the [Code]-section
+;   like:
+;
+;   procedure CurStepChanged(CurStep: TSetupStep);
+;   var
+;       ResultCode: Integer;
+;   begin
+;       // trigger before installing any file.
+;       if CurStep = ssInstall then begin
+;       ...
+;
+;   ... by using a dummy-file in the [Files]-section with
+;   a "BeforeInstall:"-Flag, triggering a user-defined "GnuPGUpdate"
+;   procedure, coded under the [Code]-section.
+;
+; - Update to version 1.3.6.0
+;
 ; ###################################################################
 
 #define MyAppName "GpgTools"
 #define MyAppID "{DC6550A5-7337-400d-B59C-A7F0E310B300}"
-#define MyAppVer "1.3.5.0"
-#define MyAppVerName "GpgTools 1.3.5.0"
+#define MyAppVer "1.3.6.0"
+#define MyAppVerName "GpgTools 1.3.6.0"
 #define MyAppCopyright "Veit Berwig"
 #define MyAppPublisher "Veit Berwig"
 #define MyAppURL "https://gpg4win.de/change-history-de.html"
@@ -422,6 +452,21 @@ Source: res\bass\sound.it; DestDir: {tmp}; Flags: dontcopy noencryption nocompre
 Source: res\skin\ISSkinU.dll; DestDir: {tmp}; Flags: dontcopy noencryption nocompression
 ; Visual Style resource contains resources used for skinning,
 Source: res\skin\Installer.cjstyles; DestDir: {tmp}; Flags: dontcopy noencryption nocompression
+; ---------------------------------------------------------------------------
+; ###########################################################################
+; # Add Update GnuPG-Backend for unattended install             -- BEGIN -- #
+; # Run with: {tmp}\gnupg-w32-update.exe /S                                 #
+; ###########################################################################
+; If we use "Flags: dontcopy" here, we have to use the function ...
+;    ExtractTemporaryFile('gnupg-w32-update.exe');
+; ... in [Code]-section below. Extraction by PascalScripting in
+; [Code]-section below, extracts the file earlier than extraction by the
+; normal file copying stage.
+Source: data\GpgUpdate\gnupg-w32-update.exe; DestDir: {tmp}; Flags: dontcopy noencryption nocompression
+; ###########################################################################
+; # Add Update GnuPG-Backend for unattended install             --  END  -- #
+; ###########################################################################
+; ---------------------------------------------------------------------------
 ; ###########################################################################
 ; !! DISABLED HERE, BECAUSE "ISTask.dll" CANNOT DETECT AND KILLE TASKS     !!
 ; !! OF OTHER LOGGED-IN USERS IN OTHER X64-SESSIONS ON Windows 10          !!
@@ -430,7 +475,6 @@ Source: res\skin\Installer.cjstyles; DestDir: {tmp}; Flags: dontcopy noencryptio
 ; ###########################################################################
 ; Process-Control of Apps holding files open during install
 ; Source: plugins\ISTask.dll; DestDir: {tmp}; Flags: dontcopy noencryption nocompression
-
 ; ----------------------------------------------------- PRE-INSTALLATION END
 ; ### X86/X64 arch selection ### >>> x64
 ; ### X86/X64 arch selection ### Place all x64 architecture files here,
@@ -442,6 +486,9 @@ Source: res\skin\Installer.cjstyles; DestDir: {tmp}; Flags: dontcopy noencryptio
 ; ### X86/X64 arch selection ### first one should be marked 'solidbreak'
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 ; Local User Environment Expander
+;
+; ################ Dummy for triggering GnuPGUpdate #################
+Source: data\GpgUpdate\dummy; DestDir: {commonappdata}\GNU; BeforeInstall: GnuPGUpdate; Flags: ignoreversion recursesubdirs createallsubdirs uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ;
 ; ########################## Konfig-Files ###########################
 Source: data\ProgramData\GNU\*; DestDir: {commonappdata}\GNU; Flags: ignoreversion recursesubdirs createallsubdirs uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
@@ -761,6 +808,8 @@ Name: {commondesktop}\Gpg4Win beenden; Filename: {app}\StartCon\Gpg4Win_beenden.
 ; #################################################################################
 [Run]
 ; # Programs are executed in the order they appear in the script.
+; # Run unattended GnuPG Update-Installer
+; Filename: "{tmp}\gnupg-w32-update.exe"; Parameters: "/S"; Flags: shellexec waituntilterminated runhidden; StatusMsg: {cm:installgnupgupdate}
 ; # Remove the Windows firewall rules outbound
 Filename: "netsh.exe"; Parameters: "advfirewall firewall delete rule name=""GnuPG_gpg_Allow_Out"""; Flags: shellexec waituntilterminated runhidden; StatusMsg: {cm:deletefirewallrules}
 Filename: "netsh.exe"; Parameters: "advfirewall firewall delete rule name=""GnuPG_gpgsm_Allow_Out"""; Flags: shellexec waituntilterminated runhidden; StatusMsg: {cm:deletefirewallrules}
@@ -814,6 +863,13 @@ english.createfirewallrules=Creating firewall-rules ...
 german.createfirewallrules=Erzeuge Firewall-Regeln ...
 english.deletefirewallrules=Deleting old firewall-rules ...
 german.deletefirewallrules=Lösche alte Firewall-Regeln ...
+english.installgnupgupdate=Installing GnuPG-Update ...
+german.installgnupgupdate=Installiere GnuPG-Update ...
+english.installgnupgerror=ERROR - GnuPG-Update - CHECK INSTALLER-LOGFILE ...
+german.installgnupgerror=FEHLER - GnuPG-Update - INSTALLER-LOGFILE PRÜFEN ...
+english.installcont=Continuing installation ...
+german.installcont=Installation wird fortgesetzt ...
+
 ; Tasks for process-control before installation of files,
 ; that may be in use during install-process.
 ; See functions: "RunTask" and "KillTask" below in [Code]-section
@@ -899,6 +955,9 @@ var
   //PauseButton : TButton;
   //StopButton : TButton;
   //Panel1: TPanel;
+
+  // For GnuPG-Updater
+  GpgUpdateName: string;
 
 const
   SrpV2ExeKey = 'SOFTWARE\Policies\Microsoft\Windows\SrpV2\Exe';
@@ -2532,6 +2591,51 @@ end;
 // KILL PROCESSES WHEN RUNNING                                             END
 // ###########################################################################
 
+// Function for shortening message request
+function cm(Message: String): String; Begin Result:= ExpandConstant('{cm:'+ Message +'}') End;
+
+//////////////////////////////////////////////////////////////////////////////
+// ###########################################################################
+// UPDATE GNUPG PACKAGE BY INSTALLER                                     BEGIN
+// ###########################################################################
+// Using function Exec():
+procedure GnuPGUpdate;
+var
+  ResultCode: Integer;
+begin
+    // Running GnuPG-Installer (Update) before installing any file
+    ExtractTemporaryFile('gnupg-w32-update.exe')
+    GpgUpdateName := ExpandConstant('{tmp}\gnupg-w32-update.exe');
+    if (FileExists(GpgUpdateName) = True) then begin
+      Log('GnuPG-Installer (Update) EXIST in:');
+      Log(GpgUpdateName);
+      Log('Executing GnuPG-Installer (Update) silently and wait until termination ...');
+      WizardForm.StatusLabel.Caption := cm('installgnupgupdate');
+      // Exec(GpgUpdateName, '/S', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+      if Exec(GpgUpdateName, '/S', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) then begin
+         // handle success if necessary; ResultCode contains the exit code
+        if ResultCode > 0 then begin
+          Log('GnuPG-Installer (Update) failed ! Exit-Status: ' + IntToStr(ResultCode));
+          WizardForm.StatusLabel.Caption := cm('installgnupgerror');
+        end else begin
+          Log('GnuPG-Installer (Update) successfully ! Exit-Status: ' + IntToStr(ResultCode));
+          WizardForm.StatusLabel.Caption := cm('installcont');
+        end;
+      end else begin
+        // handle failure if necessary; ResultCode contains the error code
+        Log('Error running:' + ' "' + GpgUpdateName + '" ' + ', Exit-Status: ' + IntToStr(ResultCode));
+        WizardForm.StatusLabel.Caption := cm('installgnupgerror');
+      end;
+    end else begin
+      Log('GnuPG-Installer (Update) DOES NOT EXIST in:');
+      Log(GpgUpdateName);
+      Log('Skipping GnuPG-Installer (Update) !!');
+    end;
+end;
+// ###########################################################################
+// UPDATE GNUPG PACKAGE BY INSTALLER                                       END
+// ###########################################################################
+
 
 // ###########################################################################
 // MAIN() INSTALLER SEQUENCE                                             BEGIN
@@ -2563,6 +2667,7 @@ begin
   end;
 
   ExtractTemporaryFile('bass.dll');
+
   ExtractTemporaryFile('sound.it');
   SndName := ExpandConstant('{tmp}\sound.it');
 
