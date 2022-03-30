@@ -1,6 +1,6 @@
 ## <p align=center>"GpgTools"<br>Activate VS-NfD conformity for "Gpg4Win"<br>(aka "GnuPG VS-Desktop®")</p>
 
-##### <p align=right>By vitusb in 20211228</p>
+##### <p align=right>By vitusb in 20220330</p>
 ##### <p align=right>GnuPG VS-Desktop® ist eine eingetragene Marke der [g10 Code GmbH](https://g10code.com "g10 Code GmbH").<br>GnuPG VS-Desktop® is a registered trademark of [g10 Code GmbH](https://g10code.com "g10 Code GmbH").</p>
 ##### <p align=right>[Sicherheits-Bedenken zu Brainpool-Kurven des BSI](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Sicherheits-Bedenken zu den Brainpool-Kurven des BSI")<br>[(Security concerns about the BSI's Brainpool curves)](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Security concerns about the BSI's Brainpool curves")</p>
 
@@ -34,7 +34,15 @@
 
 ### Installation:
 
-> #### Diese Installation installiert eine globale zentrale gehärtete Konfiguration für [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop"), sowie Fehlerbehebungen in den Dialogen von "Pinentry" und den Übersetzungstabellen von GnuPG, GpgEX und GpgOL. Des Weiteren werden Werkzeuge installiert, die die Nutzer-Konfiguration im Nutzerkontext bei Anmeldung vordefinieren. Für gehärtete Windows-Umgebungen wird die Ausführungs-Policy für entsprechende Programme von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") in den lokalen Applocker-Richtlinien bei Installation automatisch umgesetzt.
+> #### Diese Installation installiert eine globale zentrale gehärtete Konfiguration für [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop"), sowie Fehlerbehebungen in den Dialogen von "Pinentry" und den Übersetzungstabellen von GnuPG, GpgEX und GpgOL. Es wird ein [Update](https://dev.gnupg.org/T5703 "Update") des GnuPG-Backend auf Version [2.2.34](https://dev.gnupg.org/T5703 "2.2.34") vom 07.02.2022 durchgeführt. Des Weiteren werden Werkzeuge installiert, die die Nutzer-Konfiguration im Nutzerkontext bei Anmeldung vordefinieren. Für gehärtete Windows-Umgebungen wird die Ausführungs-Policy für entsprechende Programme von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") in den lokalen Applocker-Richtlinien bei Installation automatisch umgesetzt.
+
+#### Details zu der Update-Historie von GnuPG seit Rollout über Gpg4Win 3.1.16 (GnuPG 2.2.28)
+* [Release GnuPG 2.2.29](https://dev.gnupg.org/T5498 "Release GnuPG 2.2.29")
+* [Release GnuPG 2.2.30](https://dev.gnupg.org/T5519 "Release GnuPG 2.2.20")
+* [Release GnuPG 2.2.31](https://dev.gnupg.org/T5571 "Release GnuPG 2.2.31")
+* [Release GnuPG 2.2.32](https://dev.gnupg.org/T5601 "Release GnuPG 2.2.32")
+* [Release GnuPG 2.2.33](https://dev.gnupg.org/T5641 "Release GnuPG 2.2.33")
+* [Release GnuPG 2.2.34](https://dev.gnupg.org/T5703 "Release GnuPG 2.2.34")
 
 ### <p id="Details_der_Installation">Details der Installation:</p>
 
