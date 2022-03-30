@@ -56,6 +56,7 @@
 * Beendigung aller zum Installations-Zeitpunkt im Hintergrund auf dem System im globalen Kontext laufenden Programme: "outlook.exe", "kleopatra.exe" "gpa.exe", "gpgme-w32spawn.exe", "gpg-agent.exe", "gpg.exe", "dirmngr.exe", "gpgsm.exe", "scdaemon.exe", "pinentry-w32.exe", "pinentry.exe", "pinentry-basic.exe".
 * Löschung vorheriger angelegter Firewall-Regeln (im Update-Modus).
 * Löschung vorheriger installierter X.509-Zertifikate (im Update-Modus / X.509-Zertifikate werden nur unter GnuPG ausgerollt nicht systemweit).
+* Unbeaufsichtigte Installation (unattended) des Paketes "gnupg-w32-update.exe" (im Original: "gnupg-w32-2.2.34_20220207.exe" / die Prüfsumme ist identisch).
 * Dekomprimierung und Installation der Dateien.
 * Anlegen der Firewall-Regeln (es werden für den Zugriff auf Keyserver und das Loopback-Interface nur ausgehende Firewall-Regeln für "GnuPG", "GpgSM", "Gpg-Agent", "DirMngr" und "Kleopatra" eingerichtet; für "GnuPG", "Gpg-Agent" und "DirMngr" werden nur 3 eingehende Firewall-Regeln vom Loopback-Interface eingerichtet. Details entnehmen Sie bitte dem Installer-Quellcode aus der Datei: "GpgTools.iss".
 * Prüfung: Software Restriction-Policy (SRP) aktiviert ?
@@ -80,6 +81,7 @@
 ```
 [Installer.exe] /LANG=German /TYPE=fullpol /SILENT /NORESTART
 [Installer.exe] /LANG=German /TYPE=fullpol /SILENT /NORESTART /LOG
+[Installer.exe] /LANG=German /TYPE=fullpol /VERYSILENT /BASSSOUND- /NORESTART /LOG
 ```
 
 #### Installation kompakt inkl. Policy Einträge:
@@ -87,18 +89,21 @@
 ```
 [Installer.exe] /LANG=German /TYPE=compactpol /SILENT /NORESTART
 [Installer.exe] /LANG=German /TYPE=compactpol /SILENT /NORESTART /LOG
+[Installer.exe] /LANG=German /TYPE=compactpol /VERYSILENT /BASSSOUND- /NORESTART /LOG
 ```
 
 #### Installation ohne Policy Einträge:
 ```
 [Installer.exe] /LANG=German /TYPE=full /SILENT /NORESTART
 [Installer.exe] /LANG=German /TYPE=full /SILENT /NORESTART /LOG
+[Installer.exe] /LANG=German /TYPE=full /VERYSILENT /BASSSOUND- /NORESTART /LOG
 ```
 
 #### Installation kompakt ohne Policy Einträge:
 ```
 [Installer.exe] /LANG=German /TYPE=compact /SILENT /NORESTART
 [Installer.exe] /LANG=German /TYPE=compact /SILENT /NORESTART /LOG
+[Installer.exe] /LANG=German /TYPE=compact /VERYSILENT /BASSSOUND- /NORESTART /LOG
 ```
 
 #### Aufgrund der relativ hohen Kosten einer Digitalen Code-Signatur, sind entsprechende Binaries (noch) nicht digital signiert; somit kann es vorkommen, dass die Ausführung dieser Dateien nach einem Download unter Windows vom System blockiert wird. Um unter Windows die Ausführung heruntergeladener, ausführbarer Dateien zu ermöglichen, muss der "Alternate Data-Stream" "Zone.Identifier" aus der Datei entfernt werden sonst wird die Ausführung dieser Datei gesperrt. Starten Sie hierzu eine Kommando-Shell (cmd.exe) und führen Sie hierzu folgendes Kommando über die Powershell aus:
