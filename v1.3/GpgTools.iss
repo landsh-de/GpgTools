@@ -310,15 +310,26 @@
 ;
 ; - Update to version 1.3.6.0
 ;
+; 20220619
+;
+; - Changed version-scheme in analogy to Gpg4Win, so 1.3.22 <=> 3.1.22.
+;
+; - Bump version to 1.3.22.0 in order to support Gpg4Win 3.1.22.
+;
+; - Added VS-NfD Certification Docs for kleopatra, published by the BSI.
+;
+; - Merged VS-NfD configuration with original configuration of installer
+;   package "GnuGP VS Desktop".
+;
 ; ###################################################################
 
 #define MyAppName "GpgTools"
 #define MyAppID "{DC6550A5-7337-400d-B59C-A7F0E310B300}"
-#define MyAppVer "1.3.6.0"
-#define MyAppVerName "GpgTools 1.3.6.0"
+#define MyAppVer "1.3.22.0"
+#define MyAppVerName "GpgTools 1.3.22.0"
 #define MyAppCopyright "Veit Berwig"
 #define MyAppPublisher "Veit Berwig"
-#define MyAppURL "https://gpg4win.de/change-history-de.html"
+#define MyAppURL "https://github.com/landsh-de/GpgTools"
 #define MyAppDescr "GpgTools, Patches und zentrale Konfiguration für Gpg4Win"
 #define MySetupMutex "GpgToolsSetupMutex"
 
@@ -328,7 +339,9 @@
 ;
 ; Due to Gpg4Win-updates, update this string to the correct version.
 ; ###################################################################
-#define Gpg4WinVersion "3.1.16.0"       
+#define Gpg4WinVersion  "3.1.16.0"
+#define Gpg4WinVersionB "3.1.22.0"
+
 ; ###################################################################
 
 [Setup]
@@ -536,7 +549,11 @@ Source: data\Program Files (x86)\Gpg4win\share\locale\de\LC_MESSAGES\gpgol.mo; D
 ; ###################################################################
 ; 
 ; Delete files on uninstall (were NOT previously installed by another installer)
+Source: data\Program Files (x86)\Gpg4win\share\kdeglobals; DestDir: {code:GetGpg4WinInstalled}\share; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\Gpg4win\share\kleopatrarc; DestDir: {code:GetGpg4WinInstalled}\share; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+; ########################## VS-NfD Certification Docs ##############
+Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\BSI-VSA-10573_secops-20220207.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\BSI-VSA-10584_secops-20220207.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ; ########################## Program-Icon ###########################
 Source: data\Program Files (x86)\GpgTools\Icon0.ico; DestDir: {app}; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\GpgTools\Icon1.ico; DestDir: {app}; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
@@ -911,9 +928,12 @@ var
   // Var for content of #defined var: "#define Gpg4WinVersion"
   // For checking the correct version of installed Gpg4Win (kleopatra.exe).
   ResultGpg4WinV : String;
+  ResultGpg4WinVB : String;
+
   // Var for content of result from function: GetGpg4WinVersion()
   // For checking the correct version of installed Gpg4Win (kleopatra.exe).
   ResultGetGpg4WinV : String;
+
 
   //////////////////////////////////////////////////////////////////////////////
   // BASS SOUNDLIB
@@ -2841,15 +2861,17 @@ begin
 
     // Check correct version of Gpg4Win has to be installed.
     ResultGpg4WinV := ExpandConstant('{#Gpg4WinVersion}');
+    ResultGpg4WinVB := ExpandConstant('{#Gpg4WinVersionB}');
+
     ResultGetGpg4WinV := GetGpg4WinVersion('');
 
-  	if (ResultGpg4WinV = ResultGetGpg4WinV) then begin
-      Log('Expected "Gpg4Win-Version": ' + ResultGpg4WinV);
+  	if (ResultGpg4WinV = ResultGetGpg4WinV) OR (ResultGpg4WinVB = ResultGetGpg4WinV) then begin
+      Log('Expected "Gpg4Win-Version": ' + ResultGpg4WinV + ' or ' + ResultGpg4WinVB);
       Log('Received "Gpg4Win-Version": ' + ResultGetGpg4WinV);
       Log('"Gpg4Win-Version" match, continuing ...');
       Result := True;
     end else begin
-      Log('Expected "Gpg4Win-Version": ' + ResultGpg4WinV);
+      Log('Expected "Gpg4Win-Version": ' + ResultGpg4WinV + ' or ' + ResultGpg4WinVB);
       Log('Received "Gpg4Win-Version": ' + ResultGetGpg4WinV);
       Log('"Gpg4Win-Version" mismatch, aborting ...');
       // MsgBox only, when /SILENT and /VERYSILENT switches were not specified !
