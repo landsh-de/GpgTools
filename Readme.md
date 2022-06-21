@@ -1,6 +1,6 @@
 ## <p align=center>"GpgTools"<br>Activate VS-NfD conformity for "Gpg4Win"<br>(aka "GnuPG VS-Desktop®")</p>
 
-##### <p align=right>By vitusb in 20220330</p>
+##### <p align=right>By vitusb in 20220621</p>
 ##### <p align=right>GnuPG VS-Desktop® ist eine eingetragene Marke der [g10 Code GmbH](https://g10code.com "g10 Code GmbH").<br>GnuPG VS-Desktop® is a registered trademark of [g10 Code GmbH](https://g10code.com "g10 Code GmbH").</p>
 ##### <p align=right>[Sicherheits-Bedenken zu Brainpool-Kurven des BSI](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Sicherheits-Bedenken zu den Brainpool-Kurven des BSI")<br>[(Security concerns about the BSI's Brainpool curves)](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Security concerns about the BSI's Brainpool curves")</p>
 
@@ -8,33 +8,33 @@
 
 ### "GpgTools" ist ein "Addon", umgesetzt als Installer-Paket, zur Herstellung der "VS-NfD"-Konformität ("de-vs" Modus) für das Open-Source Projekt [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
 
-### "GpgTools" kann nach der Installation der entsprechenden [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop")-Version manuell oder unbeaufsichtigt (unattended) installiert werden und rollt neben zusätzlichen unterstützenden Werkzeugen (Zero-Config Tools) eine zentrale, gehärtete Konfiguration aus. Diese Konfiguration aktiviert gehärtete "VS-NfD"-konforme Algorithmen und Konfigurationsparameter, die einen "VS-NfD"-konformen Betrieb von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") ermöglichen.
+### "GpgTools" kann nach der Installation der entsprechenden Gpg4Win-Version manuell oder unbeaufsichtigt (unattended) installiert werden und rollt neben zusätzlichen unterstützenden Werkzeugen (Zero-Config Tools) eine zentrale, gehärtete Konfiguration aus. Diese Konfiguration aktiviert gehärtete "VS-NfD"-konforme Algorithmen und Konfigurationsparameter, die einen "VS-NfD"-konformen Betrieb von Gpg4Win ermöglichen.
 
 ### "GpgTools" benötigt (abgesehen von der Verteilung des Paketes) KEINE WEITEREN ADMINISTRATIVEN Prozesse; die Benutzerumgebung wird zur Laufzeit (Anmeldung) parametrisiert.
 
 ### Jede Unter-Version von "GpgTools" ist einer "Mainline-Version" von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") zugeordnet:
 
-> ### * GptTools 1.3.x.x <=> [Gpg4Win 3.x.x](https://files.gpg4win.org/?C=M;O=D "Files of Gpg4Win 3.x.x")
+> ### * GptTools 1.3.x.x <=> Gpg4Win 3.x.x
 
-> ### * GptTools 1.4.x.x <=> [Gpg4Win 4.x.x](https://files.gpg4win.org/?C=M;O=D "Files of Gpg4Win 4.x.x")
+> ### * GptTools 1.4.x.x <=> Gpg4Win 4.x.x
 
-### [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") muss VOR der Installation von "GpgTools" auf dem System installiert sein. Der Installer von "GpgTools" prüft VOR der Installation, ob die korrekte Version von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") bereits installiert ist.
+### Gpg4Win muss VOR der Installation von "GpgTools" auf dem System installiert sein. Der Installer von "GpgTools" prüft VOR der Installation, ob die korrekte Version von Gpg4Win bereits installiert ist.
 
 #### Arbeitsschritte für die Version 1.3.x.x (Gpg4Win 3.x.x):
 1. Laden Sie den Installer von "Gpg4Win" von der Seite des Herstellers herunter.
-2. - Aktuell wird der Installer in der Version [gpg4win-3.1.16.exe](https://files.gpg4win.org/gpg4win-3.1.16.exe "gpg4win-3.1.16.exe") unterstützt.
-2. - Laden Sie die SHA256 Prüfsumme [gpg4win-3.1.16.exe.sha256](https://files.gpg4win.org/gpg4win-3.1.16.exe.sha256 "gpg4win-3.1.16.exe.sha256") herunter und vergleichen Sie diese mit der Prüfsumme der Datei: [gpg4win-3.1.16.exe](https://files.gpg4win.org/gpg4win-3.1.16.exe "gpg4win-3.1.16.exe")
-4. Installieren Sie "[gpg4win-3.1.16.exe](https://files.gpg4win.org/gpg4win-3.1.16.exe "gpg4win-3.1.16.exe")" (Unattended Mode: ```start /wait "" "[ABSPATH]\gpg4win-3.1.16.exe" /S```)
+   **Auf der Seite des Herstellers kann nur die Version 3.1.16 heruntergeladen werden (Stand 06/2022). Eine aktuelle Version, die im Quellcode mit der Version 3.1.22 von "GnuPG VS Desktop" identisch ist, steht [hier zur Verfügung](https://github.com/landsh-de/Gpg4Win/releases/tag/3.1.22).**
+2. - Aktuell wird der Installer für die Versionen "[gpg4win-3.1.16.exe](http://files.gpg4win.de/gpg4win-3.1.16.exe)" und "[gpg4win-3.1.22.exe](https://github.com/landsh-de/Gpg4Win/releases/tag/3.1.22)" unterstützt.
+4. Installieren Sie "[gpg4win-3.1.22.exe](https://github.com/landsh-de/Gpg4Win/releases/tag/3.1.22)" (Unattended Mode: ```start /wait "" "[ABSPATH]\gpg4win-3.1.22.exe" /S```)
 5. Installieren Sie "GpgTools" (Details: s.u.).
 6. Starten Sie den Computer neu.
 7. Nach dem Neustart werden bei der Anmeldung mehrere kleine Werkzeuge verborgen gestartet, die zur Vorkonfiguration im Nutzer-Kontext, sowie zur Schlüssel-Migration dienen (siehe auch unten: [Details der Installation](#Details_der_Installation "Details der Installation")). Die Ausführung wird durch kleine Icons unten in der Symbol-Leiste angezeigt.
-8. Fertig !
+8. Fertig ...
 
 ### Hinweise und Anmerkungen zu der gegenwärtigen Implementierung der Gpg4Win-Suite und der mit dieser Nachinstallation ("GpgTools") durchgeführten Änderungen ...
 
 ### Installation:
 
-> #### Diese Installation installiert eine globale zentrale gehärtete Konfiguration für [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop"), sowie Fehlerbehebungen in den Dialogen von "Pinentry" und den Übersetzungstabellen von GnuPG, GpgEX und GpgOL. Es wird ein [Update](https://dev.gnupg.org/T5703 "Update") des GnuPG-Backend auf Version [2.2.34](https://dev.gnupg.org/T5703 "2.2.34") vom 07.02.2022 durchgeführt. Des Weiteren werden Werkzeuge installiert, die die Nutzer-Konfiguration im Nutzerkontext bei Anmeldung vordefinieren. Für gehärtete Windows-Umgebungen wird die Ausführungs-Policy für entsprechende Programme von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") in den lokalen Applocker-Richtlinien bei Installation automatisch umgesetzt.
+> #### Diese Installation installiert eine globale zentrale gehärtete Konfiguration für [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop"), sowie Fehlerbehebungen in den Dialogen von "Pinentry" und den Übersetzungstabellen von GnuPG, GpgEX und GpgOL. Es wird ein [Update](https://dev.gnupg.org/T5928 "Update") des GnuPG-Backend auf Version [2.2.35](https://dev.gnupg.org/T5928 "2.2.35") vom 02.05.2022 durchgeführt. Des Weiteren werden Werkzeuge installiert, die die Nutzer-Konfiguration im Nutzerkontext bei Anmeldung vordefinieren. Für gehärtete Windows-Umgebungen wird die Ausführungs-Policy für entsprechende Programme von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") in den lokalen Applocker-Richtlinien bei Installation automatisch umgesetzt.
 
 #### Details zu der Update-Historie von GnuPG seit Rollout über Gpg4Win 3.1.16 (GnuPG 2.2.28)
 * [Release GnuPG 2.2.29](https://dev.gnupg.org/T5498 "Release GnuPG 2.2.29")
@@ -43,6 +43,8 @@
 * [Release GnuPG 2.2.32](https://dev.gnupg.org/T5601 "Release GnuPG 2.2.32")
 * [Release GnuPG 2.2.33](https://dev.gnupg.org/T5641 "Release GnuPG 2.2.33")
 * [Release GnuPG 2.2.34](https://dev.gnupg.org/T5703 "Release GnuPG 2.2.34")
+* [Release GnuPG 2.2.35](https://dev.gnupg.org/T5928 "Release GnuPG 2.2.35")
+
 
 ### <p id="Details_der_Installation">Details der Installation:</p>
 
@@ -121,9 +123,9 @@ powershell.exe -ep Bypass -noprofile -command "Remove-Item \"HERUNTERGELADENE_AU
 
 ### Each sub-version of “GpgTools” is assigned to a “mainline version” of [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop"):
 
-> ### * GptTools 1.3.x.x <=> [Gpg4Win 3.x.x](https://files.gpg4win.org/?C=M;O=D "Files of Gpg4Win 3.x.x")
+> ### * GptTools 1.3.x.x <=> Gpg4Win 3.x.x
 
-> ### * GptTools 1.4.x.x <=> [Gpg4Win 4.x.x](https://files.gpg4win.org/?C=M;O=D "Files of Gpg4Win 4.x.x")
+> ### * GptTools 1.4.x.x <=> Gpg4Win 4.x.x
 
 
 ### [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") must be installed on the system BEFORE installing “GpgTools”. The “GpgTools” installer checks BEFORE the installation whether the correct version of [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") is already installed.
@@ -134,4 +136,3 @@ powershell.exe -ep Bypass -noprofile -command "Remove-Item \"HERUNTERGELADENE_AU
 ```
 powershell.exe -ep Bypass -noprofile -command "Remove-Item \"DOWNLOADED_EXECUTABLE_FILE\" -Stream Zone.Identifier"
 ```
-
