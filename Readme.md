@@ -115,7 +115,7 @@ powershell.exe -ep Bypass -noprofile -command "Remove-Item \"HERUNTERGELADENE_AU
 
 ## <p id="English_Description">English / [Deutsch](#German_Description "Deutsche Beschreibung")</p>
 
-### “GpgTools” is an “add-on”, implemented as an installer-package, for establishing the "VS-NfD"-conformity (“de-vs” mode) for the open-source project [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
+### “GpgTools” is an “add-on”, implemented as an installer-package, for establishing the "VS-NfD"-conformity (“de-vs” mode) for the open-source project [Gpg4Win](https://github.com/landsh-de/Gpg4Win/releases/tag/3.1.22) and [Gpg4Win (original](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
 
 ### “GpgTools” can be installed manually or unattended after the installation of the corresponding [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") version and, in addition to additional supporting tools (zero-config tools), rolls out a central, hardened configuration. This configuration activates hardened “VS-NfD”-compliant algorithms and configuration parameters that enable “VS-NfD”-compliant operation of [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
 
