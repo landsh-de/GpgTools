@@ -1,12 +1,12 @@
-## <p align=center>"GpgTools"<br>Activate VS-NfD conformity for "Gpg4Win"<br>(aka "GnuPG VS-Desktop®")</p>
+## <p align=center>"GpgTools"<br>VS-NfD Konformität für "Gpg4Win"<br>(aka "GnuPG VS-Desktop®")</p>
 
-##### <p align=right>By vitusb in 20220621</p>
+##### <p align=right>By vitusb in 20220710</p>
 ##### <p align=right>GnuPG VS-Desktop® ist eine eingetragene Marke der [g10 Code GmbH](https://g10code.com "g10 Code GmbH").<br>GnuPG VS-Desktop® is a registered trademark of [g10 Code GmbH](https://g10code.com "g10 Code GmbH").</p>
 ##### <p align=right>[Sicherheits-Bedenken zu Brainpool-Kurven des BSI](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Sicherheits-Bedenken zu den Brainpool-Kurven des BSI")<br>[(Security concerns about the BSI's Brainpool curves)](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Security concerns about the BSI's Brainpool curves")</p>
 
 ## <p id="German_Description">Deutsch / [English](#English_Description "English Description")</p>
 
-### "GpgTools" ist ein "Addon", umgesetzt als Installer-Paket, zur Herstellung der "VS-NfD"-Konformität ("de-vs" Modus) für das Open-Source Projekt [Gpg4Win](https://github.com/landsh-de/Gpg4Win/releases/tag/3.1.22) und [Gpg4Win (Original](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
+### "GpgTools" ist ein "Addon", umgesetzt als Installer-Paket, zur Herstellung der "VS-NfD"-Konformität ("de-vs" Modus) für das Open-Source Projekt [Gpg4Win](https://github.com/landsh-de/Gpg4Win/releases/tag/3.1.23) und [Gpg4Win (Original](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
 
 ### "GpgTools" kann nach der Installation der entsprechenden Gpg4Win-Version manuell oder unbeaufsichtigt (unattended) installiert werden und rollt neben zusätzlichen unterstützenden Werkzeugen (Zero-Config Tools) eine zentrale, gehärtete Konfiguration aus. Diese Konfiguration aktiviert gehärtete "VS-NfD"-konforme Algorithmen und Konfigurationsparameter, die einen "VS-NfD"-konformen Betrieb von Gpg4Win ermöglichen.
 
@@ -115,7 +115,7 @@ powershell.exe -ep Bypass -noprofile -command "Remove-Item \"HERUNTERGELADENE_AU
 
 ## <p id="English_Description">English / [Deutsch](#German_Description "Deutsche Beschreibung")</p>
 
-### “GpgTools” is an “add-on”, implemented as an installer-package, for establishing the "VS-NfD"-conformity (“de-vs” mode) for the open-source project [Gpg4Win](https://github.com/landsh-de/Gpg4Win/releases/tag/3.1.22) and [Gpg4Win (original](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
+### “GpgTools” is an “add-on”, implemented as an installer-package, for establishing the "VS-NfD"-conformity (“de-vs” mode) for the open-source project [Gpg4Win](https://github.com/landsh-de/Gpg4Win/releases/tag/3.1.23) and [Gpg4Win (original](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
 
 ### “GpgTools” can be installed manually or unattended after the installation of the corresponding [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") version and, in addition to additional supporting tools (zero-config tools), rolls out a central, hardened configuration. This configuration activates hardened “VS-NfD”-compliant algorithms and configuration parameters that enable “VS-NfD”-compliant operation of [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
 
