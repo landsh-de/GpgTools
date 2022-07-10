@@ -6,7 +6,7 @@
 
 ## <p id="German_Description">Deutsch / [English](#English_Description "English Description")</p>
 
-### "GpgTools" ist ein "Addon", umgesetzt als Installer-Paket, zur Herstellung der "VS-NfD"-Konformität ("de-vs" Modus) für das Open-Source Projekt [Gpg4Win](https://github.com/landsh-de/Gpg4Win/releases/tag/v3.1.23) und [Gpg4Win (Original](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
+### "GpgTools" ist ein "Addon", umgesetzt als Installer-Paket, zur Herstellung der "VS-NfD"-Konformität ("de-vs" Modus) für das Open-Source Projekt [Gpg4Win](https://github.com/landsh-de/Gpg4Win/releases/tag/v3.1.23) und [Gpg4Win (Original -veraltet-)](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
 
 ### "GpgTools" kann nach der Installation der entsprechenden Gpg4Win-Version manuell oder unbeaufsichtigt (unattended) installiert werden und rollt neben zusätzlichen unterstützenden Werkzeugen (Zero-Config Tools) eine zentrale, gehärtete Konfiguration aus. Diese Konfiguration aktiviert gehärtete "VS-NfD"-konforme Algorithmen und Konfigurationsparameter, die einen "VS-NfD"-konformen Betrieb von Gpg4Win ermöglichen.
 
@@ -22,7 +22,7 @@
 
 #### Arbeitsschritte für die Version 1.3.x.x (Gpg4Win 3.x.x):
 1. Laden Sie den Installer von "Gpg4Win" von der Seite des Herstellers herunter.
-   **Auf der Seite des Herstellers kann nur die Version 3.1.16 heruntergeladen werden (Stand 06/2022). Eine aktuelle Version, die im Quellcode mit der Version 3.1.23 von "GnuPG VS Desktop" identisch ist, steht [hier zur Verfügung](https://github.com/landsh-de/Gpg4Win/releases/tag/v3.1.23).**
+   **Auf der Seite des Herstellers kann nur die Version 3.1.16 heruntergeladen werden (Stand 07/2022). Eine aktuelle Version, die im Quellcode mit der Version 3.1.23 von "GnuPG VS Desktop" identisch ist, steht [hier zur Verfügung](https://github.com/landsh-de/Gpg4Win/releases/tag/v3.1.23).**
 2. Aktuell wird der Installer für die Versionen "[gpg4win-3.1.16.exe](http://files.gpg4win.de/gpg4win-3.1.16.exe)" und "[gpg4win-3.1.23.exe](https://github.com/landsh-de/Gpg4Win/releases/tag/v3.1.23)" unterstützt.
 4. Installieren Sie "[gpg4win-3.1.23.exe](https://github.com/landsh-de/Gpg4Win/releases/tag/v3.1.23)" (Unattended Mode: ```start /wait "" "[ABSPATH]\gpg4win-3.1.23.exe" /S```)
 5. Installieren Sie "GpgTools" (Details: s.u.).
@@ -58,7 +58,7 @@
 * Beendigung aller zum Installations-Zeitpunkt im Hintergrund auf dem System im globalen Kontext laufenden Programme: "outlook.exe", "kleopatra.exe" "gpa.exe", "gpgme-w32spawn.exe", "gpg-agent.exe", "gpg.exe", "dirmngr.exe", "gpgsm.exe", "scdaemon.exe", "pinentry-w32.exe", "pinentry.exe", "pinentry-basic.exe".
 * Löschung vorheriger angelegter Firewall-Regeln (im Update-Modus).
 * Löschung vorheriger installierter X.509-Zertifikate (im Update-Modus / X.509-Zertifikate werden nur unter GnuPG ausgerollt nicht systemweit).
-* Unbeaufsichtigte Installation (unattended) des Paketes "gnupg-w32-update.exe" (im Original: "gnupg-w32-2.2.34_20220207.exe" / die Prüfsumme ist identisch).
+* Unbeaufsichtigte Installation (unattended) des Paketes "gnupg-w32-update.exe" (im Original: "gnupg-w32-2.2.36_20220706.exe" / die Prüfsumme ist identisch).
 * Dekomprimierung und Installation der Dateien.
 * Anlegen der Firewall-Regeln (es werden für den Zugriff auf Keyserver und das Loopback-Interface nur ausgehende Firewall-Regeln für "GnuPG", "GpgSM", "Gpg-Agent", "DirMngr" und "Kleopatra" eingerichtet; für "GnuPG", "Gpg-Agent" und "DirMngr" werden nur 3 eingehende Firewall-Regeln vom Loopback-Interface eingerichtet. Details entnehmen Sie bitte dem Installer-Quellcode aus der Datei: "GpgTools.iss".
 * Prüfung: Software Restriction-Policy (SRP) aktiviert ?
