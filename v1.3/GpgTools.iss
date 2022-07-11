@@ -321,12 +321,19 @@
 ; - Merged VS-NfD configuration with original configuration of installer
 ;   package "GnuGP VS Desktop".
 ;
+; 20220708
+;
+; - Added support for two versions of gpg4win and their file-dependencies.
+;   Depending on detected version (3.1.16 or 3.x.xx), different
+;   fixed files may now be installed by evaluation of the two
+;   functions: Check: Is3116() / Check: Is31XX().
+
 ; ###################################################################
 
 #define MyAppName "GpgTools"
 #define MyAppID "{DC6550A5-7337-400d-B59C-A7F0E310B300}"
-#define MyAppVer "1.3.22.0"
-#define MyAppVerName "GpgTools 1.3.22.0"
+#define MyAppVer "1.3.23.0"
+#define MyAppVerName "GpgTools 1.3.23.0"
 #define MyAppCopyright "Veit Berwig"
 #define MyAppPublisher "Veit Berwig"
 #define MyAppURL "https://github.com/landsh-de/GpgTools"
@@ -527,9 +534,19 @@ Source: data\Program Files (x86)\GnuPG\share\doc\gnupg\examples\Curve25519.prf; 
 Source: data\Program Files (x86)\GnuPG\share\doc\gnupg\examples\RSA-4096.prf; DestDir: {code:GetGnuPG2Installed}\share\doc\gnupg\examples; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ; Only for debugging
 ; Source: data\Program Files (x86)\GnuPG\share\doc\gnupg\examples\Debug.prf; DestDir: {code:GetGnuPG2Installed}\share\doc\gnupg\examples; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
-Source: data\Program Files (x86)\Gpg4win\bin\pinentry-w32.exe; DestDir: {code:GetGpg4WinInstalled}\bin; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool
-Source: data\Program Files (x86)\Gpg4win\share\locale\de\LC_MESSAGES\gpgex.mo; DestDir: {code:GetGpg4WinInstalled}\share\locale\de\LC_MESSAGES; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool
-Source: data\Program Files (x86)\Gpg4win\share\locale\de\LC_MESSAGES\gpgol.mo; DestDir: {code:GetGpg4WinInstalled}\share\locale\de\LC_MESSAGES; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool
+
+; Install only for Gpg4Win Var:"Gpg4WinVersion"
+Source: data\Program Files (x86)\Gpg4win\bin\pinentry-w32.exe_{#Gpg4WinVersion}; DestName: "pinentry-w32.exe"; DestDir: {code:GetGpg4WinInstalled}\bin; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool; Check: Is3116()
+; Install only for Gpg4Win Var:"Gpg4WinVersionB"
+Source: data\Program Files (x86)\Gpg4win\bin\pinentry-w32.exe_{#Gpg4WinVersionB}; DestName: "pinentry-w32.exe"; DestDir: {code:GetGpg4WinInstalled}\bin; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool; Check: Is31XX()
+
+; Install only for Gpg4Win Var:"Gpg4WinVersion"
+Source: data\Program Files (x86)\Gpg4win\share\locale\de\LC_MESSAGES\gpgex.mo_{#Gpg4WinVersion}; DestName: "gpgex.mo"; DestDir: {code:GetGpg4WinInstalled}\share\locale\de\LC_MESSAGES; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool; Check: Is3116()
+Source: data\Program Files (x86)\Gpg4win\share\locale\de\LC_MESSAGES\gpgol.mo_{#Gpg4WinVersion}; DestName: "gpgol.mo"; DestDir: {code:GetGpg4WinInstalled}\share\locale\de\LC_MESSAGES; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool; Check: Is3116()
+; Install only for Gpg4Win Var:"Gpg4WinVersionB"
+Source: data\Program Files (x86)\Gpg4win\share\locale\de\LC_MESSAGES\gpgex.mo_{#Gpg4WinVersionB}; DestName: "gpgex.mo"; DestDir: {code:GetGpg4WinInstalled}\share\locale\de\LC_MESSAGES; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool; Check: Is31XX()
+Source: data\Program Files (x86)\Gpg4win\share\locale\de\LC_MESSAGES\gpgol.mo_{#Gpg4WinVersionB}; DestName: "gpgol.mo"; DestDir: {code:GetGpg4WinInstalled}\share\locale\de\LC_MESSAGES; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool; Check: Is31XX()
+
 ; ###################################################################
 ; GnuPG-Options: "display-charset utf8" "utf8-strings" were removed
 ; but in spite of the fixes above, Umlauts are not displayed
@@ -2135,6 +2152,57 @@ begin
         Log('GetGpg4WinVersion(): Install Directory of Gpg4win does not exist in Registry: ' + Install_Directory_Gpg4win);
     end;
 end;
+
+//////////////////////////////////////////////////////////////////////////////
+function Is3116(): Boolean;
+// Check for Version 3.1.16
+var
+  MyResultGpg4WinV: String;
+  MyResultGetGpg4WinV: String;
+
+begin
+    // Check correct version of Gpg4Win has to be installed.
+    MyResultGpg4WinV := ExpandConstant('{#Gpg4WinVersion}');
+    MyResultGetGpg4WinV := GetGpg4WinVersion('');
+
+  	if (MyResultGpg4WinV = MyResultGetGpg4WinV) then begin
+      Log('Is3116(): Expected "Gpg4Win-Version": ' + MyResultGpg4WinV);
+      Log('Is3116(): Received "Gpg4Win-Version": ' + MyResultGetGpg4WinV);
+      Log('"Gpg4Win-Version" match ...');
+      Result := True;
+    end else begin
+      Log('Is3116(): Expected "Gpg4Win-Version": ' + MyResultGpg4WinV);
+      Log('Is3116(): Received "Gpg4Win-Version": ' + MyResultGetGpg4WinV);
+      Log('"Gpg4Win-Version" mismatch ...');
+      Result := False;
+    end;
+end;
+
+//////////////////////////////////////////////////////////////////////////////
+function Is31XX(): Boolean;
+// Check for Version 3.x.xx (#Gpg4WinVersionB)
+var
+  MyResultGpg4WinVB: String;
+  MyResultGetGpg4WinVB: String;
+
+begin
+    // Check correct version of Gpg4Win has to be installed.
+    MyResultGpg4WinVB := ExpandConstant('{#Gpg4WinVersionB}');
+    MyResultGetGpg4WinVB := GetGpg4WinVersion('');
+
+  	if (MyResultGpg4WinVB = MyResultGetGpg4WinVB) then begin
+      Log('Is31XX(): Expected "Gpg4Win-Version": ' + MyResultGpg4WinVB);
+      Log('Is31XX(): Received "Gpg4Win-Version": ' + MyResultGetGpg4WinVB);
+      Log('"Gpg4Win-Version" match ...');
+      Result := True;
+    end else begin
+      Log('Is31XX(): Expected "Gpg4Win-Version": ' + MyResultGpg4WinVB);
+      Log('Is31XX(): Received "Gpg4Win-Version": ' + MyResultGetGpg4WinVB);
+      Log('"Gpg4Win-Version" mismatch ...');
+      Result := False;
+    end;
+end;
+
 
 //////////////////////////////////////////////////////////////////////////////
 function CheckSRPIsEnabled(): Boolean;

@@ -1,0 +1,11 @@
+20220708
+
+- Update Installer:
+  Added support for two versions of gpg4win and their file-dependencies.
+  Depending on detected version (3.1.16 or 3.x.xx), different
+  fixed files may now be installed by evaluation of the two
+  functions: Check: Is3116() / Check: Is31XX().
+
+- Update GnuPG v2.2.36 (security-update, improvements)
+
+- Update OpenSSL v1.1.1q (security-update, improvements)
