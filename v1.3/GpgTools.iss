@@ -324,16 +324,34 @@
 ; 20220708
 ;
 ; - Added support for two versions of gpg4win and their file-dependencies.
-;   Depending on detected version (3.1.16 or 3.x.xx), different
-;   fixed files may now be installed by evaluation of the two
+;   Depending on detected version "Gpg4WinVersion" and "Gpg4WinVersionB"
+;   (the latest valid BSI-Version 3.1.16 or the latest Build 3.x.xx),
+;   different fixed files may now be installed by evaluation of the two
 ;   functions: Check: Is3116() / Check: Is31XX().
+;
+; - Bump version to 1.3.23.0 in order to support Gpg4Win 3.1.23.
+;
+; 20220906
+;
+; - Updated NSIS-Installer Package to GnuPG 2.2.39.31776 (02.09.2022).
+;   Original name: "gnupg-w32-2.2.39_20220902.exe" (original signed)
+;
+; - Fixed zlib 1.2.12 with 2 patches for CVE-2022-37434 in my
+;   openssl 1.1.1q-build. OpenSSL is used by the x.509-cert update-script:
+;   "BuildTrustList.bat" in central master config-directory:
+;   "%ProgramData%\GNU\etc\gnupg". For details read "openssl.txt" in
+;   the same directory. For security-reasons, my "openssl.exe"-build
+;   is using a modified "Manifest", that allows its execution only
+;   under admin-rights.
+;
+; - Bump version to 1.3.23.1 in order to reflect GnuPG version-update.
 
 ; ###################################################################
 
 #define MyAppName "GpgTools"
 #define MyAppID "{DC6550A5-7337-400d-B59C-A7F0E310B300}"
-#define MyAppVer "1.3.23.0"
-#define MyAppVerName "GpgTools 1.3.23.0"
+#define MyAppVer "1.3.23.1"
+#define MyAppVerName "GpgTools 1.3.23.1"
 #define MyAppCopyright "Veit Berwig"
 #define MyAppPublisher "Veit Berwig"
 #define MyAppURL "https://github.com/landsh-de/GpgTools"
@@ -341,10 +359,19 @@
 #define MySetupMutex "GpgToolsSetupMutex"
 
 ; ###################################################################
-; I'm comparing the installed string fileversion of "kleopatra.exe"
-; with this var: {#Gpg4WinVersion} ... in Code-Section below.
-;
-; Due to Gpg4Win-updates, update this string to the correct version.
+; # I'm comparing the string fileversion of the installed 
+; # "kleopatra.exe" with var: "Gpg4WinVersion" and "Gpg4WinVersionB"
+; # in Code-Section below.
+; # 
+; # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+; # !!! Be aware, that the file-version string of "kleopatra.exe" !!!
+; # !!!  MUST NOT BE THE SAME AS THE PRODUCT-VERSION OF GPG4WIN.  !!!
+; # !!!  SO FOR THE FILE-VERSION 3.1.22 WE HAVE A PRODUCT-VERSION !!!
+; # !!!                      OF  3.1.23                           !!!
+; # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+; #
+; # Due to Gpg4Win-updates, update this string to the correct
+; # file-version of "kleopatra.exe" !!
 ; ###################################################################
 #define Gpg4WinVersion  "3.1.16.0"
 #define Gpg4WinVersionB "3.1.22.0"
