@@ -67,7 +67,7 @@
 * Beendigung aller zum Installations-Zeitpunkt im Hintergrund auf dem System im globalen Kontext laufenden Programme: "outlook.exe", "kleopatra.exe" "gpa.exe", "gpgme-w32spawn.exe", "gpg-agent.exe", "gpg.exe", "dirmngr.exe", "gpgsm.exe", "scdaemon.exe", "pinentry-w32.exe", "pinentry.exe", "pinentry-basic.exe".
 * Löschung vorheriger angelegter Firewall-Regeln (im Update-Modus).
 * Löschung vorheriger installierter X.509-Zertifikate (im Update-Modus / X.509-Zertifikate werden nur unter GnuPG ausgerollt und nicht systemweit !!).
-* Unbeaufsichtigte Installation (unattended) des Paketes "gnupg-w32-update.exe" (im Original: "gnupg-w32-2.2.36_20220706.exe" / die Prüfsumme ist identisch).
+* Unbeaufsichtigte Installation (unattended) des Paketes "gnupg-w32-update.exe" <b>(!! Prüfsumme ist identisch mit Originalversion !!)</b>.
 * Dekomprimierung und Installation der Dateien.
 * Anlegen der Firewall-Regeln (es werden für den Zugriff auf Keyserver und das Loopback-Interface nur ausgehende Firewall-Regeln für "GnuPG", "GpgSM", "Gpg-Agent", "DirMngr" und "Kleopatra" eingerichtet; für "GnuPG", "Gpg-Agent" und "DirMngr" werden nur 3 eingehende Firewall-Regeln vom Loopback-Interface eingerichtet. Details entnehmen Sie bitte dem Installer-Quellcode aus der Datei: "GpgTools.iss".
 * Prüfung: Software Restriction-Policy (SRP) aktiviert ?
