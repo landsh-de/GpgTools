@@ -1,6 +1,10 @@
 ## <p align=center>"GpgTools"<br>VS-NfD Konformität für "Gpg4Win"<br>(aka "GnuPG VS-Desktop®")</p>
 
-##### <p align=right>By vitusb in 20220710</p>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/83558069/188723064-936d3ed5-3f9d-44c7-bf72-c78882eeac22.jpg" />
+</p>
+
+##### <p align=right>By vitusb in 20220906</p>
 ##### <p align=right>GnuPG VS-Desktop® ist eine eingetragene Marke der [g10 Code GmbH](https://g10code.com "g10 Code GmbH").<br>GnuPG VS-Desktop® is a registered trademark of [g10 Code GmbH](https://g10code.com "g10 Code GmbH").</p>
 ##### <p align=right>[Sicherheits-Bedenken zu Brainpool-Kurven des BSI](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Sicherheits-Bedenken zu den Brainpool-Kurven des BSI")<br>[(Security concerns about the BSI's Brainpool curves)](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Security concerns about the BSI's Brainpool curves")</p>
 
@@ -39,14 +43,17 @@
 #### Dateien wie "openssl.exe", die unter dem globalen Verzeichnis von GnuPG (ProgramData\GNU\etc\gnupg) installiert werden, besitzen ein angepasstes "Manifest" in ihrem PE-Loader, damit diese Werkzeuge nur mit einem "Administrativen Konto" ausgeführt werden können. Diese Werkzeuge werden zur Implementierung eines noch nicht aktivierten Update-Mechanismus für ROOT-Zertifikate unter GnuPG/Gpg4Win verwendet, der als Quelle nur die "TRUST"-Varianten aus dem Mozilla-ROOT-Cert-Store verwendet. Als Basis dient das Programm "[VBCertConv](https://github.com/landsh-de/VBCertConv)", welches auf einem [Tool von "Adam Langley" Security Engineer bei Google basiert](https://github.com/agl/extract-nss-root-certs). In einem administativen Umfeld kann über die "Aufgabenplanung" von Windows ein zyklisches Update der "trustlist.txt" über das Script: "BuildTrustList.bat" konfiguriert werden.
 
 #### Details zu der Update-Historie von GnuPG seit Rollout über Gpg4Win 3.1.16 (GnuPG 2.2.28)
-* [Release GnuPG 2.2.29](https://dev.gnupg.org/T5498 "Release GnuPG 2.2.29")
-* [Release GnuPG 2.2.30](https://dev.gnupg.org/T5519 "Release GnuPG 2.2.20")
-* [Release GnuPG 2.2.31](https://dev.gnupg.org/T5571 "Release GnuPG 2.2.31")
-* [Release GnuPG 2.2.32](https://dev.gnupg.org/T5601 "Release GnuPG 2.2.32")
-* [Release GnuPG 2.2.33](https://dev.gnupg.org/T5641 "Release GnuPG 2.2.33")
-* [Release GnuPG 2.2.34](https://dev.gnupg.org/T5703 "Release GnuPG 2.2.34")
-* [Release GnuPG 2.2.35](https://dev.gnupg.org/T5928 "Release GnuPG 2.2.35")
+* [Release GnuPG 2.2.39](https://dev.gnupg.org/T6175 "Release GnuPG 2.2.39")
+* [Release GnuPG 2.2.38](https://dev.gnupg.org/T6159 "Release GnuPG 2.2.38")
+* [Release GnuPG 2.2.37](https://dev.gnupg.org/T6105 "Release GnuPG 2.2.37")
 * [Release GnuPG 2.2.36](https://dev.gnupg.org/T5949 "Release GnuPG 2.2.36")
+* [Release GnuPG 2.2.35](https://dev.gnupg.org/T5928 "Release GnuPG 2.2.35")
+* [Release GnuPG 2.2.34](https://dev.gnupg.org/T5703 "Release GnuPG 2.2.34")
+* [Release GnuPG 2.2.33](https://dev.gnupg.org/T5641 "Release GnuPG 2.2.33")
+* [Release GnuPG 2.2.32](https://dev.gnupg.org/T5601 "Release GnuPG 2.2.32")
+* [Release GnuPG 2.2.31](https://dev.gnupg.org/T5571 "Release GnuPG 2.2.31")
+* [Release GnuPG 2.2.30](https://dev.gnupg.org/T5519 "Release GnuPG 2.2.30")
+* [Release GnuPG 2.2.29](https://dev.gnupg.org/T5498 "Release GnuPG 2.2.29")
 
 ### <p id="Details_der_Installation">Details der Installation:</p>
 
