@@ -1,3 +1,29 @@
+
+20220906
+
+- Updated integrated NSIS-Installer Package to
+  GnuPG 2.2.39.31776 (02.09.2022) Original name:
+  "gnupg-w32-2.2.39_20220902.exe" (original signed by Werner Koch)
+  Release-Info: https://dev.gnupg.org/T6175
+
+- Fixed zlib 1.2.12 with 2 patches for CVE-2022-37434 in my
+  openssl 1.1.1q-build. OpenSSL is used by the x.509-cert
+  update-script: "BuildTrustList.bat" in central master
+  config-directory: "%ProgramData%\GNU\etc\gnupg".
+  For details read "openssl.txt" in the same directory.
+  For security-reasons, my "openssl.exe"-build is using a modified
+  "Manifest", that allows its execution only under admin-rights.
+
+- Bump Installer version to 1.3.23.1 in order to reflect
+  GnuPG version-update.
+
+20220830
+
+- Update Installer
+
+- Update GnuPG v2.2.37 (security-update, improvements)
+  Release-Info: https://dev.gnupg.org/T6105
+
 20220708
 
 - Update Installer:
@@ -7,5 +33,6 @@
   functions: Check: Is3116() / Check: Is31XX().
 
 - Update GnuPG v2.2.36 (security-update, improvements)
+  Release-Info: https://dev.gnupg.org/T5949
 
 - Update OpenSSL v1.1.1q (security-update, improvements)
