@@ -345,13 +345,19 @@
 ;   under admin-rights.
 ;
 ; - Bump version to 1.3.23.1 in order to reflect GnuPG version-update.
+;
+; 20220912
+;
+; - Bump version to 1.3.24.0 in order to reflect Gpg4Win version-update
+;   to 3.1.24.0. Pay attention:
+;   "kleopatra.exe" has now a file-version-info string of "3.1.24.0" 
 
 ; ###################################################################
 
 #define MyAppName "GpgTools"
 #define MyAppID "{DC6550A5-7337-400d-B59C-A7F0E310B300}"
-#define MyAppVer "1.3.23.1"
-#define MyAppVerName "GpgTools 1.3.23.1"
+#define MyAppVer "1.3.24.0"
+#define MyAppVerName "GpgTools 1.3.24.0"
 #define MyAppCopyright "Veit Berwig"
 #define MyAppPublisher "Veit Berwig"
 #define MyAppURL "https://github.com/landsh-de/GpgTools"
@@ -366,15 +372,13 @@
 ; # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ; # !!! Be aware, that the file-version string of "kleopatra.exe" !!!
 ; # !!!  MUST NOT BE THE SAME AS THE PRODUCT-VERSION OF GPG4WIN.  !!!
-; # !!!  SO FOR THE FILE-VERSION 3.1.22 WE HAVE A PRODUCT-VERSION !!!
-; # !!!                      OF  3.1.23                           !!!
 ; # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ; #
 ; # Due to Gpg4Win-updates, update this string to the correct
 ; # file-version of "kleopatra.exe" !!
 ; ###################################################################
 #define Gpg4WinVersion  "3.1.16.0"
-#define Gpg4WinVersionB "3.1.22.0"
+#define Gpg4WinVersionB "3.1.24.0"
 
 ; ###################################################################
 
