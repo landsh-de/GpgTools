@@ -351,13 +351,43 @@
 ; - Bump version to 1.3.24.0 in order to reflect Gpg4Win version-update
 ;   to 3.1.24.0. Pay attention:
 ;   "kleopatra.exe" has now a file-version-info string of "3.1.24.0" 
-
+;
+; 20221025
+;
+; - Bump version to 1.3.25.0 in order to reflect Gpg4Win version-update
+;   to 3.1.25.0. Pay attention:
+;   "kleopatra.exe" has still a file-version-info string of "3.1.24.0"
+;
+; - Local X.509 ROOT-CERTS disabled.
+;   Due to a lot of X.509-cert files under ...
+;   "ProgramData\GNU\etc\gnupg\extra-certs" and ...
+;   "ProgramData\GNU\etc\gnupg\trusted-certs", with a configurated
+;   "trustlist.txt"-file, i recognized an extreme long running task
+;   when running "kleopatra" or "gpgol" for the first time of ...
+;   gpg, gpg-agent, and scdaemon. The reason are cert-checks for
+;   all pub-certs under the directories, mentioned above !!
+;
+;   THIS MAY RESULT IN A TIMEOUT-ERROR OF GPGOL OR KLEOPATRA !!
+;
+;   So i disabled this trust-mechanism and moved all certs to
+;   "ProgramData\GNU\etc\gnupg\deactivated\". This was only a test
+;   for the feasibility of integrating trusted ROOT-CERTS from
+;   serveral ROOT-CAs with an automatic update-mechanism.
+;
+; - Added "gpg-connect-agent.exe" and "gpg-wks-client.exe" to
+;   user-based process-termination tool "Gpg4Win_beenden.exe".
+;
+; - Updated NSIS-Installer Package to GnuPG 2.2.40.11935 (10.10.2022).
+;   Original name: "gnupg-w32-2.2.40_20221010.exe" (original signed)
+;
+; - Fixed removal of file "trustlist_err.txt".
+;
 ; ###################################################################
 
 #define MyAppName "GpgTools"
 #define MyAppID "{DC6550A5-7337-400d-B59C-A7F0E310B300}"
-#define MyAppVer "1.3.24.0"
-#define MyAppVerName "GpgTools 1.3.24.0"
+#define MyAppVer "1.3.25.0"
+#define MyAppVerName "GpgTools 1.3.25.0"
 #define MyAppCopyright "Veit Berwig"
 #define MyAppPublisher "Veit Berwig"
 #define MyAppURL "https://github.com/landsh-de/GpgTools"
@@ -481,6 +511,7 @@ Type: filesandordirs; Name: "{commonappdata}\GNU\etc\gnupg\extra-certs"
 Type: filesandordirs; Name: "{commonappdata}\GNU\etc\gnupg\trusted-certs"
 Type: filesandordirs; Name: "{commonappdata}\GNU\etc\gnupg\source"
 Type: files; Name: "{commonappdata}\GNU\etc\gnupg\trustlist.txt"
+Type: files; Name: "{commonappdata}\GNU\etc\gnupg\trustlist_err.txt"
 ; ###################################################################
 ; ## Cleanup old tools from install target before new rollout      ##
 ; ###################################################################
