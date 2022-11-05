@@ -382,18 +382,63 @@
 ;
 ; - Fixed removal of file "trustlist_err.txt".
 ;
+; 20221102
+;
+; - Added "IsGpgVer()" for checking, if GnuPG file-version of
+;   "gpg.exe" is like the content of "GpgVersion" in order to support
+;   the installation of the correct versions of fixed GnuPG
+;   support-files like "pinentry-basic.exe" with fixed german
+;   dialog-resources. If we have a version-mismatch, the fixed file
+;   will not be installed over the original version. (ToDo:
+;   leave the english-version, when english is the installer
+;   language).
+;
+; - In order to customize this installer-code between the versions of
+;   supported Gpg4Win/GnuPG-versions (3.x.xx/4.x.xx), change the
+;   vars between to token ...:
+; ###################################################################
+; # Change vars here to support the correct version       - BEGIN - #
+; ###################################################################
+;   
+;   ... and ...
+;   
+; ###################################################################
+; # Change vars here to support the correct version       -  END  - #
+; ###################################################################
+;
+;   ... below ...
+;
+; - Added english versions of VS-NfD SecOPs-documents, shown in
+;   Gpg4Win 3.1.2x and 4.0.x.
+;
+; - Added additional objects for process-kill at startup.
+;
+;   Actually the following processes are killed at starup:
+;   outlook.exe, kleopatra.exe, gpa.exe, gpgme-w32spawn.exe,
+;   gpg-agent.exe, gpg-connect-agent.exe, gpg-wks-client.exe,
+;   gpg.exe, dirmngr.exe, gpgsm.exe, scdaemon.exe, pinentry-w32.exe,
+;   pinentry.exe, pinentry-basic.exe.
+;   
 ; ###################################################################
 
 #define MyAppName "GpgTools"
 #define MyAppID "{DC6550A5-7337-400d-B59C-A7F0E310B300}"
-#define MyAppVer "1.3.25.0"
-#define MyAppVerName "GpgTools 1.3.25.0"
 #define MyAppCopyright "Veit Berwig"
 #define MyAppPublisher "Veit Berwig"
 #define MyAppURL "https://github.com/landsh-de/GpgTools"
 #define MyAppDescr "GpgTools, Patches und zentrale Konfiguration für Gpg4Win"
 #define MySetupMutex "GpgToolsSetupMutex"
 
+; ###################################################################
+; # Change vars here to support the correct version       - BEGIN - #
+; ###################################################################
+; ===================================================================
+; Gpg4Win 3.1.25
+#define MyAppVer "1.3.25.1"
+#define MyAppVerName "GpgTools 1.3.25.1"
+; Gpg4Win 4.0.4
+; #define MyAppVer "1.4.04.0"
+; #define MyAppVerName "GpgTools 1.4.04.0"
 ; ###################################################################
 ; # I'm comparing the string fileversion of the installed 
 ; # "kleopatra.exe" with var: "Gpg4WinVersion" and "Gpg4WinVersionB"
@@ -409,6 +454,43 @@
 ; ###################################################################
 #define Gpg4WinVersion  "3.1.16.0"
 #define Gpg4WinVersionB "3.1.24.0"
+; ===================================================================
+; FileVersion Index-String of other helper-tools of Gpg4Win for finding
+; the right version with german resources:
+; ===================================================================
+; pinentry-w32.exe_{#Gpg4WinVersion},  if kleopatra = Gpg4WinVersion
+; gpgex.mo_{#Gpg4WinVersion},          if kleopatra = Gpg4WinVersion
+; gpgol.mo_{#Gpg4WinVersion},          if kleopatra = Gpg4WinVersion
+; ===================================================================
+; pinentry-w32.exe_{#Gpg4WinVersionB}, if kleopatra = Gpg4WinVersionB
+; gpgex.mo_{#Gpg4WinVersionB},         if kleopatra = Gpg4WinVersionB
+; gpgol.mo_{#Gpg4WinVersionB},         if kleopatra = Gpg4WinVersionB
+; ===================================================================
+
+; ===================================================================
+; FileVersion Info-String of "gpg.exe" AFTER installation of ...
+;                                              "gnupg-w32-update.exe"
+; ===================================================================
+; GnuPG Release 2.2 / "gnupg-w32-update.exe" is GnuPG 2.2.40
+#define GpgVersion   "2.2.40.11935"
+; GnuPG Release 2.3 / "gnupg-w32-update.exe" is GnuPG 2.3.8
+; #define GpgVersion "2.3.8.28434"
+; ===================================================================
+
+; ===================================================================
+; FileVersion Index-String of "pinentry-basic.exe" for finding the
+; right version with german resources AFTER installation of ...
+;                                              "gnupg-w32-update.exe"
+; ===================================================================
+; GnuPG Release 2.2 / "gnupg-w32-update.exe" is GnuPG 2.2.40
+#define GpgVersionIDX "3.1.25.0"
+; GnuPG Release 2.3 / "gnupg-w32-update.exe" is GnuPG 2.3.8
+; #define GpgVersionIDX "4.0.4"
+; ===================================================================
+
+; ###################################################################
+; # Change vars here to support the correct version       -  END  - #
+; ###################################################################
 
 ; ###################################################################
 
@@ -583,7 +665,7 @@ Source: data\ProgramData\GNU\*; DestDir: {commonappdata}\GNU; Flags: ignoreversi
 ; Source: data\Program Files (x86)\Gpg4win\*; DestDir: {code:GetGpg4WinInstalled}; Flags: ignoreversion recursesubdirs createallsubdirs uninsrestartdelete overwritereadonly; Components: confpatchtoolpol confpatchtool
 ;
 ; NEVER delete files on uninstall (were previously installed by another installer)
-Source: data\Program Files (x86)\GnuPG\bin\pinentry-basic.exe; DestDir: {code:GetGnuPG2Installed}\bin; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool
+Source: data\Program Files (x86)\GnuPG\bin\pinentry-basic.exe_{#GpgVersionIDX}; DestName: "pinentry-basic.exe"; DestDir: {code:GetGnuPG2Installed}\bin; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool; Check: IsGpgVer()
 Source: data\Program Files (x86)\GnuPG\share\doc\gnupg\examples\Automatic.prf; DestDir: {code:GetGnuPG2Installed}\share\doc\gnupg\examples; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool
 Source: data\Program Files (x86)\GnuPG\share\doc\gnupg\examples\VS-NfD.prf; DestDir: {code:GetGnuPG2Installed}\share\doc\gnupg\examples; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool
 ; Delete files on uninstall (were NOT previously installed by another installer)
@@ -633,6 +715,8 @@ Source: data\Program Files (x86)\Gpg4win\share\kleopatrarc; DestDir: {code:GetGp
 ; ########################## VS-NfD Certification Docs ##############
 Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\BSI-VSA-10573_secops-20220207.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\BSI-VSA-10584_secops-20220207.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\BSI-VSA-10573-ENG_secops-20220207.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\BSI-VSA-10584-ENG_secops-20220207.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ; ########################## Program-Icon ###########################
 Source: data\Program Files (x86)\GpgTools\Icon0.ico; DestDir: {app}; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\GpgTools\Icon1.ico; DestDir: {app}; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
@@ -969,7 +1053,7 @@ german.installcont=Installation wird fortgesetzt ...
 ; Tasks for process-control before installation of files,
 ; that may be in use during install-process.
 ; See functions: "RunTask" and "KillTask" below in [Code]-section
-Tasks=outlook.exe%nkleopatra.exe%ngpa.exe%ngpgme-w32spawn.exe%ngpg-agent.exe%ngpg.exe%ndirmngr.exe%ngpgsm.exe%nscdaemon.exe%npinentry-w32.exe%npinentry.exe%npinentry-basic.exe
+Tasks=outlook.exe%nkleopatra.exe%ngpa.exe%ngpgme-w32spawn.exe%ngpg-agent.exe%ngpg-connect-agent.exe%ngpg-wks-client.exe%ngpg.exe%ndirmngr.exe%ngpgsm.exe%nscdaemon.exe%npinentry-w32.exe%npinentry.exe%npinentry-basic.exe
 
 [ThirdParty]
 UseRelativePaths=True
@@ -2216,6 +2300,45 @@ begin
 end;
 
 //////////////////////////////////////////////////////////////////////////////
+function GetGpgVersion(Param: String): String;
+// 
+//  HKEY_LOCAL_MACHINE\Software\WOW6432Node\GnuPG
+//  Install Directory    REG_SZ    C:\Program Files (x86)\Gpg4win\..\GnuPG
+//  
+//  HKEY_LOCAL_MACHINE\Software\WOW6432Node\Gpg4win
+//  Install Directory    REG_SZ    C:\Program Files (x86)\Gpg4win
+
+var
+  Gpg_Version: String;
+  Install_Directory_Gpg: String;
+  aExecFileG: String;
+
+begin
+    if RegQueryStringValue(HKEY_LOCAL_MACHINE, 'Software\WOW6432Node\GnuPG',
+        'Install Directory', Install_Directory_Gpg) then begin
+
+        // Value was read successfully
+        Log('GetGpgVersion(): Install Directory of GnuPG exist in Registry: ' + Install_Directory_Gpg);
+        aExecFileG := Install_Directory_Gpg + '\bin\gpg.exe';
+
+        if FileExists(aExecFileG) then begin
+           Log('GetGpgVersion(): File "gpg.exe" exist: ' + aExecFileG);
+           if GetVersionNumbersString(aExecFileG, Gpg_Version) then begin
+              Log('GetGpgVersion(): File "gpg.exe" Version-Number: ' + '"' + Gpg_Version + '"');
+              Result := Gpg_Version;
+           end else begin
+              Log('GetGpgVersion(): Something went wrong in getting Version-Number of "gpg.exe": ' + '"' + Gpg_Version + '"');
+           end;
+        end else begin
+           Log('GetGpgVersion(): File "gpg.exe" does not exist in: ' + '"' + Install_Directory_Gpg + '"');
+        end;
+    end else begin
+        // Value was NOT read successfully
+        Log('GetGpgVersion(): Install Directory of GnuPG does not exist in Registry: ' + Install_Directory_Gpg);
+    end;
+end;
+
+//////////////////////////////////////////////////////////////////////////////
 function Is3116(): Boolean;
 // Check for Version 3.1.16
 var
@@ -2265,6 +2388,30 @@ begin
     end;
 end;
 
+//////////////////////////////////////////////////////////////////////////////
+function IsGpgVer(): Boolean;
+// Check for GnuPGVersion (#GpgVersion)
+var
+  MyResultGpgVersion: String;
+  MyResultGetGpgVersion: String;
+
+begin
+    // Check correct version of Gpg4Win has to be installed.
+    MyResultGpgVersion := ExpandConstant('{#GpgVersion}');
+    MyResultGetGpgVersion := GetGpgVersion('');
+
+  	if (MyResultGpgVersion = MyResultGetGpgVersion) then begin
+      Log('IsGpgVer(): Expected "Gpg-Version": ' + MyResultGpgVersion);
+      Log('IsGpgVer(): Received "Gpg-Version": ' + MyResultGetGpgVersion);
+      Log('"Gpg-Version" match ...');
+      Result := True;
+    end else begin
+      Log('IsGpgVer(): Expected "Gpg4Win-Version": ' + MyResultGpgVersion);
+      Log('IsGpgVer(): Received "Gpg4Win-Version": ' + MyResultGetGpgVersion);
+      Log('"Gpg-Version" mismatch ...');
+      Result := False;
+    end;
+end;
 
 //////////////////////////////////////////////////////////////////////////////
 function CheckSRPIsEnabled(): Boolean;
