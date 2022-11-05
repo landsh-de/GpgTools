@@ -1,0 +1,90 @@
+20221104
+
+- Bump version to 1.3.25.1 / 1.4.04.0
+- Added "gpg.exe" version check in order to support different backends
+  in dependency of "Gpg4Win".
+- Added english "BSI SecOPs" files for documentation.
+- Updated OpenSSL to openssl-1.1.1s and zlib to zlib-1.2.13.
+- We have now support for Gpg4Win 4.0.x.
+- With GpgTools 1.4.04.x it is now possible to install also a hardened
+  de-vs conformant VS-NfD-configuration (like GpgTools 1.3.xx.x for
+  Gpg4Win 3.1.xx) for Gpg4Win 4.0.x by replacing the GnuPG-backend
+  with the latest GnuPG 2.2.xx version (no warnings by kleopatra about
+  a non VS-NfD-conformant GnuPG-version anymore).
+  
+  Pay attention: "kleopatra.exe" has still a file-version-info string
+  of "3.1.24.0"
+  
+20221025
+
+- Bump version to 1.3.25.0 in order to reflect Gpg4Win version-update
+  to 3.1.25.0. Pay attention: "kleopatra.exe" has still a
+  file-version-info string of "3.1.24.0"
+  
+- Local X.509 ROOT-CERTS disabled.
+  Due to a lot of X.509-cert files under ...
+  "ProgramData\GNU\etc\gnupg\extra-certs" and ...
+  "ProgramData\GNU\etc\gnupg\trusted-certs", with a configurated
+  "trustlist.txt"-file, i recognized an extreme long running task
+  when running "kleopatra" or "gpgol" for the first time of ...
+  gpg, gpg-agent, and scdaemon. The reason are cert-checks for
+  all pub-certs under the directories, mentioned above !!
+  
+  THIS MAY RESULT IN A TIMEOUT-ERROR OF GPGOL OR KLEOPATRA !!
+  
+  So i disabled this trust-mechanism and moved all certs to
+  "ProgramData\GNU\etc\gnupg\deactivated\". This was only a test
+  for the feasibility of integrating trusted ROOT-CERTS from
+  serveral ROOT-CAs with an automatic update-mechanism.
+  
+- Added "gpg-connect-agent.exe" and "gpg-wks-client.exe" to
+  user-based process-termination tool "Gpg4Win_beenden.exe".
+  
+- Updated NSIS-Installer Package to GnuPG 2.2.40.11935 (10.10.2022).
+  Original name: "gnupg-w32-2.2.40_20221010.exe" (original signed)
+
+- Fixed removal of file "trustlist_err.txt".
+
+20220912
+
+- Bump installer version to 1.3.24.0 in order to reflect version
+  update of Gpg4Win and support Gpg4Win 3.1.24.0. Pay attention:
+  "kleopatra.exe" has now a file-version-info string of "3.1.24.0".
+
+20220906
+
+- Updated integrated NSIS-Installer Package to
+  GnuPG 2.2.39.31776 (02.09.2022) Original name:
+  "gnupg-w32-2.2.39_20220902.exe" (original signed by Werner Koch)
+  Release-Info: https://dev.gnupg.org/T6175
+
+- Fixed zlib 1.2.12 with 2 patches for CVE-2022-37434 in my
+  openssl 1.1.1q-build. OpenSSL is used by the x.509-cert
+  update-script: "BuildTrustList.bat" in central master
+  config-directory: "%ProgramData%\GNU\etc\gnupg".
+  For details read "openssl.txt" in the same directory.
+  For security-reasons, my "openssl.exe"-build is using a modified
+  "Manifest", that allows its execution only under admin-rights.
+
+- Bump Installer version to 1.3.23.1 in order to reflect
+  GnuPG version-update.
+
+20220830
+
+- Update Installer
+
+- Update GnuPG v2.2.37 (security-update, improvements)
+  Release-Info: https://dev.gnupg.org/T6105
+
+20220708
+
+- Update Installer:
+  Added support for two versions of gpg4win and their file-dependencies.
+  Depending on detected version (3.1.16 or 3.x.xx), different
+  fixed files may now be installed by evaluation of the two
+  functions: Check: Is3116() / Check: Is31XX().
+
+- Update GnuPG v2.2.36 (security-update, improvements)
+  Release-Info: https://dev.gnupg.org/T5949
+
+- Update OpenSSL v1.1.1q (security-update, improvements)
