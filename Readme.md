@@ -24,7 +24,7 @@
 
 ### Gpg4Win muss VOR der Installation von "GpgTools" auf dem System installiert sein. Der Installer von "GpgTools" prüft VOR der Installation, ob die korrekte Version von "Gpg4Win" bereits installiert ist.
 
-#### Arbeitsschritte für die Version 1.3.x.x (Gpg4Win 3.x.x):
+#### Arbeitsschritte für die Version 1.3.x.x (Gpg4Win 3.x.x) / 1.4.x.x (Gpg4Win 4.x.x):
 1. Laden Sie den Installer von "Gpg4Win" von der Seite des Herstellers herunter.
    **Auf der Seite des Herstellers kann nur die Version 3.1.16 heruntergeladen werden (Stand 07/2022). Eine aktuelle Version, die im Quellcode mit der Version 3.1.2x von "GnuPG VS Desktop" identisch ist, steht [hier zur Verfügung](https://github.com/landsh-de/Gpg4Win/releases).**
 2. Aktuell wird der Installer für die Versionen "[gpg4win-3.1.16.exe (VS-NfD)](http://files.gpg4win.de/gpg4win-3.1.16.exe)", "[gpg4win-4.0.4.exe (nicht VS-NfD)](http://files.gpg4win.de/gpg4win-4.0.4.exe)" und "[gpg4win-3.1.2x.exe (nicht VS-NfD)](https://github.com/landsh-de/Gpg4Win/releases)" unterstützt. **Der VS-NfD-Modus wird von GpgTools für ALLE Versionen aktiviert ABER NUR DIE VERSION 3.1.16 IST OFFIZIELL VOM BSI ZUGELASSEN (SIEHE SecOPs SHA256-HASHES für Gpg4Win-3.1.16).**
