@@ -27,7 +27,7 @@
 #### Arbeitsschritte für die Version 1.3.x.x (Gpg4Win 3.x.x):
 1. Laden Sie den Installer von "Gpg4Win" von der Seite des Herstellers herunter.
    **Auf der Seite des Herstellers kann nur die Version 3.1.16 heruntergeladen werden (Stand 07/2022). Eine aktuelle Version, die im Quellcode mit der Version 3.1.2x von "GnuPG VS Desktop" identisch ist, steht [hier zur Verfügung](https://github.com/landsh-de/Gpg4Win/releases).**
-2. Aktuell wird der Installer für die Versionen "[gpg4win-3.1.16.exe](http://files.gpg4win.de/gpg4win-3.1.16.exe)" und "[gpg4win-3.1.2x.exe](https://github.com/landsh-de/Gpg4Win/releases)" unterstützt.
+2. Aktuell wird der Installer für die Versionen "[gpg4win-3.1.16.exe](http://files.gpg4win.de/gpg4win-3.1.16.exe)", "[gpg4win-4.0.4.exe](http://files.gpg4win.de/gpg4win-4.0.4.exe)" und "[gpg4win-3.1.2x.exe](https://github.com/landsh-de/Gpg4Win/releases)" unterstützt.
 4. Installieren Sie "[die aktuelle Version von Gpg4Win](https://github.com/landsh-de/Gpg4Win/releases)" (Unattended Mode: ```start /wait "" "[ABSPATH]\gpg4win-3.1.2x.exe" /S```)
 5. Installieren Sie "GpgTools" (Details: s.u.).
 6. Starten Sie den Computer neu.
