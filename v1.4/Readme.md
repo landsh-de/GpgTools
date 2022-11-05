@@ -1,5 +1,7 @@
 ### Installer-tree (portable paths) of GpgTools 1.4.x.x (Gpg4Win 4.x-Support)
 
+**[Gemeinsame Code-Basis / Common codebase](https://github.com/landsh-de/GpgTools/blob/main/v1.3/)**
+
 ### (de)
 - Gegenwärtig ist die Codebase identisch mit der Version 1.3.xx.x und unterscheidet sich nur dadurch, dass man beim Build die Versionen des Installers für GnuPG im Quellbaum austauscht und die Versionen im Build-Script entsprechend austauscht.
 
