@@ -4,7 +4,7 @@
   <img src="https://user-images.githubusercontent.com/83558069/198220883-2051798b-4a38-4efe-bee9-55e9fd77ed68.jpg" />
 </p>
 
-##### <p align=right>By vitusb in 20221027</p>
+##### <p align=right>By vitusb in 20221104</p>
 ##### <p align=right>GnuPG VS-Desktop® ist eine eingetragene Marke der [g10 Code GmbH](https://g10code.com "g10 Code GmbH").<br>GnuPG VS-Desktop® is a registered trademark of [g10 Code GmbH](https://g10code.com "g10 Code GmbH").</p>
 ##### <p align=right>[Sicherheits-Bedenken zu Brainpool-Kurven des BSI](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Sicherheits-Bedenken zu den Brainpool-Kurven des BSI")<br>[(Security concerns about the BSI's Brainpool curves)](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Security concerns about the BSI's Brainpool curves")</p>
 
