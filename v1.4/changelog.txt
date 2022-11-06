@@ -1,3 +1,15 @@
+20221106
+
+- Tiny fix in updating a GnuPG 2.3.xx.x version. Definitely remove
+  additional 2.3 special files, when updating 2.3 with a 2.2-
+  installer. The 2.2-uninstaller will do not remove these files:
+  
+    - "{code:GetGnuPG2Installed}\bin\gpg-card.exe"
+    - "{code:GetGnuPG2Installed}\bin\keyboxd.exe"
+
+- Added "gpg-card.exe" and "keyboxd.exe" to "Tasks"-objects
+  for process-kill at startup.
+
 20221104
 
 - Bump version to 1.3.25.1 / 1.4.04.0
