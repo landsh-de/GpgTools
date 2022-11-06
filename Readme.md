@@ -1,7 +1,17 @@
 ## <p align=center>"GpgTools"<br>VS-NfD Konformität für "Gpg4Win"<br>(aka "GnuPG VS-Desktop®")</p>
 
+<br>
+
+<p align=center>Gpg4Win 3.x.xx ("de-vs" / VS-NfD Mode) mit <a href="https://github.com/landsh-de/GpgTools/releases">GpgTools 1.3.xx.x</a></p>
+<br>
 <p align="center">
   <img src="https://user-images.githubusercontent.com/83558069/198220883-2051798b-4a38-4efe-bee9-55e9fd77ed68.jpg" />
+</p>
+
+<p align=center>Gpg4Win 4.x.xx ("de-vs" / VS-NfD Mode) mit <a href="https://github.com/landsh-de/GpgTools/releases">GpgTools 1.4.xx.x</a></p>
+<br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/83558069/200171869-946f3dc6-1f57-4139-85ff-3fa58be5e880.jpg" />
 </p>
 
 ##### <p align=right>By vitusb in 20221104</p>
