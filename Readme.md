@@ -10,7 +10,7 @@
 
 ## <p id="German_Description">Deutsch / [English](#English_Description "English Description")</p>
 
-### "GpgTools" ist ein "Addon", umgesetzt als Installer-Paket, zur Herstellung der "VS-NfD"-Konformität ("de-vs" Modus) für das Open-Source Projekt [Gpg4Win (aktualisierte Version)](https://github.com/landsh-de/Gpg4Win/releases) und [Gpg4Win (originale Version -veraltet-)](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
+### "GpgTools" ist ein "Addon", umgesetzt als Installer-Paket, zur Herstellung der "VS-NfD"-Konformität ("de-vs" Modus) für das Open-Source Projekt [Gpg4Win (aktualisierte Version)](https://github.com/landsh-de/Gpg4Win/releases) und [Gpg4Win 3.1.16 (originale Version -veraltet-) bzw. Gpg4Win 4.xx.x](https://files.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
 
 ### "GpgTools" kann nach der Installation der entsprechenden Gpg4Win-Version manuell oder unbeaufsichtigt (unattended) installiert werden und rollt neben zusätzlichen unterstützenden Werkzeugen (Zero-Config Tools) eine zentrale, gehärtete Konfiguration aus. Diese Konfiguration aktiviert gehärtete "VS-NfD"-konforme Algorithmen und Konfigurationsparameter, die einen "VS-NfD"-konformen Betrieb von Gpg4Win ermöglichen.
 
