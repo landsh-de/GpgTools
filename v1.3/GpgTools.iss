@@ -411,13 +411,25 @@
 ; - Added english versions of VS-NfD SecOPs-documents, shown in
 ;   Gpg4Win 3.1.2x and 4.0.x.
 ;
-; - Added additional objects for process-kill at startup.
+; - Added additional "Tasks"-objects for process-kill at startup.
 ;
 ;   Actually the following processes are killed at starup:
 ;   outlook.exe, kleopatra.exe, gpa.exe, gpgme-w32spawn.exe,
 ;   gpg-agent.exe, gpg-connect-agent.exe, gpg-wks-client.exe,
 ;   gpg.exe, dirmngr.exe, gpgsm.exe, scdaemon.exe, pinentry-w32.exe,
 ;   pinentry.exe, pinentry-basic.exe.
+;
+; 20221106
+;
+; - Tiny fix in updating a GnuPG 2.3.xx.x version. Definitely remove
+;   additional 2.3 special files, when updating 2.3 with a 2.2-
+;   installer. The 2.2-uninstaller will do not remove these files:
+;
+;   - "{code:GetGnuPG2Installed}\bin\gpg-card.exe"
+;   - "{code:GetGnuPG2Installed}\bin\keyboxd.exe"
+;
+; - Added "gpg-card.exe" and "keyboxd.exe" to "Tasks"-objects
+;   for process-kill at startup.
 ;   
 ; ###################################################################
 
@@ -434,11 +446,11 @@
 ; ###################################################################
 ; ===================================================================
 ; Gpg4Win 3.1.25
-#define MyAppVer "1.3.25.1"
-#define MyAppVerName "GpgTools 1.3.25.1"
+#define MyAppVer "1.3.25.2"
+#define MyAppVerName "GpgTools 1.3.25.2"
 ; Gpg4Win 4.0.4
-; #define MyAppVer "1.4.04.0"
-; #define MyAppVerName "GpgTools 1.4.04.0"
+; #define MyAppVer "1.4.04.1"
+; #define MyAppVerName "GpgTools 1.4.04.1"
 ; ###################################################################
 ; # I'm comparing the string fileversion of the installed 
 ; # "kleopatra.exe" with var: "Gpg4WinVersion" and "Gpg4WinVersionB"
@@ -594,6 +606,14 @@ Type: filesandordirs; Name: "{commonappdata}\GNU\etc\gnupg\trusted-certs"
 Type: filesandordirs; Name: "{commonappdata}\GNU\etc\gnupg\source"
 Type: files; Name: "{commonappdata}\GNU\etc\gnupg\trustlist.txt"
 Type: files; Name: "{commonappdata}\GNU\etc\gnupg\trustlist_err.txt"
+; ###################################################################
+; ## Definitely delete version 2.3 special files, because they were #
+; ## not removed if we're using a 2.2-GnuPG installer package in    #
+; ## update-mode.                                                   #
+; ###################################################################
+Type: files; Name: "{code:GetGnuPG2Installed}\bin\gpg-card.exe"
+Type: files; Name: "{code:GetGnuPG2Installed}\bin\keyboxd.exe"
+
 ; ###################################################################
 ; ## Cleanup old tools from install target before new rollout      ##
 ; ###################################################################
@@ -1053,7 +1073,7 @@ german.installcont=Installation wird fortgesetzt ...
 ; Tasks for process-control before installation of files,
 ; that may be in use during install-process.
 ; See functions: "RunTask" and "KillTask" below in [Code]-section
-Tasks=outlook.exe%nkleopatra.exe%ngpa.exe%ngpgme-w32spawn.exe%ngpg-agent.exe%ngpg-connect-agent.exe%ngpg-wks-client.exe%ngpg.exe%ndirmngr.exe%ngpgsm.exe%nscdaemon.exe%npinentry-w32.exe%npinentry.exe%npinentry-basic.exe
+Tasks=outlook.exe%nkleopatra.exe%ngpa.exe%ngpgme-w32spawn.exe%ngpg-agent.exe%ngpg-connect-agent.exe%ngpg-wks-client.exe%ngpg.exe%ndirmngr.exe%ngpgsm.exe%nscdaemon.exe%npinentry-w32.exe%npinentry.exe%npinentry-basic.exe%ngpg-card.exe%nkeyboxd.exe
 
 [ThirdParty]
 UseRelativePaths=True
