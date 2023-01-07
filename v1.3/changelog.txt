@@ -1,3 +1,31 @@
+
+20230106
+
+- X.509-Certstore updated.
+- German certs from BSI, Bundeswehr, V-PKI, DOI, Telesec and
+  Dataport added to "extra-certs".
+- ROOT certs from Mozilla ROOT certstore (only trusted-versions)
+  added to "trusted-certs".
+- Scripts for ROOT-CertStore-Update and cert-test updated.
+- Central GnuPG-config cleanup and synchronized with config from
+  "GnuPG VS Desktop" 3.1.26. Keyserver now defined only in
+  "dirmngr.conf".
+- Update Version to GpgTools 1.3.26.1 / 1.4.1.1
+
+20221225
+
+- Bump version update to support GnuPG 2.2.41 / Gpg4Win 3.1.26
+  and GnuPG 2.4.0 / Gpg4Win 4.1.0.
+  
+  The included GnuPG-Package (original installer) was updated
+  to 2.2.41. Important fixes:
+  
+  - Fix CVE-2022-3515 (https://dev.gnupg.org/T6230) and
+    CVE-2022-47629 (https://dev.gnupg.org/T6284)
+
+  - For detailed release-infos of GnuPG 2.2.41 see:
+    https://dev.gnupg.org/T6280
+
 20221106
 
 - Tiny fix in updating a GnuPG 2.3.xx.x version. Definitely remove
