@@ -430,7 +430,25 @@
 ;
 ; - Added "gpg-card.exe" and "keyboxd.exe" to "Tasks"-objects
 ;   for process-kill at startup.
+;
+; 20221225
+;
+; - Version-Strings updated to support GnuPG 2.2.41 / Gpg4Win 3.1.26
+;   and GnuPG 2.4.0 / Gpg4Win 4.1.0
 ;   
+; 20230106
+;
+; - X.509-Certstore updated.
+; - German certs from BSI, Bundeswehr, V-PKI, DOI, Telesec and
+;   Dataport added to "extra-certs".
+; - ROOT certs from Mozilla ROOT certstore (only trusted-versions)
+;   added to "trusted-certs".
+; - Scripts for ROOT-CertStore-Update and cert-test updated.
+; - Central GnuPG-config cleanup and synchronized with config from
+;   "GnuPG VS Desktop" 3.1.26. Keyserver now defined only in
+;   "dirmngr.conf".
+; - Update Version to GpgTools 1.3.26.1 / 1.4.1.1
+;
 ; ###################################################################
 
 #define MyAppName "GpgTools"
@@ -445,12 +463,12 @@
 ; # Change vars here to support the correct version       - BEGIN - #
 ; ###################################################################
 ; ===================================================================
-; Gpg4Win 3.1.25
-; #define MyAppVer "1.3.25.2"
-; #define MyAppVerName "GpgTools 1.3.25.2"
-; Gpg4Win 4.0.4
-#define MyAppVer "1.4.04.1"
-#define MyAppVerName "GpgTools 1.4.04.1"
+; Gpg4Win 3.1.26
+#define MyAppVer "1.3.26.1"
+#define MyAppVerName "GpgTools 1.3.26.1"
+; Gpg4Win 4.1.0
+; #define MyAppVer "1.4.1.1"
+; #define MyAppVerName "GpgTools 1.4.1.1"
 ; ###################################################################
 ; # I'm comparing the string fileversion of the installed 
 ; # "kleopatra.exe" with var: "Gpg4WinVersion" and "Gpg4WinVersionB"
@@ -462,10 +480,11 @@
 ; # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ; #
 ; # Due to Gpg4Win-updates, update this string to the correct
-; # file-version of "kleopatra.exe" !!
+; # file-version of "kleopatra.exe" (extract gpg4win installer with
+; # 7-zip and check FileVersion Info-String of "kleopatra.exe") !!
 ; ###################################################################
 #define Gpg4WinVersion  "3.1.16.0"
-#define Gpg4WinVersionB "3.1.24.0"
+#define Gpg4WinVersionB "3.1.26.0"
 ; ===================================================================
 ; FileVersion Index-String of other helper-tools of Gpg4Win for finding
 ; the right version with german resources:
@@ -483,21 +502,28 @@
 ; FileVersion Info-String of "gpg.exe" AFTER installation of ...
 ;                                              "gnupg-w32-update.exe"
 ; ===================================================================
-; GnuPG Release 2.2 / "gnupg-w32-update.exe" is GnuPG 2.2.40
-#define GpgVersion   "2.2.40.11935"
-; GnuPG Release 2.3 / "gnupg-w32-update.exe" is GnuPG 2.3.8
-; #define GpgVersion "2.3.8.28434"
+; GnuPG Release 2.2 / "gnupg-w32-update.exe" is GnuPG 2.2.41
+#define GpgVersion   "2.2.41.30125"
+; GnuPG Release 2.4 / "gnupg-w32-update.exe" is GnuPG 2.4.0
+; #define GpgVersion "2.4.0.49237"
 ; ===================================================================
 
 ; ===================================================================
-; FileVersion Index-String of "pinentry-basic.exe" for finding the
-; right version with german resources AFTER installation of ...
+; FileVersion Index-String from Batch-Script ini-file ...
+; "Patcher-GitHub.ini" and "Patcher.ini" (from my ressource-patching
+; script), where "VERSIONINFO" Var is defined (here for example:
+; "3.1.26.0") of "pinentry-basic.exe" for finding the correct version
+; with german resources AFTER installation of ...
 ;                                              "gnupg-w32-update.exe"
 ; ===================================================================
 ; GnuPG Release 2.2 / "gnupg-w32-update.exe" is GnuPG 2.2.40
-#define GpgVersionIDX "3.1.25.0"
+; #define GpgVersionIDX "3.1.25.0"
+; GnuPG Release 2.2 / "gnupg-w32-update.exe" is GnuPG 2.2.41
+#define GpgVersionIDX "3.1.26.0"
 ; GnuPG Release 2.3 / "gnupg-w32-update.exe" is GnuPG 2.3.8
 ; #define GpgVersionIDX "4.0.4"
+; GnuPG Release 2.4 / "gnupg-w32-update.exe" is GnuPG 2.4.0
+; #define GpgVersionIDX "4.1.0"
 ; ===================================================================
 
 ; ###################################################################
@@ -737,6 +763,14 @@ Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\BSI-VSA-10573_secop
 Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\BSI-VSA-10584_secops-20220207.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\BSI-VSA-10573-ENG_secops-20220207.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\BSI-VSA-10584-ENG_secops-20220207.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\handout_group-feature_gnupg_en.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\handout_gruppen-funktion_gnupg_de.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\handout_outlook_plugin_gnupg_de.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\handout_outlook_plugin_gnupg_en.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\handout_sign_encrypt_gnupg_en.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\handout_symmetric_encryption_gnupg_en.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\handout_symmetrische_verschluesselung_gnupg_de.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\Gpg4win\share\doc\gnupg-vsd\handout_verschluesseln_signieren_gnupg_de.pdf; DestDir: {code:GetGpg4WinInstalled}\share\doc\gnupg-vsd; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ; ########################## Program-Icon ###########################
 Source: data\Program Files (x86)\GpgTools\Icon0.ico; DestDir: {app}; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\GpgTools\Icon1.ico; DestDir: {app}; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
