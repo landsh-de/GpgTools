@@ -5,13 +5,13 @@
 <p align=center>Gpg4Win 3.x.xx ("de-vs" / VS-NfD Mode) mit <a href="https://github.com/landsh-de/GpgTools/releases">GpgTools 1.3.xx.x</a></p>
 <br>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/83558069/198220883-2051798b-4a38-4efe-bee9-55e9fd77ed68.jpg" />
+  <img src="https://user-images.githubusercontent.com/83558069/211148717-a2c4e9e9-a296-4278-bcf3-2040ae4f94ec.jpg" />
 </p>
 
 <p align=center>Gpg4Win 4.x.xx ("de-vs" / VS-NfD Mode) mit <a href="https://github.com/landsh-de/GpgTools/releases">GpgTools 1.4.xx.x</a></p>
 <br>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/83558069/200171869-946f3dc6-1f57-4139-85ff-3fa58be5e880.jpg" />
+  <img src="https://user-images.githubusercontent.com/83558069/211148747-bf04ae8c-f3f4-447c-914e-b6a60594ccd1.jpg" />
 </p>
 
 ##### <p align=right>By vitusb in 20221104</p>
@@ -37,7 +37,7 @@
 #### Arbeitsschritte für die Version 1.3.x.x (Gpg4Win 3.x.x) / 1.4.x.x (Gpg4Win 4.x.x):
 1. Laden Sie den Installer von "Gpg4Win" von der Seite des Herstellers herunter.
    **Auf der Seite des Herstellers kann nur die Version 3.1.16 heruntergeladen werden (Stand 07/2022). Eine aktuelle Version, die im Quellcode mit der Version 3.1.2x von "GnuPG VS Desktop" identisch ist, steht [hier zur Verfügung](https://github.com/landsh-de/Gpg4Win/releases).**
-2. Aktuell wird der Installer für die Versionen "[gpg4win-3.1.16.exe (VS-NfD)](http://files.gpg4win.de/gpg4win-3.1.16.exe)", "[gpg4win-4.0.4.exe (nicht VS-NfD)](http://files.gpg4win.de/gpg4win-4.0.4.exe)" und "[gpg4win-3.1.2x.exe (nicht VS-NfD)](https://github.com/landsh-de/Gpg4Win/releases)" unterstützt. **Der VS-NfD-Modus wird von GpgTools für ALLE Versionen aktiviert ABER NUR DIE VERSION 3.1.16 IST OFFIZIELL VOM BSI ZUGELASSEN (SIEHE SecOPs SHA256-HASHES für Gpg4Win-3.1.16).**
+2. Aktuell wird der Installer für die Versionen "[gpg4win-3.1.16.exe (VS-NfD)](http://files.gpg4win.de/gpg4win-3.1.16.exe)", "[gpg4win-4.1.0.exe (OHNE GpgTools 1.4.xx.x nicht VS-NfD kompatibel)](http://files.gpg4win.de/gpg4win-4.1.0.exe)" und "[gpg4win-3.1.2x.exe (OHNE GpgTools 1.3.xx.x nicht VS-NfD kompatibel)](https://github.com/landsh-de/Gpg4Win/releases)" unterstützt. **Der VS-NfD-Modus wird von GpgTools für ALLE Versionen aktiviert ABER NUR DIE VERSION 3.1.16 IST OFFIZIELL VOM BSI ZUGELASSEN (SIEHE SecOPs SHA256-HASHES für Gpg4Win-3.1.16).**
 4. Installieren Sie "[die aktuelle 3.x.xx-Version von Gpg4Win](https://github.com/landsh-de/Gpg4Win/releases)", bzw. "[die aktuelle 4.x.xx-Version von Gpg4Win](https://gpg4win.de)" (Unattended Mode: ```start /wait "" "[ABSPATH]\gpg4win-x.x.xx.exe" /S```)
 5. Installieren Sie "GpgTools" (Details: s.u.).
 6. Starten Sie den Computer neu.
@@ -48,11 +48,12 @@
 
 ### Installation:
 
-> #### Die aktuelle Installation installiert eine globale zentrale gehärtete Konfiguration für [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop"), sowie Fehlerbehebungen in den Dialogen von "Pinentry" und den Übersetzungstabellen von GnuPG, GpgEX und GpgOL. Es wird ein [Update](https://dev.gnupg.org/T6181 "Update") des GnuPG-Backend auf Version [2.2.40](https://dev.gnupg.org/T6181 "2.2.40") durchgeführt. Des Weiteren werden Werkzeuge installiert, die die Nutzer-Konfiguration im Nutzerkontext bei Anmeldung vordefinieren. Für gehärtete Windows-Umgebungen wird die Ausführungs-Policy für entsprechende Programme von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") in den lokalen Applocker-Richtlinien bei Installation automatisch umgesetzt.
+> #### Die aktuelle Installation installiert eine globale zentrale gehärtete Konfiguration für [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop"), sowie Fehlerbehebungen in den Dialogen von "Pinentry" und den Übersetzungstabellen von GnuPG, GpgEX und GpgOL. Es wird ein [Update](https://dev.gnupg.org/T6280 "Update") des GnuPG-Backend auf Version [2.2.41](https://dev.gnupg.org/T6280 "2.2.41") durchgeführt. Des Weiteren werden Werkzeuge installiert, die die Nutzer-Konfiguration im Nutzerkontext bei Anmeldung vordefinieren. Für gehärtete Windows-Umgebungen wird die Ausführungs-Policy für entsprechende Programme von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") in den lokalen Applocker-Richtlinien bei Installation automatisch umgesetzt.
 
 #### Dateien wie "openssl.exe", die unter dem globalen Verzeichnis von GnuPG (ProgramData\GNU\etc\gnupg) installiert werden, besitzen ein angepasstes "Manifest" in ihrem PE-Loader, damit diese Werkzeuge nur mit einem "Administrativen Konto" ausgeführt werden können. Diese Werkzeuge werden zur Implementierung eines noch nicht aktivierten Update-Mechanismus für ROOT-Zertifikate unter GnuPG/Gpg4Win verwendet, der als Quelle nur die "TRUST"-Varianten aus dem Mozilla-ROOT-Cert-Store verwendet. Als Basis dient das Programm "[VBCertConv](https://github.com/landsh-de/VBCertConv)", welches auf einem [Tool von "Adam Langley" Security Engineer bei Google basiert](https://github.com/agl/extract-nss-root-certs). In einem administativen Umfeld kann über die "Aufgabenplanung" von Windows ein zyklisches Update der "trustlist.txt" über das Script: "BuildTrustList.bat" konfiguriert werden.
 
 #### Details zu der Update-Historie von GnuPG seit Rollout über Gpg4Win 3.1.16 (GnuPG 2.2.28)
+* [Release GnuPG 2.2.41](https://dev.gnupg.org/T6280 "Release GnuPG 2.2.41")
 * [Release GnuPG 2.2.40](https://dev.gnupg.org/T6181 "Release GnuPG 2.2.40")
 * [Release GnuPG 2.2.39](https://dev.gnupg.org/T6175 "Release GnuPG 2.2.39")
 * [Release GnuPG 2.2.38](https://dev.gnupg.org/T6159 "Release GnuPG 2.2.38")
@@ -78,7 +79,7 @@
 * Beendigung aller zum Installations-Zeitpunkt im Hintergrund auf dem System im globalen Kontext laufenden Programme: "outlook.exe", "kleopatra.exe" "gpa.exe", "gpgme-w32spawn.exe", "gpg-agent.exe", "gpg.exe", "dirmngr.exe", "gpgsm.exe", "scdaemon.exe", "pinentry-w32.exe", "pinentry.exe", "pinentry-basic.exe".
 * Löschung vorheriger angelegter Firewall-Regeln (im Update-Modus).
 * Löschung vorheriger installierter X.509-Zertifikate (im Update-Modus / X.509-Zertifikate werden nur unter GnuPG ausgerollt und nicht systemweit !!).
-* Unbeaufsichtigte Installation (unattended) des Paketes "gnupg-w32-update.exe" <b>(!! Prüfsumme ist identisch mit Originalversion !!)</b>.
+* Unbeaufsichtigte Installation (unattended) des Paketes "gnupg-w32-update.exe" <b>(!! Prüfsumme und Digitale-Signatur ist identisch mit Originalversion des aktuellen GnuPG Installer-Paketes der jeweiligen aktuellen GnuPG-Version !!)</b>.
 * Dekomprimierung und Installation der Dateien.
 * Anlegen der Firewall-Regeln (es werden für den Zugriff auf Keyserver und das Loopback-Interface nur ausgehende Firewall-Regeln für "GnuPG", "GpgSM", "Gpg-Agent", "DirMngr" und "Kleopatra" eingerichtet; für "GnuPG", "Gpg-Agent" und "DirMngr" werden nur 3 eingehende Firewall-Regeln vom Loopback-Interface eingerichtet. Details entnehmen Sie bitte dem Installer-Quellcode aus der Datei: "GpgTools.iss".
 * Prüfung: Software Restriction-Policy (SRP) aktiviert ?
@@ -127,6 +128,9 @@
 [Installer.exe] /LANG=German /TYPE=compact /SILENT /NORESTART /LOG
 [Installer.exe] /LANG=German /TYPE=compact /VERYSILENT /BASSSOUND- /NORESTART /LOG
 ```
+
+#### Der Innosetup-Installer der "GpgTools" ist nicht verschlüsselt. Falls Sie den Inhalt des Paketes zur Sicherheit überprüfen möchten, können Sie die EXE-Datei mit dem Werkzeug "Innounp" (Kommandozeilen-Werkzeug zur Extraktion von Innosetup Installer-Paketen) extrahieren. Innounp kann hier heruntergeladen werden:
+[Innounp (Homepage Sourceforge)](https://innounp.sourceforge.net/)
 
 #### Aufgrund der relativ hohen Kosten einer Digitalen Code-Signatur, sind entsprechende Binaries (noch) nicht digital signiert; somit kann es vorkommen, dass die Ausführung dieser Dateien nach einem Download unter Windows vom System blockiert wird. Um unter Windows die Ausführung heruntergeladener, ausführbarer Dateien zu ermöglichen, muss der "Alternate Data-Stream" "Zone.Identifier" aus der Datei entfernt werden sonst wird die Ausführung dieser Datei gesperrt. Starten Sie hierzu eine Kommando-Shell (cmd.exe) und führen Sie hierzu folgendes Kommando über die Powershell aus:
 ```
