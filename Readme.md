@@ -2,19 +2,13 @@
 
 <br>
 
-<p align=center>Gpg4Win 3.x.xx ("de-vs" / VS-NfD Mode) mit <a href="https://github.com/landsh-de/GpgTools/releases">GpgTools 1.3.xx.x</a></p>
+<p align=center>Gpg4Win 3.x.xx ("de-vs" / VS-NfD Mode) mit <a href="https://github.com/landsh-de/GpgTools/releases">GpgTools</a></p>
 <br>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/83558069/211148717-a2c4e9e9-a296-4278-bcf3-2040ae4f94ec.jpg" />
+  <img src="https://github.com/landsh-de/GpgTools/assets/83558069/060b562e-745e-4401-b4f9-537926928660" />
 </p>
 
-<p align=center>Gpg4Win 4.x.xx ("de-vs" / VS-NfD Mode) mit <a href="https://github.com/landsh-de/GpgTools/releases">GpgTools 1.4.xx.x</a></p>
-<br>
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/83558069/211148747-bf04ae8c-f3f4-447c-914e-b6a60594ccd1.jpg" />
-</p>
-
-##### <p align=right>By vitusb in 20221104</p>
+##### <p align=right>By vitusb in 20240709</p>
 ##### <p align=right>GnuPG VS-Desktop® ist eine eingetragene Marke der [g10 Code GmbH](https://g10code.com "g10 Code GmbH").<br>GnuPG VS-Desktop® is a registered trademark of [g10 Code GmbH](https://g10code.com "g10 Code GmbH").</p>
 ##### <p align=right>[Sicherheits-Bedenken zu Brainpool-Kurven des BSI](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Sicherheits-Bedenken zu den Brainpool-Kurven des BSI")<br>[(Security concerns about the BSI's Brainpool curves)](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Security concerns about the BSI's Brainpool curves")</p>
 
@@ -28,16 +22,16 @@
 
 ### Jede Unter-Version von "GpgTools" ist einer "Mainline-Version" von "Gpg4Win" zugeordnet:
 
-> ### * GptTools 1.3.x.x <=> Gpg4Win 3.x.x
+> ### * GptTools 3.2.x.x <=> Gpg4Win 3.x.x
 
-> ### * GptTools 1.4.x.x <=> Gpg4Win 4.x.x
+> ### * GptTools 3.2.x.x <=> Gpg4Win 4.x.x
 
 ### Gpg4Win muss VOR der Installation von "GpgTools" auf dem System installiert sein. Der Installer von "GpgTools" prüft VOR der Installation, ob die korrekte Version von "Gpg4Win" bereits installiert ist.
 
-#### Arbeitsschritte für die Version 1.3.x.x (Gpg4Win 3.x.x) / 1.4.x.x (Gpg4Win 4.x.x):
+#### Arbeitsschritte für die Version 3.x.x.x (Gpg4Win 3.x.x) / (Gpg4Win 4.x.x):
 1. Laden Sie den Installer von "Gpg4Win" von der Seite des Herstellers herunter.
-   **Auf der Seite des Herstellers kann nur die Version 3.1.16 heruntergeladen werden (Stand 07/2022). Eine aktuelle Version, die im Quellcode mit der Version 3.1.2x von "GnuPG VS Desktop" identisch ist, steht [hier zur Verfügung](https://github.com/landsh-de/Gpg4Win/releases).**
-2. Aktuell wird der Installer für die Versionen "[gpg4win-3.1.16.exe (VS-NfD)](http://files.gpg4win.de/gpg4win-3.1.16.exe)", "[gpg4win-4.1.0.exe (OHNE GpgTools 1.4.xx.x nicht VS-NfD kompatibel)](http://files.gpg4win.de/gpg4win-4.1.0.exe)" und "[gpg4win-3.1.2x.exe (OHNE GpgTools 1.3.xx.x nicht VS-NfD kompatibel)](https://github.com/landsh-de/Gpg4Win/releases)" unterstützt. **Der VS-NfD-Modus wird von GpgTools für ALLE Versionen aktiviert ABER NUR DIE VERSION 3.1.16 IST OFFIZIELL VOM BSI ZUGELASSEN (SIEHE SecOPs SHA256-HASHES für Gpg4Win-3.1.16).**
+   **Auf der Seite des Herstellers kann nur die Version 3.1.16 heruntergeladen werden (Stand 07/2022). Eine aktuelle Version, die im Quellcode mit der Version von "GnuPG VS Desktop" identisch ist, steht [hier zur Verfügung](https://github.com/landsh-de/Gpg4Win/releases).**
+2. Aktuell wird der Installer für die Versionen "[gpg4win-3.1.16.exe (VS-NfD)](http://files.gpg4win.de/gpg4win-3.1.16.exe)", "[gpg4win-4.3.1.exe (OHNE GpgTools nicht VS-NfD kompatibel)](https://files.gpg4win.de/gpg4win-4.3.1.exe)" und "[gpg4win-3.x.x.exe (OHNE GpgTools nicht VS-NfD kompatibel)](https://github.com/landsh-de/Gpg4Win/releases)" unterstützt. **Der VS-NfD-Modus wird von GpgTools für ALLE Versionen aktiviert ABER NUR DIE VERSION 3.1.16 IST OFFIZIELL VOM BSI ZUGELASSEN (SIEHE SecOPs SHA256-HASHES für Gpg4Win-3.1.16).**
 4. Installieren Sie "[die aktuelle 3.x.xx-Version von Gpg4Win](https://github.com/landsh-de/Gpg4Win/releases)", bzw. "[die aktuelle 4.x.xx-Version von Gpg4Win](https://gpg4win.de)" (Unattended Mode: ```start /wait "" "[ABSPATH]\gpg4win-x.x.xx.exe" /S```)
 5. Installieren Sie "GpgTools" (Details: s.u.).
 6. Starten Sie den Computer neu.
@@ -48,23 +42,18 @@
 
 ### Installation:
 
-> #### Die aktuelle Installation installiert eine globale zentrale gehärtete Konfiguration für [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop"), sowie Fehlerbehebungen in den Dialogen von "Pinentry" und den Übersetzungstabellen von GnuPG, GpgEX und GpgOL. Es wird ein [Update](https://dev.gnupg.org/T6280 "Update") des GnuPG-Backend auf Version [2.2.41](https://dev.gnupg.org/T6280 "2.2.41") durchgeführt. Des Weiteren werden Werkzeuge installiert, die die Nutzer-Konfiguration im Nutzerkontext bei Anmeldung vordefinieren. Für gehärtete Windows-Umgebungen wird die Ausführungs-Policy für entsprechende Programme von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") in den lokalen Applocker-Richtlinien bei Installation automatisch umgesetzt.
+> #### Die aktuelle Installation installiert eine globale zentrale gehärtete Konfiguration für [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop"), sowie Fehlerbehebungen in den Dialogen von "Pinentry" und den Übersetzungstabellen von GnuPG, GpgEX und GpgOL. Es wird ein [Update](https://dev.gnupg.org/T6280 "Update") des GnuPG-Backend auf Version [2.2.43](https://dev.gnupg.org/T6849 "2.2.43") durchgeführt. Des Weiteren werden Werkzeuge installiert, die die Nutzer-Konfiguration im Nutzerkontext bei Anmeldung vordefinieren. Für gehärtete Windows-Umgebungen wird die Ausführungs-Policy für entsprechende Programme von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") in den lokalen Applocker-Richtlinien bei Installation automatisch umgesetzt.
 
 #### Dateien wie "openssl.exe", die unter dem globalen Verzeichnis von GnuPG (ProgramData\GNU\etc\gnupg) installiert werden, besitzen ein angepasstes "Manifest" in ihrem PE-Loader, damit diese Werkzeuge nur mit einem "Administrativen Konto" ausgeführt werden können. Diese Werkzeuge werden zur Implementierung eines noch nicht aktivierten Update-Mechanismus für ROOT-Zertifikate unter GnuPG/Gpg4Win verwendet, der als Quelle nur die "TRUST"-Varianten aus dem Mozilla-ROOT-Cert-Store verwendet. Als Basis dient das Programm "[VBCertConv](https://github.com/landsh-de/VBCertConv)", welches auf einem [Tool von "Adam Langley" Security Engineer bei Google basiert](https://github.com/agl/extract-nss-root-certs). In einem administativen Umfeld kann über die "Aufgabenplanung" von Windows ein zyklisches Update der "trustlist.txt" über das Script: "BuildTrustList.bat" konfiguriert werden.
 
 #### Details zu der Update-Historie von GnuPG seit Rollout über Gpg4Win 3.1.16 (GnuPG 2.2.28)
-* [Release GnuPG 2.2.41](https://dev.gnupg.org/T6280 "Release GnuPG 2.2.41")
-* [Release GnuPG 2.2.40](https://dev.gnupg.org/T6181 "Release GnuPG 2.2.40")
-* [Release GnuPG 2.2.39](https://dev.gnupg.org/T6175 "Release GnuPG 2.2.39")
-* [Release GnuPG 2.2.38](https://dev.gnupg.org/T6159 "Release GnuPG 2.2.38")
-* [Release GnuPG 2.2.37](https://dev.gnupg.org/T6105 "Release GnuPG 2.2.37")
-* [Release GnuPG 2.2.36](https://dev.gnupg.org/T5949 "Release GnuPG 2.2.36")
-* [Release GnuPG 2.2.35](https://dev.gnupg.org/T5928 "Release GnuPG 2.2.35")
-* [Release GnuPG 2.2.34](https://dev.gnupg.org/T5703 "Release GnuPG 2.2.34")
-* [Release GnuPG 2.2.33](https://dev.gnupg.org/T5641 "Release GnuPG 2.2.33")
-* [Release GnuPG 2.2.32](https://dev.gnupg.org/T5601 "Release GnuPG 2.2.32")
-* [Release GnuPG 2.2.31](https://dev.gnupg.org/T5571 "Release GnuPG 2.2.31")
-* [Release GnuPG 2.2.30](https://dev.gnupg.org/T5519 "Release GnuPG 2.2.30")
+* [Release GnuPG 2.2.43](https://dev.gnupg.org/T6849 "Release GnuPG 2.2.43") * [Release GnuPG 2.2.42](https://dev.gnupg.org/T6307 "Release GnuPG 2.2.42")
+* [Release GnuPG 2.2.41](https://dev.gnupg.org/T6280 "Release GnuPG 2.2.41") * [Release GnuPG 2.2.40](https://dev.gnupg.org/T6181 "Release GnuPG 2.2.40")
+* [Release GnuPG 2.2.39](https://dev.gnupg.org/T6175 "Release GnuPG 2.2.39") * [Release GnuPG 2.2.38](https://dev.gnupg.org/T6159 "Release GnuPG 2.2.38")
+* [Release GnuPG 2.2.37](https://dev.gnupg.org/T6105 "Release GnuPG 2.2.37") * [Release GnuPG 2.2.36](https://dev.gnupg.org/T5949 "Release GnuPG 2.2.36")
+* [Release GnuPG 2.2.35](https://dev.gnupg.org/T5928 "Release GnuPG 2.2.35") * [Release GnuPG 2.2.34](https://dev.gnupg.org/T5703 "Release GnuPG 2.2.34")
+* [Release GnuPG 2.2.33](https://dev.gnupg.org/T5641 "Release GnuPG 2.2.33") * [Release GnuPG 2.2.32](https://dev.gnupg.org/T5601 "Release GnuPG 2.2.32")
+* [Release GnuPG 2.2.31](https://dev.gnupg.org/T5571 "Release GnuPG 2.2.31") * [Release GnuPG 2.2.30](https://dev.gnupg.org/T5519 "Release GnuPG 2.2.30")
 * [Release GnuPG 2.2.29](https://dev.gnupg.org/T5498 "Release GnuPG 2.2.29")
 
 ### <p id="Details_der_Installation">Details der Installation:</p>
@@ -147,9 +136,9 @@ powershell.exe -ep Bypass -noprofile -command "Remove-Item \"HERUNTERGELADENE_AU
 
 ### Each sub-version of “GpgTools” is assigned to a “mainline version” of "Gpg4Win":
 
-> ### * GptTools 1.3.x.x <=> Gpg4Win 3.x.x
+> ### * GptTools 3.2.x.x <=> Gpg4Win 3.x.x
 
-> ### * GptTools 1.4.x.x <=> Gpg4Win 4.x.x
+> ### * GptTools 3.2.x.x <=> Gpg4Win 4.x.x
 
 
 ### "Gpg4Win" must be installed on the system BEFORE installing “GpgTools”. The “GpgTools” installer checks BEFORE the installation whether the correct version of "Gpg4Win" is already installed.
