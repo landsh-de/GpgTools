@@ -1,4 +1,4 @@
-Version naming-scheme adapted to Gpg4Win / GnuPG VS Desktop version naming-scheme.
+Version naming scheme adapted to Gpg4Win / GnuPG VS Desktop version naming scheme.
 
 #### Installer-tree (portable paths) of GpgTools (Gpg4Win 3.x / 4.x Support)
 
