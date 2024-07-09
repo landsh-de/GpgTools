@@ -120,26 +120,19 @@ Streng genommen ist nur Version 3.1.16 vom BSI für Verschluss-Sachen bis zu der
 powershell.exe -ep Bypass -noprofile -command "Remove-Item \"HERUNTERGELADENE_AUSFÜHRBARE_DATEI\" -Stream Zone.Identifier"
 ```
 
-## <p id="English_Description">English / [Deutsch](#German_Description "Deutsche Beschreibung")</p>
+#### <p id="English_Description">English / [Deutsch](#German_Description "Deutsche Beschreibung")</p>
 
-### “GpgTools” is an “add-on”, implemented as an installer-package, for establishing the "VS-NfD"-conformity (“de-vs” mode) for the open-source project [Gpg4Win (updated version)](https://github.com/landsh-de/Gpg4Win/releases) and [Gpg4Win (original version -outdated-)](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
+“GpgTools” is an “add-on”, implemented as an installer-package, for establishing the "VS-NfD"-conformity (“de-vs” mode) for the open-source project [Gpg4Win (updated version)](https://github.com/landsh-de/Gpg4Win/releases) and [Gpg4Win (original version -outdated-)](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
 
-### “GpgTools” can be installed manually or unattended after the installation of the corresponding "Gpg4Win" version and, in addition to additional supporting tools (zero-config tools), rolls out a central, hardened configuration. This configuration activates hardened “VS-NfD”-compliant algorithms and configuration parameters that enable “VS-NfD”-compliant operation of "Gpg4Win".
+“GpgTools” can be installed manually or unattended after the installation of the corresponding "Gpg4Win" version and, in addition to additional supporting tools (zero-config tools), rolls out a central, hardened configuration. This configuration activates hardened “VS-NfD”-compliant algorithms and configuration parameters that enable “VS-NfD”-compliant operation of "Gpg4Win".
 
-### “GpgTools” requires (apart from the distribution of the package) NO ADDITIONAL ADMINISTRATIVE processes; the user environment is parameterized at runtime (login).
+“GpgTools” requires (apart from the distribution of the package) NO ADDITIONAL ADMINISTRATIVE processes; the user environment is parameterized at runtime (login).
 
-### Each sub-version of “GpgTools” is assigned to a “mainline version” of "Gpg4Win":
-
-> ### * GptTools 3.2.x.x <=> Gpg4Win 3.x.x
-
-> ### * GptTools 3.2.x.x <=> Gpg4Win 4.x.x
-
-
-### "Gpg4Win" must be installed on the system BEFORE installing “GpgTools”. The “GpgTools” installer checks BEFORE the installation whether the correct version of "Gpg4Win" is already installed.
+"Gpg4Win" must be installed on the system BEFORE installing “GpgTools”. The “GpgTools” installer checks BEFORE the installation whether the correct version of "Gpg4Win" is already installed.
 
 ... For installer commandline-options, see description in german above ...
 
-#### Due to the relatively high costs of a digital code signature, the corresponding binaries are not (yet) digitally signed; so it can happen that the execution of these files is blocked by the system after a download under Windows. In order to execute downloaded, non-signed executables under Windows, the "Alternate Data-Stream" "Zone.Identifier" must be removed from file, otherwise the execution will be blocked. Please invoke a commandline-shell (cmd.exe) and run the following command from a Powershell:
+Due to the relatively high costs of a digital code signature, the corresponding binaries are not (yet) digitally signed; so it can happen that the execution of these files is blocked by the system after a download under Windows. In order to execute downloaded, non-signed executables under Windows, the "Alternate Data-Stream" "Zone.Identifier" must be removed from file, otherwise the execution will be blocked. Please invoke a commandline-shell (cmd.exe) and run the following command from a Powershell:
 ```
 powershell.exe -ep Bypass -noprofile -command "Remove-Item \"DOWNLOADED_EXECUTABLE_FILE\" -Stream Zone.Identifier"
 ```
