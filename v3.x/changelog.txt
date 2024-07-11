@@ -1,4 +1,11 @@
 
+20240711
+
+- Added additional directories for replacement during update in
+  [InstallDelete]-section in order to avoid leaving orphaned files
+  behind.
+- Updated to version 3.2.2.1
+
 20240621
 
 - Version-naming scheme changed to Gpg4Win-naming scheme.
