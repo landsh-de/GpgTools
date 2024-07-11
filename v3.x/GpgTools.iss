@@ -494,6 +494,13 @@
 ;   For "DirectSound", i will use "BASS_DEVICE_DSOUND" as
 ;   value "$40000"; "0" is NOT DEFINED here !!
 ;
+; 20240711
+;
+; - Added additional directories for replacement during update in
+;   [InstallDelete]-section in order to avoid leaving orphaned files
+;   behind.
+; - Updated to version 3.2.2.1
+;
 ; ###################################################################
 
 #define MyAppName "GpgTools"
@@ -508,9 +515,8 @@
 ; # Change vars here to support the correct version       - BEGIN - #
 ; ###################################################################
 ; ===================================================================
-; Gpg4Win 3.2.2
-#define MyAppVer "3.2.2.0"
-#define MyAppVerName "GpgTools 3.2.2.0"
+#define MyAppVer "3.2.2.1"
+#define MyAppVerName "GpgTools 3.2.2.1"
 ; ###################################################################
 ; # I'm comparing the string fileversion of the installed 
 ; # "kleopatra.exe" with var: "Gpg4WinVersion" and "Gpg4WinVersionB"
@@ -690,6 +696,8 @@ Type: filesandordirs; Name: "{code:GetGpg4WinInstalled}\share\doc\gnupg-vsd"
 ; ## Cleanup old tools from install target before new rollout      ##
 ; ###################################################################
 ; Type: files; Name: "{app}\StartCon\*.*"
+Type: filesandordirs; Name: "{app}\ExpandGNUPGHOME"
+Type: filesandordirs; Name: "{app}\MigrateGnuPGKeybase"
 Type: filesandordirs; Name: "{app}\StartCon"
 
 [UninstallDelete]
