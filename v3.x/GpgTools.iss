@@ -501,6 +501,28 @@
 ;   behind.
 ; - Updated to version 3.2.2.1
 ;
+; 20250625
+;
+; - Updated to version 3.3.2.0
+; - Now GpgTools 3.3.2.0 will support Gpg4Win 3.1.16
+;   AND Gpg4Win 3.3.2.0
+; - Update GpgOL to 2.6.0.5155
+; - Update GnuPG to 2.2.47 (digital-signed)
+; - Removed crl-checks in config-profiles under
+;   "GnuPG\share\doc\gnupg\examples\*.prf":
+;   Removed [gpgsm] section from profiles because it
+;   was also removed in "GnuPG VS Desktop" and
+;   "enable-crl-checks" seems to be hard-coded now in gpgsm
+;   by "libgpgme" in "qgpgmerefreshsmimekeysjob.cpp" line 119:
+;   mProcess->setObjectName(QStringLiteral("gpgsm -k --with-validation --force-crl-refresh --enable-crl-checks"));
+;
+; 20250811
+;
+; - Updated to version 3.3.2.1
+; - Update Tasks kill-list for Gpg4Win v3.3.2
+;   https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=src/installer.nsi;hb=refs/tags/gpg4win-3.3.2#l400
+; - X.509-Certstore updated.
+;
 ; ###################################################################
 
 #define MyAppName "GpgTools"
@@ -515,8 +537,8 @@
 ; # Change vars here to support the correct version       - BEGIN - #
 ; ###################################################################
 ; ===================================================================
-#define MyAppVer "3.2.2.1"
-#define MyAppVerName "GpgTools 3.2.2.1"
+#define MyAppVer "3.3.2.1"
+#define MyAppVerName "GpgTools 3.3.2.1"
 ; ###################################################################
 ; # I'm comparing the string fileversion of the installed 
 ; # "kleopatra.exe" with var: "Gpg4WinVersion" and "Gpg4WinVersionB"
@@ -532,7 +554,7 @@
 ; # 7-zip and check FileVersion Info-String of "kleopatra.exe") !!
 ; ###################################################################
 #define Gpg4WinVersion  "3.1.16.0"
-#define Gpg4WinVersionB "3.2.2.0"
+#define Gpg4WinVersionB "3.3.0.0"
 ; ===================================================================
 ; FileVersion Index-String of other helper-tools of Gpg4Win for finding
 ; the right version with german resources:
@@ -555,16 +577,18 @@
 ; FileVersion Info-String of "gpg.exe" AFTER installation of ...
 ; "gnupg-w32-update.exe".
 ; ===================================================================
-; GnuPG Release 2.2 / "gnupg-w32-update.exe" is GnuPG 2.2.43
-#define GpgVersion   "2.2.43.14732"
+; GnuPG Release 2.2 / "gnupg-w32-update.exe" is GnuPG 2.2.47
+#define GpgVersion   "2.2.47.62079"
 ; GnuPG Release 2.4 / "gnupg-w32-update.exe" is GnuPG 2.4.5
 ; #define GpgVersion "2.4.5.52223"
 ; ===================================================================
-; FileVersion Info-String of "gpgol.dll" AFTER installation of ...
+; FileVersion Info-String of "gpgol.dll" AFTER installation of
 ; "Gpg4Win"; used in sub-function "Check: CheckVerLESS" below.
+; "GpgOLVersion" is the original version, "GpgOLVersionB" is the
+; new version to be installed
 ; ===================================================================
 #define GpgOLVersion  "2.5.0.18451"
-#define GpgOLVersionB "2.5.12.13607"
+#define GpgOLVersionB "2.6.0.5155"
 ; ===================================================================
 
 ; ###################################################################
@@ -677,12 +701,13 @@ Type: files; Name: "{commonappdata}\GNU\etc\gnupg\trustlist.txt"
 Type: files; Name: "{commonappdata}\GNU\etc\gnupg\trustlist_err.txt"
 
 ; ###################################################################
-; ## Definitely delete version > 2.2-GnuPG files, because they were #
-; ## not removed if we're using a 2.2-GnuPG installer package in    #
-; ## update-mode.                                                   #
+; ## Definetly delete version > 2.2-GnuPG files, because they were ##
+; ## not removed if we're using a 2.2-GnuPG installer package in   ##
+; ## update-mode on gnupg v4. "gpg-card.exe" and "keyboxd.exe"     ##
+; ## belong to GnuPG v4.xx.xx.                                     ##
 ; ###################################################################
-Type: files; Name: "{code:GetGnuPG2Installed}\bin\gpg-card.exe"
-Type: files; Name: "{code:GetGnuPG2Installed}\bin\keyboxd.exe"
+; Type: files; Name: "{code:GetGnuPG2Installed}\bin\gpg-card.exe"
+; Type: files; Name: "{code:GetGnuPG2Installed}\bin\keyboxd.exe"
 
 ; ###################################################################
 ; ## Cleanup VS-NfD Certification Docs before installing new docs. ##
@@ -700,11 +725,13 @@ Type: filesandordirs; Name: "{app}\ExpandGNUPGHOME"
 Type: filesandordirs; Name: "{app}\MigrateGnuPGKeybase"
 Type: filesandordirs; Name: "{app}\StartCon"
 
-[UninstallDelete]
+; [UninstallDelete]
 ; ###################################################################
 ; ## Cleanup trash that will not be removed by GnuPG-installer     ##
+; ## This comes from newer Gpg4Win-Installers > Gpg4Win 3.2.x.x    ##
 ; ###################################################################
-Type: files; Name: "{code:GetGnuPG2Installed}\bin\gpg-disable-keyboxd.bat"
+; Type: files; Name: "{code:GetGnuPG2Installed}\bin\gpg-disable-keyboxd.bat"
+; Type: files; Name: "{code:GetGnuPG2Installed}\bin\gpg-enable-keyboxd.bat
 
 [Files]
 ; Due to this preinstallation environment we have to take care
@@ -761,7 +788,7 @@ Source: data\GpgUpdate\gnupg-w32-update.exe; DestDir: {tmp}; Flags: dontcopy noe
 ; Local User Environment Expander
 ;
 ; ################ Dummy for triggering GnuPGUpdate #################
-Source: data\GpgUpdate\dummy; DestDir: {commonappdata}\GNU; BeforeInstall: GnuPGUpdate; Flags: ignoreversion recursesubdirs createallsubdirs uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\GpgUpdate\dummy; DestDir: {commonappdata}\GNU; BeforeInstall: GnuPGUpdate; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ;
 ; ########################## Konfig-Files ###########################
 Source: data\ProgramData\GNU\*; DestDir: {commonappdata}\GNU; Flags: ignoreversion recursesubdirs createallsubdirs uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
@@ -1172,10 +1199,11 @@ german.installcont=Installation wird fortgesetzt ...
 ; that may be in use during install-process.
 ; See functions: "RunTask" and "KillTask" below in [Code]-section
 ; Got parts of the kill-list from NSIS-Function "KillOtherAppsOrWarn" of
-; Gpg4Win-Installer (20230612):
+; Gpg4Win-Installer (20250625):
 ; https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=src/installer.nsi;hb=refs/tags/gpg4win-3.1.27#l406
 ; https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=src/installer.nsi;hb=refs/tags/gpg4win-4.1.0#l406
-Tasks=kleopatra.exe%ngpgme-w32spawn.exe%nresolver.exe%noverlayer.exe%ngpg-agent.exe%ngpg.exe%ndirmngr.exe%ngpgsm.exe%ngpg-connect-agent.exe%ngpg-wks-client.exe%nscdaemon.exe%npinentry-w32.exe%npinentry.exe%npinentry-basic.exe%ngpg-card.exe%nkeyboxd.exe%noutlook.exe%ngpa.exe 
+; https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=src/installer.nsi;hb=refs/tags/gpg4win-3.3.2#l400
+Tasks=kleopatra.exe%ngpgme-w32spawn.exe%nresolver.exe%noverlayer.exe%ngpg-agent.exe%ngpg.exe%nkeyboxd.exe%nscdaemon.exe%ngpgolconfig.exe%ndirmngr.exe%ngpgsm.exe%nokular.exe%ngpgpass.exe%ngpg-connect-agent.exe%ngpg-wks-client.exe%npinentry-w32.exe%npinentry.exe%npinentry-basic.exe%ngpg-card.exe%noutlook.exe
 
 [ThirdParty]
 UseRelativePaths=True
