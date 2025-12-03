@@ -1,4 +1,26 @@
 
+20250811
+
+- Updated to version 3.3.2.1
+- Update Tasks kill-list for Gpg4Win v3.3.2
+  https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=src/installer.nsi;hb=refs/tags/gpg4win-3.3.2#l400
+- Update to remove-list of socket named-pipes in user profile-dir
+- X.509-Certstore updated.
+
+20250625
+
+- Updated to version 3.3.2.0
+- Now GpgTools 3.3.2.0 will support Gpg4Win 3.1.16 AND Gpg4Win 3.3.2.0
+- Update GpgOL to 2.6.0.5155
+- Update GnuPG to 2.2.47 (digital-signed)
+- Removed crl-checks in config-profiles under
+  "GnuPG\share\doc\gnupg\examples\*.prf":
+  Removed [gpgsm] section from profiles because it
+  was also removed in "GnuPG VS Desktop" and
+  "enable-crl-checks" seems to be hard-coded now in gpgsm
+  by "libgpgme" in "qgpgmerefreshsmimekeysjob.cpp" line 119:
+  mProcess->setObjectName(QStringLiteral("gpgsm -k --with-validation --force-crl-refresh --enable-crl-checks"));
+
 20240711
 
 - Added additional directories for replacement during update in
