@@ -13,7 +13,7 @@ REM :: SET DIMENSIONS
 REM :: No scroll-buffer possible, when lines are defined
 REM :: mode con cols=120 lines=40
 
-set INSTALLER=gpgtools-3.2.2.1.exe
+set INSTALLER=gpgtools-3.3.2.1.exe
 SET ERRORLEVEL=0
 REM :: -------------------- config block -----------------------  END
 
