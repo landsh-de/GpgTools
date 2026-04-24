@@ -1,4 +1,4 @@
-<p align=center>"<a href="https://github.com/landsh-de/GpgTools/releases">GpgTools</a>" - VS-NfD (de_vs) conformity for "Gpg4Win" (aka "GnuPG VS-Desktop®")</p>
+<p align=center>"<a href="https://github.com/landsh-de/GpgTools/releases">GpgTools</a>" - VS-NfD (de_vs) conformity for "Gpg4Win" Version 3.x.xx (aka "GnuPG VS-Desktop®")</p>
 
 <br>
 <p align="center">
