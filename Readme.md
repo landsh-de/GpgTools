@@ -2,25 +2,25 @@
 
 <br>
 <p align="center">
-  <img src="https://github.com/landsh-de/GpgTools/assets/83558069/060b562e-745e-4401-b4f9-537926928660" />
+  <img width="928" height="565" alt="Gpg4Win-3 1 16-VS-NfD" src="https://github.com/user-attachments/assets/8c89cf44-65a3-448e-b87e-89b8157d0512" />
 </p>
 
-##### <p align=right>By vitusb in 20240709</p>
+##### <p align=right>By vitusb in 20260423</p>
 ##### <p align=right>GnuPG VS-Desktop® ist eine eingetragene Marke der [g10 Code GmbH](https://g10code.com "g10 Code GmbH").<br>GnuPG VS-Desktop® is a registered trademark of [g10 Code GmbH](https://g10code.com "g10 Code GmbH").</p>
 ##### <p align=right>[Sicherheits-Bedenken zu Brainpool-Kurven des BSI](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Sicherheits-Bedenken zu den Brainpool-Kurven des BSI")<br>[(Security concerns about the BSI's Brainpool curves)](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Security concerns about the BSI's Brainpool curves")</p>
 
 ### <p id="German_Description">Deutsch / [English](#English_Description "English Description")</p>
 
-"GpgTools" ist ein Addon zur Herstellung der "VS-NfD"-Konformität ("de-vs" Modus) für das Open-Source Projekt "Gpg4Win".
+"GpgTools" ist ein Addon zur Herstellung der "VS-NfD"-Konformität ("de-vs" Modus) für das Open-Source Projekt "Gpg4Win" in der Version 3.x.xx (NICHT Version 4 oder Version 5).
 
-"GpgTools" kann nach der Installation der entsprechenden Gpg4Win-Version manuell oder unbeaufsichtigt installiert werden. Es installiert neben zusätzlichen unterstützenden Werkzeugen eine zentrale, gehärtete Konfiguration. Diese Konfiguration aktiviert gehärtete "VS-NfD"-konforme Algorithmen und Konfigurationsparameter, die einen "VS-NfD"-konformen Betrieb von "Gpg4Win" ermöglichen.
+"GpgTools" kann nach der Installation der entsprechenden Gpg4Win-Version manuell oder unbeaufsichtigt installiert werden. Es installiert neben zusätzlichen unterstützenden Werkzeugen eine zentrale, gehärtete VS-NfD-konforme Konfiguration. Diese Konfiguration aktiviert gehärtete "VS-NfD"-konforme Algorithmen und Konfigurationsparameter, die einen "VS-NfD"-konformen Betrieb von "Gpg4Win" ermöglichen.
 
-"GpgTools" benötigt (abgesehen von der Verteilung des Paketes) KEINE WEITEREN ADMINISTRATIVEN Prozesse; die Benutzerumgebung wird zur Laufzeit (Anmeldung) konfiguriert.
+"GpgTools" benötigt (abgesehen von der Verteilung des Paketes) KEINE WEITEREN ADMINISTRATIVEN Prozesse; die Benutzerumgebung wird zur Laufzeit (Anmeldung) dynamisch konfiguriert.
 
-"Gpg4Win" muss VOR der Installation von "GpgTools" auf dem System installiert sein. Der Installer von "GpgTools" prüft VOR der Installation, ob die korrekte Version von "Gpg4Win" bereits installiert ist.
+"Gpg4Win" in der Version 3.x.xx muss VOR der Installation von "GpgTools" auf dem System installiert sein. Der Installer von "GpgTools" prüft VOR der Installation, ob die korrekte Version von "Gpg4Win" bereits installiert ist. Unterstützt werden Gpg4Win 3.1.16 und die jeweils zur Versionsnummer passende Version von Gpg4Win. Für die GpgTools Version 3.3.7.0 wären das somit Gpg4Win 3.1.16 und Gpg4Win 3.3.7.x.
 
 #### Welche Version von "Gpg4Win" soll ich verwenden ?
-Streng genommen ist nur Version 3.1.16 inkl. Signatur der folgenden 3-er Versionen vom BSI für VS-Stufen bis "VS-NfD" "zugelassen". Das bereitgestellte "Private-Build" in der jeweils aktuellen Version, entspricht im Quellcode dem Original aus dem Versions-Tag des GnuPG-Git für "GnuPG VS Desktop" bzw. "Gpg4Win". Diese Version ist allerdings nicht digital signiert; das verwendete GnuPG-Backend ist inklusive der digitalen Signatur identisch. Die aktuelle 3er-Version ("[gpg4win-3.x.x.exe](https://github.com/landsh-de/Gpg4Win/releases)") wird auf einem aktuellen Debian Live-System entsprechend der Dokumentation erstellt.
+Streng genommen ist nur Version 3.1.16 inkl. Digitaler Signatur der folgenden 3-er Versionen vom BSI für VS-Stufen bis "VS-NfD" "zugelassen". Das bereitgestellte "Private-Build" in der jeweils aktuellen Version, entspricht im Quellcode dem Original aus dem Versions-Tag des GnuPG-Git für "GnuPG VS Desktop" bzw. "Gpg4Win", ist allerdings nicht digital signiert und somit nicht vom BSI zugelassen. Das verwendete GnuPG-Backend ist inklusive der digitalen Signatur 100% identisch.
 
 #### Arbeitsschritte zur Installation:
 1. Laden Sie den Installer von "Gpg4Win" von der Seite des Herstellers herunter.
@@ -35,7 +35,7 @@ Streng genommen ist nur Version 3.1.16 inkl. Signatur der folgenden 3-er Version
 
 ### Installation:
 
-> Die aktuelle Installation installiert eine globale zentrale gehärtete Konfiguration für [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop"). Es wird ein [Update](https://dev.gnupg.org/T6849 "Update") des GnuPG-Backend auf Version 2.2.47 durchgeführt. Des Weiteren werden Werkzeuge installiert, die die Nutzer-Konfiguration im Benutzerkontext bei Anmeldung vordefinieren. Für gehärtete Windows-Umgebungen wird die Ausführungs-Policy für entsprechende Programme von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") in den lokalen Applocker-Richtlinien bei Installation automatisch umgesetzt.
+> Die aktuelle Installation installiert eine globale zentrale gehärtete Konfiguration für [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop"). Es wird ein Updatedes GnuPG-Backend mit der Original-Version durchgeführt. Des Weiteren werden Werkzeuge installiert, die die Nutzer-Konfiguration im Benutzerkontext bei Anmeldung vordefinieren. Für gehärtete Windows-Umgebungen wird die Ausführungs-Policy für entsprechende Programme von [Gpg4Win](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop") in den lokalen Applocker-Richtlinien bei Installation automatisch umgesetzt.
 
 Dateien wie "openssl.exe", die unter dem globalen Verzeichnis von GnuPG (ProgramData\GNU\etc\gnupg) installiert werden, besitzen ein angepasstes "Manifest" in ihrem PE-Loader, damit diese Werkzeuge nur mit einem "Administrativen Konto" ausgeführt werden können. Diese Werkzeuge werden zur Implementierung eines noch nicht aktivierten Update-Mechanismus für ROOT-Zertifikate unter GnuPG/Gpg4Win verwendet, der als Quelle nur die "TRUST"-Varianten aus dem Mozilla-ROOT-Cert-Store verwendet. Als Basis dient das Programm "[VBCertConv](https://github.com/landsh-de/VBCertConv)", welches auf einem [Programm von "Adam Langley" (Security Engineer - Google) basiert](https://github.com/agl/extract-nss-root-certs). In einem administativen Umfeld kann über die "Aufgabenplanung" von Windows ein zyklisches Update der "trustlist.txt" über das Script: "BuildTrustList.bat" konfiguriert werden.
 
@@ -48,7 +48,7 @@ Dateien wie "openssl.exe", die unter dem globalen Verzeichnis von GnuPG (Program
 * Dekomprimierung Installer-Skin
 * Prüfung, ob "Gpg4Win" und "GnuPG" in der passenden Version installiert sind.
 * Abspielen der Hintergrund-Musik während des Installations-Prozesses.
-* Beendigung aller zum Installations-Zeitpunkt im Hintergrund auf dem System im globalen Kontext laufenden Programme: "outlook.exe", "kleopatra.exe" "gpa.exe", "gpgme-w32spawn.exe", "gpg-agent.exe", "gpg.exe", "dirmngr.exe", "gpgsm.exe", "scdaemon.exe", "pinentry-w32.exe", "pinentry.exe", "pinentry-basic.exe".
+* Beendigung aller zum Installations-Zeitpunkt im Hintergrund auf dem System im globalen Kontext laufenden Programme: "outlook.exe", "kleopatra.exe" "gpa.exe", "gpgme-w32spawn.exe", "gpg-agent.exe", "gpg.exe", "dirmngr.exe", "gpgsm.exe", "scdaemon.exe", "pinentry-w32.exe", "pinentry.exe", "pinentry-basic.exe", "thunderbird.exe".
 * Löschung vorheriger angelegter Firewall-Regeln (im Update-Modus).
 * Löschung vorheriger installierter X.509-Zertifikate (im Update-Modus / X.509-Zertifikate werden nur unter GnuPG ausgerollt und nicht systemweit !!).
 * Unbeaufsichtigte Installation (unattended) des Paketes "gnupg-w32-update.exe" <b>(!! Prüfsumme und Digitale-Signatur ist identisch mit Originalversion des aktuellen GnuPG Installer-Paketes der jeweiligen aktuellen GnuPG-Version !!)</b>.
@@ -111,7 +111,7 @@ powershell.exe -ep Bypass -noprofile -command "Remove-Item \"HERUNTERGELADENE_AU
 
 #### <p id="English_Description">English / [Deutsch](#German_Description "Deutsche Beschreibung")</p>
 
-“GpgTools” is an “add-on”, implemented as an installer-package, for establishing the "VS-NfD"-conformity (“de-vs” mode) for the open-source project [Gpg4Win (updated version)](https://github.com/landsh-de/Gpg4Win/releases) and [Gpg4Win (original version -outdated-)](https://www.gpg4win.de "Gpg4Win / GnuPG VS-Desktop").
+“GpgTools” is an “add-on”, implemented as an installer-package, for establishing the "VS-NfD"-conformity (“de-vs” mode) for the open-source project Gpg4Win Version 3.x.xx (NOT Version 4 or Version 5).
 
 “GpgTools” can be installed manually or unattended after the installation of the corresponding "Gpg4Win" version. It installs a central, hardened configuration. This configuration activates hardened “VS-NfD”-compliant algorithms and configuration parameters in order to activate the “VS-NfD”-compliant operation of "Gpg4Win".
 
