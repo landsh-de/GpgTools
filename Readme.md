@@ -20,7 +20,7 @@
 "Gpg4Win" in der Version 3.x.xx muss VOR der Installation von "GpgTools" auf dem System installiert sein. Der Installer von "GpgTools" prüft VOR der Installation, ob die korrekte Version von "Gpg4Win" bereits installiert ist. Unterstützt werden Gpg4Win 3.1.16 und die jeweils zur Versionsnummer passende Version von Gpg4Win. Für die GpgTools Version 3.3.7.0 wären das somit Gpg4Win 3.1.16 und Gpg4Win 3.3.7.x.
 
 #### Welche Version von "Gpg4Win" soll ich verwenden ?
-Streng genommen ist nur Version 3.1.16 inkl. Digitaler Signatur der folgenden 3-er Versionen vom BSI für VS-Stufen bis "VS-NfD" "zugelassen". Das bereitgestellte "Private-Build" in der jeweils aktuellen Version, entspricht im Quellcode dem Original aus dem Versions-Tag des GnuPG-Git für "GnuPG VS Desktop" bzw. "Gpg4Win", ist allerdings nicht digital signiert und somit nicht vom BSI zugelassen. Das verwendete GnuPG-Backend ist inklusive der digitalen Signatur 100% identisch.
+Streng genommen ist nur Version 3.1.16 inkl. Digitaler Signatur der folgenden 3-er Versionen vom [BSI](https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Zulassung/Liste-zugelassener-Produkte/liste-zugelassener-produkte_node.html) für VS-Stufen bis "VS-NfD" "zugelassen". Das bereitgestellte "Private-Build" in der jeweils aktuellen Version, entspricht im Quellcode dem Original aus dem Versions-Tag des GnuPG-Git für "GnuPG VS Desktop" bzw. "Gpg4Win", ist jedoch nicht digital signiert und somit nicht vom BSI zugelassen. Das verwendete GnuPG-Backend ist inklusive der Digitalen Signatur 100% identisch mit dem Backend von "GnuPG VS Desktop".
 
 #### Arbeitsschritte zur Installation:
 1. Laden Sie den Installer von "Gpg4Win" von der Seite des Herstellers herunter.
@@ -113,7 +113,7 @@ powershell.exe -ep Bypass -noprofile -command "Remove-Item \"HERUNTERGELADENE_AU
 
 “GpgTools” is an “add-on”, implemented as an installer-package, for establishing the "VS-NfD"-conformity (“de-vs” mode) for the open-source project Gpg4Win Version 3.x.xx (NOT Version 4 or Version 5).
 
-“GpgTools” can be installed manually or unattended after the installation of the corresponding "Gpg4Win" version. It installs a central, hardened configuration. This configuration activates hardened “VS-NfD”-compliant algorithms and configuration parameters in order to activate the “VS-NfD”-compliant operation of "Gpg4Win".
+“GpgTools” can be installed manually or unattended after the installation of the corresponding "Gpg4Win" version. It installs a central, hardened BSI-conformant configuration ([BSI](https://www.bsi.bund.de/EN/Home/home_node.html) is "Federal Office for Information Security"). This configuration activates hardened “VS-NfD”-compliant algorithms and configuration parameters in order to activate the “VS-NfD”-compliant operation of "Gpg4Win".
 
 “GpgTools” requires (apart from the distribution of the package) NO ADDITIONAL ADMINISTRATIVE processes; the user environment is parameterized at runtime (login).
 
