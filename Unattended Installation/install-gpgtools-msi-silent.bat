@@ -13,7 +13,7 @@ REM :: SET DIMENSIONS
 REM :: No scroll-buffer possible, when lines are defined
 REM :: mode con cols=120 lines=40
 
-set INSTALLER=gpgtools-3.3.7.0.exe
+SET INSTALLER=gpgtools-3.3.7.0.msi
 SET ERRORLEVEL=0
 REM :: -------------------- config block -----------------------  END
 
@@ -202,8 +202,7 @@ if not exist "%EXEDIR%\%INSTALLER%"    goto installererror
 echo.
 REM :: Run Innosetup-Installer Package.
 echo.Starte INSTALLER, bitte warten ...
-start /wait "" "%EXEDIR%\%INSTALLER%" /LANG=German /TYPE=fullpol /VERYSILENT /BASSSOUND- /NORESTART /LOG
-
+start /wait "" "msiexec.exe" /i "%EXEDIR%\%INSTALLER%" /l*v "%TEMP%\%INSTALLER%.log.txt" /qn /norestart
 goto end
 
 :tmperror
