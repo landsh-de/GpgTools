@@ -1,4 +1,67 @@
 
+20260423
+
+- Updated to version 3.3.7.0 in respect of "gpg4win-3.3.7" aka
+  "GnuPG VS Desktop" v3.3.7.0
+- Update to GnuPg Version 2.2.54 (signed)
+- Fixed buffer-overflow in "libgcrypt" of GnuPG in Montgommery-Code for
+  Bernstein-Curve "Curve25519" and Goldilocks-Curve X448 by
+  Mike Hamburg.
+  Source: https://dev.gnupg.org/T8211
+  Affected version:
+  master:     1.9.0 (2021-01-19) - 1.12.1 (2026-02-20), HEAD 39aca53
+  1.8 branch: 1.8.8 (2021-06-02) - 1.8.12 (2025-10-28)
+  unaffected: 1.8.0 - 1.8.7
+  ... so every libgcrypt release since January 2021 ships the bug !!
+- Update GpgOL to v2.7.2.26992 (signed)
+- Update Tasks kill-list for Gpg4Win v3.3.7 and added "thunderbird.exe"
+  https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=src/installer.nsi;hb=refs/tags/gpg4win-3.3.7#l400
+  https://dev.gnupg.org/source/gpg4win/browse/master/src/installer.nsi;gpg4win-3.3.7$400-413
+- X.509-Certstore updated to date: 20260423
+- Modification (german resources in dialog) of "pinentry-basic.exe"
+  (GnuPG) and "pinentry-w32.exe" (Gpg4Win v3.3.7.0) disabled
+  because the replacement of a file by a file with modified
+  resources and lost Digital-Signature will violate the approval
+  guideline of the BSI for this product.
+- Fixed translation-errors in "gpgol.mo" and "gpgex.mo"
+  (these files are not digital signed).
+- Fixed compilance-check in VSD-config of GnuPG (gpg.conf) and
+  GpgSM (gpgsm.conf): set "min-rsa-length" back from 4000 to 3000
+  because all 3072 Bit RSA-keys, that were created by
+  "GnuPG VS Desktop", were falsely flagged as non "VS-NfD-compilant".
+- We had to fix the version-check of "gpgol.dll" in "CheckGpgOLVerEQ()"
+  because of an existing issue in versioning between the 32-bit and
+  64-bit versions of "gpgol.dll":
+  since newer versions of "gpgol.dll", the 64-bit version has NOT
+  THE SAME VERSION-NUMBER THAN THE 32-bit version. So we compare
+  the correct version of "gpgol.dll" only by the 32-bit version here.
+  TEMPORARY GPGOL-FIX (this will be filed on dev-hub as an error).
+  The problem has also "CheckVerLESS()":
+    Provided Version-Number to compare: "2.7.2.26992"
+    CheckVerLESS(): 2.7.2.26992 IS NEWER THAN 2.7.2.0.
+  .. but this issue has no effect here on the update-process, so
+  we will leave this stuff actually unchanged ...
+- reduced VS-NfD compilance-attribute "min-rsa-length" back to
+  "3000" because of compatibility with "GnuPG VS Desktop" in
+  config-files: "gpg.conf" and "gpgsm.conf".
+
+20260312
+
+- Updated to version 3.3.5.0 in respect of "gpg4win-3.3.5" aka
+  "GnuPG VS Desktop" v3.3.5.0.
+- Update to GnuPg Version 2.2.52 (signed).
+- Update GpgOL to v2.7.1.18201 (signed).
+- Update Tasks kill-list for Gpg4Win v3.3.5.
+  https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=src/installer.nsi;hb=refs/tags/gpg4win-3.3.5#l400
+  https://dev.gnupg.org/source/gpg4win/browse/master/src/installer.nsi;gpg4win-3.3.5$400-413
+- X.509-Certstore updated to date: 20260312.
+- Update OpenSSL (Self-Build) for bbuilding "trustlist.exe" to
+  OpenSSL v3.5.5 x64 mingw64.
+- Update BuildTrustList.bat to 2.9
+  Check for cert-expiration of all certs in "extra-certs"-folder,
+  whether the certificates are still valid within the
+  last 24 hours. Error-log goes to "trustlist_err.txt".
+
 20250811
 
 - Updated to version 3.3.2.1

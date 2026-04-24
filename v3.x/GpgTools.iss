@@ -519,10 +519,58 @@
 ; 20250811
 ;
 ; - Updated to version 3.3.2.1
-; - Update Tasks kill-list for Gpg4Win v3.3.2
+; - Update Tasks kill-list for Gpg4Win v3.3.2 (gpg4win-3.3.2)
 ;   https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=src/installer.nsi;hb=refs/tags/gpg4win-3.3.2#l400
 ; - X.509-Certstore updated.
 ;
+; 20260312
+;
+; - Updated to version 3.3.5.0 in respect of "gpg4win-3.3.5" aka "GnuPG VS Desktop" v3.3.5.0
+; - Update to GnuPg Version 2.2.52 (signed)
+; - Update GpgOL to v2.7.1.18201 (signed)
+; - Update Tasks kill-list for Gpg4Win v3.3.5
+;   https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=src/installer.nsi;hb=refs/tags/gpg4win-3.3.5#l400
+;   https://dev.gnupg.org/source/gpg4win/browse/master/src/installer.nsi;gpg4win-3.3.5$400-413
+; - X.509-Certstore updated to date: 20260312
+; - Update OpenSSL (Self-Build) to OpenSSL v3.5.5 x64 mingw64
+;
+; 20260423
+;
+; - Updated to version 3.3.7.0 in respect of "gpg4win-3.3.7" aka
+;   "GnuPG VS Desktop" v3.3.7.0
+; - Update to GnuPg Version 2.2.54 (signed)
+; - Update GpgOL to v2.7.2.26992 (signed)
+; - Update Tasks kill-list for Gpg4Win v3.3.7 and added "thunderbird.exe"
+;   https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=src/installer.nsi;hb=refs/tags/gpg4win-3.3.7#l400
+;   https://dev.gnupg.org/source/gpg4win/browse/master/src/installer.nsi;gpg4win-3.3.7$400-413
+; - X.509-Certstore updated to date: 20260423
+; - Modification (german resources in dialog) of "pinentry-basic.exe"
+;   (GnuPG) and "pinentry-w32.exe" (Gpg4Win v3.3.7.0) disabled
+;   because the replacement of a file by a file with modified
+;   resources and lost Digital-Signature will violate the approval
+;   guideline of the BSI for this product.
+; - Fixed translation-errors in "gpgol.mo" and "gpgex.mo"
+;   (these files are not digital signed).
+; - Fixed compilance-check in VSD-config of GnuPG (gpg.conf) and
+;   GpgSM (gpgsm.conf): set "min-rsa-length" back from 4000 to 3000
+;   because all 3072 Bit RSA-keys, that were created by
+;   "GnuPG VS Desktop", were falsely flagged as non "VS-NfD-compilant".
+; - We had to fix the version-check of "gpgol.dll" in "CheckGpgOLVerEQ()"
+;   because of an existing issue in versioning between the 32-bit and
+;   64-bit versions of "gpgol.dll":
+;   since newer versions of "gpgol.dll", the 64-bit version has NOT
+;   THE SAME VERSION-NUMBER THAN THE 32-bit version. So we compare
+;   the correct version of "gpgol.dll" only by the 32-bit version here.
+;   TEMPORARY GPGOL-FIX (this will be filed on dev-hub as an error).
+;   The problem has also "CheckVerLESS()":
+;     Provided Version-Number to compare: "2.7.2.26992"
+;     CheckVerLESS(): 2.7.2.26992 IS NEWER THAN 2.7.2.0.
+;   .. but this issue has no effect here on the update-process, so
+;   we will leave this stuff actually unchanged ...
+;   ##########################################################
+;   # TODO: rollback fixed line below in "CheckGpgOLVerEQ()",
+;   #       when issue was fixed by "g10 Code GmbH".
+;   ##########################################################
 ; ###################################################################
 
 #define MyAppName "GpgTools"
@@ -530,15 +578,15 @@
 #define MyAppCopyright "Veit Berwig"
 #define MyAppPublisher "Veit Berwig"
 #define MyAppURL "https://github.com/landsh-de/GpgTools"
-#define MyAppDescr "GpgTools, Patches und zentrale Konfiguration für Gpg4Win"
+#define MyAppDescr "GpgTools, Updates und zentrale Konfiguration für Gpg4Win"
 #define MySetupMutex "GpgToolsSetupMutex"
 
 ; ###################################################################
 ; # Change vars here to support the correct version       - BEGIN - #
 ; ###################################################################
 ; ===================================================================
-#define MyAppVer "3.3.2.1"
-#define MyAppVerName "GpgTools 3.3.2.1"
+#define MyAppVer "3.3.7.0"
+#define MyAppVerName "GpgTools 3.3.7.0"
 ; ###################################################################
 ; # I'm comparing the string fileversion of the installed 
 ; # "kleopatra.exe" with var: "Gpg4WinVersion" and "Gpg4WinVersionB"
@@ -577,18 +625,23 @@
 ; FileVersion Info-String of "gpg.exe" AFTER installation of ...
 ; "gnupg-w32-update.exe".
 ; ===================================================================
+; GnuPG Release 2.2 / "gnupg-w32-update.exe" is GnuPG 2.2.52
+#define GpgVersion   "2.2.54.8128"
 ; GnuPG Release 2.2 / "gnupg-w32-update.exe" is GnuPG 2.2.47
-#define GpgVersion   "2.2.47.62079"
+; #define GpgVersion   "2.2.47.62079"
 ; GnuPG Release 2.4 / "gnupg-w32-update.exe" is GnuPG 2.4.5
 ; #define GpgVersion "2.4.5.52223"
 ; ===================================================================
 ; FileVersion Info-String of "gpgol.dll" AFTER installation of
 ; "Gpg4Win"; used in sub-function "Check: CheckVerLESS" below.
 ; "GpgOLVersion" is the original version, "GpgOLVersionB" is the
-; new version to be installed
+; new version to be installed.
+; For Changelog, see:
+; https://dev.gnupg.org/source/gpgol/browse/master/NEWS
 ; ===================================================================
 #define GpgOLVersion  "2.5.0.18451"
-#define GpgOLVersionB "2.6.0.5155"
+#define GpgOLVersionB "2.7.2.26992"
+; #define GpgOLVersionB "2.6.0.5155"
 ; ===================================================================
 
 ; ###################################################################
@@ -691,14 +744,18 @@ Name: german; MessagesFile: compiler:Languages\German.isl
 
 [InstallDelete]
 ; ###################################################################
-; ## Cleanup Cert-Paths before installing new certs with trustlist ##
+; #  Cleanup Cert-Paths before installing new certs with trustlist  #
 ; ###################################################################
-Type: filesandordirs; Name: "{commonappdata}\GNU\etc\gnupg\extra-certs"
-Type: filesandordirs; Name: "{commonappdata}\GNU\etc\gnupg\trusted-certs"
-Type: filesandordirs; Name: "{commonappdata}\GNU\etc\gnupg\deactivated"
-Type: filesandordirs; Name: "{commonappdata}\GNU\etc\gnupg\source"
-Type: files; Name: "{commonappdata}\GNU\etc\gnupg\trustlist.txt"
-Type: files; Name: "{commonappdata}\GNU\etc\gnupg\trustlist_err.txt"
+; Type: filesandordirs; Name: "{commonappdata}\GNU\etc\gnupg\extra-certs"
+; Type: filesandordirs; Name: "{commonappdata}\GNU\etc\gnupg\trusted-certs"
+; Type: filesandordirs; Name: "{commonappdata}\GNU\etc\gnupg\deactivated"
+; Type: filesandordirs; Name: "{commonappdata}\GNU\etc\gnupg\source"
+; Type: files; Name: "{commonappdata}\GNU\etc\gnupg\trustlist.txt"
+; Type: files; Name: "{commonappdata}\GNU\etc\gnupg\trustlist_err.txt"
+; ###################################################################
+; # Cleanup complete gnupg-config before installing complete update #
+; ###################################################################
+Type: filesandordirs; Name: "{commonappdata}\GNU\etc\gnupg"
 
 ; ###################################################################
 ; ## Definetly delete version > 2.2-GnuPG files, because they were ##
@@ -745,9 +802,9 @@ Type: filesandordirs; Name: "{app}\StartCon"
 ; ### X86/X64 arch selection ### first one should be marked 'solidbreak'
 Source: res\bass\bass.dll; DestDir: {tmp}; Flags: dontcopy noencryption nocompression solidbreak
 ; ### For TRACKER-SOUND
-Source: res\bass\sound.it; DestDir: {tmp}; Flags: dontcopy noencryption nocompression
+; Source: res\bass\sound.it; DestDir: {tmp}; Flags: dontcopy noencryption nocompression
 ; ### For MP3-SOUND
-; Source: res\bass\sound.mp3; DestDir: {tmp}; Flags: dontcopy noencryption nocompression
+Source: res\bass\sound.mp3; DestDir: {tmp}; Flags: dontcopy noencryption nocompression
 ; ISSkin DLL used for skinning Inno Setup installations.
 Source: res\skin\ISSkinU.dll; DestDir: {tmp}; Flags: dontcopy noencryption nocompression
 ; Visual Style resource contains resources used for skinning,
@@ -787,12 +844,13 @@ Source: data\GpgUpdate\gnupg-w32-update.exe; DestDir: {tmp}; Flags: dontcopy noe
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 ; Local User Environment Expander
 ;
-; ################ Dummy for triggering GnuPGUpdate #################
+; ###################################################################
+; ############### Dummy for triggering GnuPGUpdate () ###############
+; ###################################################################
 Source: data\GpgUpdate\dummy; DestDir: {commonappdata}\GNU; BeforeInstall: GnuPGUpdate; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ;
-; ########################## Konfig-Files ###########################
+; ######################## VSD Konfig-Files #########################
 Source: data\ProgramData\GNU\*; DestDir: {commonappdata}\GNU; Flags: ignoreversion recursesubdirs createallsubdirs uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
-;
 ;
 ; ###################################################################
 ; ######################### Program-Patches #########################
@@ -802,7 +860,9 @@ Source: data\ProgramData\GNU\*; DestDir: {commonappdata}\GNU; Flags: ignoreversi
 ; Source: data\Program Files (x86)\Gpg4win\*; DestDir: {code:GetGpg4WinInstalled}; Flags: ignoreversion recursesubdirs createallsubdirs uninsrestartdelete overwritereadonly; Components: confpatchtoolpol confpatchtool
 ;
 ; NEVER delete files on uninstall (were previously installed by another installer)
-Source: data\Program Files (x86)\GnuPG\bin\pinentry-basic.exe_{#Gpg4WinVersionB}; DestName: "pinentry-basic.exe"; DestDir: {code:GetGnuPG2Installed}\bin; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool; Check: IsGpgVer()
+; Disabled because the replacement of a file by a file with modified resources and lost
+; Digital-Signature will violate the approval guideline of the BSI for this product.
+; Source: data\Program Files (x86)\GnuPG\bin\pinentry-basic.exe_{#Gpg4WinVersionB}; DestName: "pinentry-basic.exe"; DestDir: {code:GetGnuPG2Installed}\bin; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool; Check: IsGpgVer()
 Source: data\Program Files (x86)\GnuPG\share\doc\gnupg\examples\Automatic.prf; DestDir: {code:GetGnuPG2Installed}\share\doc\gnupg\examples; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 
 ; Delete files on uninstall (were NOT previously installed by another installer)
@@ -818,9 +878,12 @@ Source: data\Program Files (x86)\GnuPG\share\doc\gnupg\examples\RSA-4096.prf; De
 ; Source: data\Program Files (x86)\GnuPG\share\doc\gnupg\examples\Debug.prf; DestDir: {code:GetGnuPG2Installed}\share\doc\gnupg\examples; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 
 ; Install only for Gpg4Win Var:"Gpg4WinVersion"
+; The version 3.1.16 has no Digital-Signature.
 Source: data\Program Files (x86)\Gpg4win\bin\pinentry-w32.exe_{#Gpg4WinVersion}; DestName: "pinentry-w32.exe"; DestDir: {code:GetGpg4WinInstalled}\bin; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool; Check: Is3116()
 ; Install only for Gpg4Win Var:"Gpg4WinVersionB"
-Source: data\Program Files (x86)\Gpg4win\bin\pinentry-w32.exe_{#Gpg4WinVersionB}; DestName: "pinentry-w32.exe"; DestDir: {code:GetGpg4WinInstalled}\bin; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool; Check: Is31XX()
+; Disabled because the replacement of a file by a file with modified resources and lost
+; Digital-Signature will violate the approval guideline of the BSI for this product.
+; Source: data\Program Files (x86)\Gpg4win\bin\pinentry-w32.exe_{#Gpg4WinVersionB}; DestName: "pinentry-w32.exe"; DestDir: {code:GetGpg4WinInstalled}\bin; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool; Check: Is31XX()
 
 ; Install only for Gpg4Win Var:"Gpg4WinVersion"
 Source: data\Program Files (x86)\Gpg4win\share\locale\de\LC_MESSAGES\gpgex.mo_{#Gpg4WinVersion}; DestName: "gpgex.mo"; DestDir: {code:GetGpg4WinInstalled}\share\locale\de\LC_MESSAGES; Flags: ignoreversion uninsneveruninstall overwritereadonly; Components: confpatchtoolpol confpatchtool; Check: Is3116()
@@ -1199,11 +1262,12 @@ german.installcont=Installation wird fortgesetzt ...
 ; that may be in use during install-process.
 ; See functions: "RunTask" and "KillTask" below in [Code]-section
 ; Got parts of the kill-list from NSIS-Function "KillOtherAppsOrWarn" of
-; Gpg4Win-Installer (20250625):
+; Gpg4Win-Installer (20260312):
 ; https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=src/installer.nsi;hb=refs/tags/gpg4win-3.1.27#l406
-; https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=src/installer.nsi;hb=refs/tags/gpg4win-4.1.0#l406
-; https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=src/installer.nsi;hb=refs/tags/gpg4win-3.3.2#l400
-Tasks=kleopatra.exe%ngpgme-w32spawn.exe%nresolver.exe%noverlayer.exe%ngpg-agent.exe%ngpg.exe%nkeyboxd.exe%nscdaemon.exe%ngpgolconfig.exe%ndirmngr.exe%ngpgsm.exe%nokular.exe%ngpgpass.exe%ngpg-connect-agent.exe%ngpg-wks-client.exe%npinentry-w32.exe%npinentry.exe%npinentry-basic.exe%ngpg-card.exe%noutlook.exe
+; https://dev.gnupg.org/source/gpg4win/browse/master/src/installer.nsi;gpg4win-3.1.27$406-414
+; https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=src/installer.nsi;hb=refs/tags/gpg4win-3.3.5#l400
+; https://dev.gnupg.org/source/gpg4win/browse/master/src/installer.nsi;gpg4win-3.3.5$400-413
+Tasks=kleopatra.exe%ngpgme-w32spawn.exe%nresolver.exe%noverlayer.exe%ngpg-agent.exe%ngpg.exe%nkeyboxd.exe%nscdaemon.exe%ngpgolconfig.exe%ndirmngr.exe%ngpgsm.exe%nokular.exe%ngpgpass.exe%ngpg-connect-agent.exe%ngpg-wks-client.exe%npinentry-w32.exe%npinentry.exe%npinentry-basic.exe%ngpg-card.exe%noutlook.exe%nthunderbird.exe
 
 [ThirdParty]
 UseRelativePaths=True
@@ -2649,11 +2713,19 @@ begin
            Log('CheckGpgOLVerEQ(): File: ' + aExecFile + ' ...');
            Log('CheckGpgOLVerEQ(): AND file: ' + aExecFile64 + ' does exist.');
            if (GetVersionNumbersString(aExecFile, GpgOl_Version)) AND (GetVersionNumbersString(aExecFile64, GpgOl_Version64)) then begin
-              Log('CheckGpgOLVerEQ(): File Version-Number: ' + '"' + GpgOl_Version + '"');
+              Log('CheckGpgOLVerEQ(): File Version-Number x86: ' + '"' + GpgOl_Version + '"');
+              Log('CheckGpgOLVerEQ(): File Version-Number x64: ' + '"' + GpgOl_Version64 + '"');
               Log('CheckGpgOLVerEQ(): Provided Version-Number to compare: ' + '"' + MyVer + '"');
               // Result: 0 if equal, -1 if V1 older V2, 1 if V1 newer V2.
               // Update if version is equal to version of A AND to version of B
-             	if ((CompareVersion(MyVer,GpgOl_Version)) = 0) AND ((CompareVersion(MyVer,GpgOl_Version64)) = 0) then begin
+              // ################################################################
+              // ### Since newer versions of "gpgol.dll", the 64-bit version
+              // ### has NOT THE SAME VERSION-NUMBER THAN THE 32-bit version.
+              // ### So we compare the correct version of gpgol.dll x86 here.
+              // ################################################################
+              // TEMPORARY GPGOL-FIX (this will be filed on dev-hub as error):
+             	// if ((CompareVersion(MyVer,GpgOl_Version)) = 0) AND ((CompareVersion(MyVer,GpgOl_Version64)) = 0) then begin
+             	if ((CompareVersion(MyVer,GpgOl_Version)) = 0) then begin
                  Log('CheckGpgOLVerEQ(): ' + MyVer + ' IS EQUAL TO ' + GpgOl_Version + ' AND ' + GpgOl_Version64 + '.');
                  Log('CheckGpgOLVerEQ(): *** FILE WILL BE UPDATED ! ***');
                  Result := True;
@@ -3349,14 +3421,14 @@ begin
   // ################################################################
   // # For Tracker sounds
   // ################################################################
-  ExtractTemporaryFile('sound.it');
-  SndName := ExpandConstant('{tmp}\sound.it');
+  // ExtractTemporaryFile('sound.it');
+  // SndName := ExpandConstant('{tmp}\sound.it');
 
   // ################################################################
   // # For MP3 sounds
   // ################################################################
-  // ExtractTemporaryFile('sound.mp3');
-  // SndName := ExpandConstant('{tmp}\sound.mp3');
+  ExtractTemporaryFile('sound.mp3');
+  SndName := ExpandConstant('{tmp}\sound.mp3');
 
   // To force this to be an update, set MyAppUPDATE to tue
   // otherwise we will check for GNUPG-REG-Key existence below.
@@ -3412,11 +3484,11 @@ begin
       // #############################################################
       // For WAV, MP3, OGG, etc. sound-files
       // #############################################################
-      // SndHandle := BASS_StreamCreateFile(FALSE, PAnsiChar(SndName), 0, 0, BASS_SAMPLE_LOOP);
+      SndHandle := BASS_StreamCreateFile(FALSE, PAnsiChar(SndName), 0, 0, BASS_SAMPLE_LOOP);
       // #############################################################
       // For MOD, XM, ,IT, S3M, etc. tracker-files
       // #############################################################
-      SndHandle := BASS_MusicLoad(FALSE, PAnsiChar(SndName), 0, 0, BASS_SAMPLE_LOOP, 0);
+      // SndHandle := BASS_MusicLoad(FALSE, PAnsiChar(SndName), 0, 0, BASS_SAMPLE_LOOP, 0);
       // #############################################################
 
       Log('Begin BASS_Start ...');
