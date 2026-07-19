@@ -1,4 +1,18 @@
 
+20260716
+
+- Updated to version 3.3.7.1
+- X.509-Certstore updated to date: 20260716.
+- Update OpenSSL (Self-Build) to OpenSSL v3.5.7 x64 mingw64.
+- Update ZLib (Self-Build) to ZLib v1.3.2 x64 mingw64 (for OpenSSL).
+  This addresses all findings by the "7ASecurity"-Audit:
+  https://7asecurity.com/blog/2026/02/zlib-7asecurity-audit/
+  https://7asecurity.com/reports/pentest-report-zlib-RC1.1.pdf
+- Added Proxy-AutoConfig-Support in respect of S/MIME-CRL-Checks
+  by the tool "GetProxySetEnv".
+- Enable "honor-http-proxy" in "dirmngr.conf" for crl-checks
+  behind proxy-server.
+
 20260423
 
 - Updated to version 3.3.7.0 in respect of "gpg4win-3.3.7" aka
