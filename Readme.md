@@ -5,7 +5,7 @@
   <img width="928" height="565" alt="Gpg4Win-3 1 16-VS-NfD" src="https://github.com/user-attachments/assets/8c89cf44-65a3-448e-b87e-89b8157d0512" />
 </p>
 
-##### <p align=right>By vitusb in 20260423</p>
+##### <p align=right>By vitusb in 20260716</p>
 ##### <p align=right>GnuPG VS-Desktop® ist eine eingetragene Marke der [g10 Code GmbH](https://g10code.com "g10 Code GmbH").<br>GnuPG VS-Desktop® is a registered trademark of [g10 Code GmbH](https://g10code.com "g10 Code GmbH").</p>
 ##### <p align=right>[Sicherheits-Bedenken zu Brainpool-Kurven des BSI](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Sicherheits-Bedenken zu den Brainpool-Kurven des BSI")<br>[(Security concerns about the BSI's Brainpool curves)](https://github.com/landsh-de/mkcert#some-informations-to-the-brainpool-curves-designed-and-authorized-by-the-bsi-and-that-are-still-conformant-to-the-vs-nfd-de-vs-mode "Security concerns about the BSI's Brainpool curves")</p>
 
@@ -17,7 +17,7 @@
 
 "GpgTools" benötigt (abgesehen von der Verteilung des Paketes) KEINE WEITEREN ADMINISTRATIVEN Prozesse; die Benutzerumgebung wird zur Laufzeit (Anmeldung) dynamisch konfiguriert.
 
-"Gpg4Win" in der Version 3.x.xx muss VOR der Installation von "GpgTools" auf dem System installiert sein. Der Installer von "GpgTools" prüft VOR der Installation, ob die korrekte Version von "Gpg4Win" bereits installiert ist. Unterstützt werden Gpg4Win 3.1.16 und die jeweils zur Versionsnummer passende Version von Gpg4Win. Für die GpgTools Version 3.3.7.0 wären das somit Gpg4Win 3.1.16 und Gpg4Win 3.3.7.x.
+"Gpg4Win" in der Version 3.x.xx muss VOR der Installation von "GpgTools" auf dem System installiert sein. Der Installer von "GpgTools" prüft VOR der Installation, ob die korrekte Version von "Gpg4Win" bereits installiert ist. Unterstützt werden Gpg4Win 3.1.16 und die jeweils zur Versionsnummer passende Version von Gpg4Win. Für die GpgTools Version 3.3.7.1 wären das somit Gpg4Win 3.1.16 und Gpg4Win 3.3.7.x.
 
 #### Welche Version von "Gpg4Win" soll ich verwenden ?
 Streng genommen ist nur Version 3.1.16 inkl. Digitaler Signatur der folgenden 3-er Versionen vom [BSI](https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Zulassung/Liste-zugelassener-Produkte/liste-zugelassener-produkte_node.html) für VS-Stufen bis "VS-NfD" "zugelassen". Das bereitgestellte "Private-Build" in der jeweils aktuellen Version, entspricht im Quellcode dem Original aus dem Versions-Tag des GnuPG-Git für "GnuPG VS Desktop" bzw. "Gpg4Win", ist jedoch nicht digital signiert und somit nicht vom BSI zugelassen. Das verwendete GnuPG-Backend ist inklusive der Digitalen Signatur 100% identisch mit dem Backend von "GnuPG VS Desktop".
