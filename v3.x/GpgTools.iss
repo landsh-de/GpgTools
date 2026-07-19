@@ -571,6 +571,21 @@
 ;   # TODO: rollback fixed line below in "CheckGpgOLVerEQ()",
 ;   #       when issue was fixed by "g10 Code GmbH".
 ;   ##########################################################
+;
+; 20260716
+;
+; - Updated to version 3.3.7.1
+; - X.509-Certstore updated to date: 20260716.
+; - Update OpenSSL (Self-Build) to OpenSSL v3.5.7 x64 mingw64.
+; - Update ZLib (Self-Build) to ZLib v1.3.2 x64 mingw64 (for OpenSSL).
+;   This addresses all findings by the "7ASecurity"-Audit:
+;   https://7asecurity.com/blog/2026/02/zlib-7asecurity-audit/
+;   https://7asecurity.com/reports/pentest-report-zlib-RC1.1.pdf
+; - Added Proxy-AutoConfig-Support in respect of S/MIME-CRL-Checks
+;   by the tool "GetProxySetEnv".
+; - Enable "honor-http-proxy" in "dirmngr.conf" for crl-checks
+;   behind proxy-server.
+
 ; ###################################################################
 
 #define MyAppName "GpgTools"
@@ -585,8 +600,8 @@
 ; # Change vars here to support the correct version       - BEGIN - #
 ; ###################################################################
 ; ===================================================================
-#define MyAppVer "3.3.7.0"
-#define MyAppVerName "GpgTools 3.3.7.0"
+#define MyAppVer "3.3.7.1"
+#define MyAppVerName "GpgTools 3.3.7.1"
 ; ###################################################################
 ; # I'm comparing the string fileversion of the installed 
 ; # "kleopatra.exe" with var: "Gpg4WinVersion" and "Gpg4WinVersionB"
@@ -779,6 +794,7 @@ Type: filesandordirs; Name: "{code:GetGpg4WinInstalled}\share\doc\gnupg-vsd"
 ; ###################################################################
 ; Type: files; Name: "{app}\StartCon\*.*"
 Type: filesandordirs; Name: "{app}\ExpandGNUPGHOME"
+Type: filesandordirs; Name: "{app}\GetProxySetEnv"
 Type: filesandordirs; Name: "{app}\MigrateGnuPGKeybase"
 Type: filesandordirs; Name: "{app}\StartCon"
 
@@ -949,32 +965,46 @@ Source: data\Program Files (x86)\GpgTools\Doc\Hinweise.txt; DestDir: {app}\Doc; 
 Source: data\Program Files (x86)\GpgTools\Doc\kleopatra_de.pdf; DestDir: {app}\Doc; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\GpgTools\Doc\Quickguide_GnuPG.pdf; DestDir: {app}\Doc; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\GpgTools\Doc\gnupg.pdf; DestDir: {app}\Doc; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+; ########################## ExpandGNUPGHOME
 Source: data\Program Files (x86)\GpgTools\ExpandGNUPGHOME\ExpandGNUPGHOME.src.zip; DestDir: {app}\ExpandGNUPGHOME; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\GpgTools\ExpandGNUPGHOME\ExpandGNUPGHOME.txt; DestDir: {app}\ExpandGNUPGHOME; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\GpgTools\ExpandGNUPGHOME\ExpandGNUPGHOME.a3x; DestDir: {app}\ExpandGNUPGHOME; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\GpgTools\ExpandGNUPGHOME\ExpandGNUPGHOME.ico; DestDir: {app}\ExpandGNUPGHOME; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\GpgTools\ExpandGNUPGHOME\ExpandGNUPGHOME.ini; DestDir: {app}\ExpandGNUPGHOME; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ; Source: data\Program Files (x86)\GpgTools\ExpandGNUPGHOME\ExpandGNUPGHOME64.a3x; DestDir: {app}\ExpandGNUPGHOME; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+; Source: data\Program Files (x86)\GpgTools\ExpandGNUPGHOME\ExpandGNUPGHOME64.ico; DestDir: {app}\ExpandGNUPGHOME; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ; Source: data\Program Files (x86)\GpgTools\ExpandGNUPGHOME\ExpandGNUPGHOME64.ini; DestDir: {app}\ExpandGNUPGHOME; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+; ########################## StartCon
 Source: data\Program Files (x86)\GpgTools\StartCon\Gpg4Win_beenden.a3x; DestDir: {app}\StartCon; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\GpgTools\StartCon\Gpg4Win_beenden.ico; DestDir: {app}\StartCon; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\GpgTools\StartCon\Gpg4Win_beenden.ini; DestDir: {app}\StartCon; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ; Source: data\Program Files (x86)\GpgTools\StartCon\Gpg4Win_beenden64.a3x; DestDir: {app}\StartCon; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+; Source: data\Program Files (x86)\GpgTools\StartCon\Gpg4Win_beenden64.ico; DestDir: {app}\StartCon; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ; Source: data\Program Files (x86)\GpgTools\StartCon\Gpg4Win_beenden64.ini; DestDir: {app}\StartCon; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\GpgTools\StartCon\Gpg4WinPreConfig.a3x; DestDir: {app}\StartCon; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\GpgTools\StartCon\Gpg4WinPreConfig.ico; DestDir: {app}\StartCon; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\GpgTools\StartCon\Gpg4WinPreConfig.ini; DestDir: {app}\StartCon; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ; Source: data\Program Files (x86)\GpgTools\StartCon\Gpg4WinPreConfig64.a3x; DestDir: {app}\StartCon; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+; Source: data\Program Files (x86)\GpgTools\StartCon\Gpg4WinPreConfig64.ico; DestDir: {app}\StartCon; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ; Source: data\Program Files (x86)\GpgTools\StartCon\Gpg4WinPreConfig64.ini; DestDir: {app}\StartCon; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\GpgTools\StartCon\StartCon.src.zip; DestDir: {app}\StartCon; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
-Source: data\Program Files (x86)\GpgTools\StartCon\doc\StartCon.txt; DestDir: {app}\StartCon\doc; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
-Source: data\Program Files (x86)\GpgTools\StartCon\license\gpl-3.0-de.txt; DestDir: {app}\StartCon\license; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
-Source: data\Program Files (x86)\GpgTools\StartCon\license\gpl-3.0.txt; DestDir: {app}\StartCon\license; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\GpgTools\StartCon\StartCon.txt; DestDir: {app}\StartCon; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+; ########################## MigrateGnuPGKeybase
 Source: data\Program Files (x86)\GpgTools\MigrateGnuPGKeybase\MigrateGnuPGKeybase.a3x; DestDir: {app}\MigrateGnuPGKeybase; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\GpgTools\MigrateGnuPGKeybase\MigrateGnuPGKeybase.ico; DestDir: {app}\MigrateGnuPGKeybase; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Source: data\Program Files (x86)\GpgTools\MigrateGnuPGKeybase\MigrateGnuPGKeybase.ini; DestDir: {app}\MigrateGnuPGKeybase; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ; Source: data\Program Files (x86)\GpgTools\MigrateGnuPGKeybase\MigrateGnuPGKeybase64.a3x; DestDir: {app}\MigrateGnuPGKeybase; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+; Source: data\Program Files (x86)\GpgTools\MigrateGnuPGKeybase\MigrateGnuPGKeybase64.ico; DestDir: {app}\MigrateGnuPGKeybase; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ; Source: data\Program Files (x86)\GpgTools\MigrateGnuPGKeybase\MigrateGnuPGKeybase64.ini; DestDir: {app}\MigrateGnuPGKeybase; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
-Source: data\Program Files (x86)\GpgTools\MigrateGnuPGKeybase\MigrateGnuPGKeybase.src.zip; DestDir: {app}\MigrateGnuPGKeybase\source; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
-Source: data\Program Files (x86)\GpgTools\MigrateGnuPGKeybase\doc\MigrateGnuPGKeybase.txt; DestDir: {app}\MigrateGnuPGKeybase\doc; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
-Source: data\Program Files (x86)\GpgTools\MigrateGnuPGKeybase\license\gpl-3.0-de.txt; DestDir: {app}\MigrateGnuPGKeybase\license; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
-Source: data\Program Files (x86)\GpgTools\MigrateGnuPGKeybase\license\gpl-3.0.txt; DestDir: {app}\MigrateGnuPGKeybase\license; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\GpgTools\MigrateGnuPGKeybase\MigrateGnuPGKeybase.src.zip; DestDir: {app}\MigrateGnuPGKeybase; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\GpgTools\MigrateGnuPGKeybase\MigrateGnuPGKeybase.txt; DestDir: {app}\MigrateGnuPGKeybase; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+; ########################## GetProxySetEnv
+Source: data\Program Files (x86)\GpgTools\GetProxySetEnv\GetProxySetEnv.a3x; DestDir: {app}\GetProxySetEnv; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\GpgTools\GetProxySetEnv\GetProxySetEnv.ico; DestDir: {app}\GetProxySetEnv; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+; Source: data\Program Files (x86)\GpgTools\GetProxySetEnv\GetProxySetEnv64.a3x; DestDir: {app}\GetProxySetEnv; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+; Source: data\Program Files (x86)\GpgTools\GetProxySetEnv\GetProxySetEnv64.ico; DestDir: {app}\GetProxySetEnv; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\GpgTools\GetProxySetEnv\GetProxySetEnv.src.zip; DestDir: {app}\GetProxySetEnv; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Source: data\Program Files (x86)\GpgTools\GetProxySetEnv\GetProxySetEnv.txt; DestDir: {app}\GetProxySetEnv; Flags: ignoreversion uninsrestartdelete overwritereadonly; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 
 [Dirs]
 
@@ -1052,6 +1082,8 @@ Root: "HKLM"; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType
 Root: "HKLM"; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: expandsz; ValueName: "Migrate_GnuPG_Keybase"; ValueData: """{app}\autoit32.exe"" ""{app}\MigrateGnuPGKeybase\MigrateGnuPGKeybase.a3x"""; Flags: uninsdeletevalue; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 ; AutoRun Init Expand GNUPGHOME Environment to local user environment (x86)
 Root: "HKLM"; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: expandsz; ValueName: "Expand_GNUPGHOME"; ValueData: """{app}\autoit32.exe"" ""{app}\ExpandGNUPGHOME\ExpandGNUPGHOME.a3x"""; Flags: uninsdeletevalue; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+; AutoRun Init Expand Proxy Environment to local user environment (x86)
+Root: "HKLM"; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: expandsz; ValueName: "Expand_GetProxySetEnv"; ValueData: """{app}\autoit32.exe"" ""{app}\GetProxySetEnv\GetProxySetEnv.a3x"""; Flags: uninsdeletevalue; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 
 ; ###################################################################
 ; ####################### Execution Policies ########################
@@ -1182,12 +1214,13 @@ Name: "{commonprograms}\{#MyAppName}\Handbuch Gpg4Win"; Filename: "{code:GetGpg4
 Name: "{commonprograms}\{#MyAppName}\Handbuch Kleopatra"; Filename: "{app}\Doc\kleopatra_de.pdf"; WorkingDir: "{app}\Doc"; IconFilename: "{app}\Icon2.ico"; Comment: "Handbuch Kleopatra"; IconIndex: 0; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Name: "{commonprograms}\{#MyAppName}\QuickGuide Gpg4Win"; Filename: "{app}\Doc\Quickguide_GnuPG.pdf"; WorkingDir: "{app}\Doc"; IconFilename: "{app}\Icon0.ico"; Comment: "QuickGuide Gpg4Win"; IconIndex: 0; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Name: "{commonprograms}\{#MyAppName}\Handbuch GnuPG"; Filename: "{app}\Doc\gnupg.pdf"; WorkingDir: "{app}\Doc"; IconFilename: "{app}\Icon0.ico"; Comment: "Handbuch GnuPG"; IconIndex: 0; Components: confpatchtoolpol conftoolpol confpatchtool conftool
-Name: "{commonprograms}\{#MyAppName}\Gpg4Win beenden"; Filename: "{app}\autoit32.exe"; Parameters: """{app}\StartCon\Gpg4Win_beenden.a3x"""; WorkingDir: "{app}\StartCon"; IconFilename: "{app}\autoit32.exe"; Comment: "Alle Programme und Hintergrundprogramme von Gpg4Win beenden"; IconIndex: 0; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Name: "{commonprograms}\{#MyAppName}\Gpg4Win beenden"; Filename: "{app}\autoit32.exe"; Parameters: """{app}\StartCon\Gpg4Win_beenden.a3x"""; WorkingDir: "{app}\StartCon"; IconFilename: "{app}\StartCon\Gpg4Win_beenden.ico"; Comment: "Alle Programme und Hintergrundprogramme von Gpg4Win beenden"; IconIndex: 0; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Name: "{commonprograms}\{#MyAppName}\Gpg4Win Proxy-Konfiguration aktualisieren"; Filename: "{app}\autoit32.exe"; Parameters: """{app}\GetProxySetEnv\GetProxySetEnv.a3x"""; WorkingDir: "{app}\GetProxySetEnv"; IconFilename: "{app}\GetProxySetEnv\GetProxySetEnv.ico"; Comment: "Lokale Proxy-Konfiguration abfragen und als Umgebungsvariablen bereitstellen."; IconIndex: 0; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 
 Name: "{commondesktop}\Handbuch Gpg4Win"; Filename: "{code:GetGpg4WinInstalled}\share\gpg4win\gpg4win-compendium-de.pdf"; WorkingDir: "{code:GetGpg4WinInstalled}\share\gpg4win"; IconFilename: "{app}\Icon1.ico"; Comment: "Handbuch Gpg4Win-Compendium"; IconIndex: 0; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Name: "{commondesktop}\Handbuch Kleopatra"; Filename: "{app}\Doc\kleopatra_de.pdf"; WorkingDir: "{app}\Doc"; IconFilename: "{app}\Icon2.ico"; Comment: "Handbuch Kleopatra"; IconIndex: 0; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 Name: "{commondesktop}\QuickGuide Gpg4Win"; Filename: "{app}\Doc\Quickguide_GnuPG.pdf"; WorkingDir: "{app}\Doc"; IconFilename: "{app}\Icon0.ico"; Comment: "QuickGuide Gpg4Win"; IconIndex: 0; Components: confpatchtoolpol conftoolpol confpatchtool conftool
-Name: "{commondesktop}\Gpg4Win beenden"; Filename: "{app}\autoit32.exe"; Parameters: """{app}\StartCon\Gpg4Win_beenden.a3x"""; WorkingDir: "{app}\StartCon"; IconFilename: "{app}\autoit32.exe"; Comment: "Alle Programme und Hintergrundprogramme von Gpg4Win beenden"; IconIndex: 0; Components: confpatchtoolpol conftoolpol confpatchtool conftool
+Name: "{commondesktop}\Gpg4Win beenden"; Filename: "{app}\autoit32.exe"; Parameters: """{app}\StartCon\Gpg4Win_beenden.a3x"""; WorkingDir: "{app}\StartCon"; IconFilename: "{app}\StartCon\Gpg4Win_beenden.ico"; Comment: "Alle Programme und Hintergrundprogramme von Gpg4Win beenden"; IconIndex: 0; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 
 Name: "{commonprograms}\{#MyAppName}\VS-Dokumentation"; Filename: "{code:GetGpg4WinInstalled}\share\doc\gnupg-vsd"; WorkingDir: "{code:GetGpg4WinInstalled}\share\doc\gnupg-vsd"; IconFilename: "{app}\Icon7.ico"; IconIndex: 0; Components: confpatchtoolpol conftoolpol confpatchtool conftool
 
